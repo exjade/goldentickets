@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as ROUTES from './constants/routes'
 import UserContext from './context/user'
 import { WatchListContextProvider } from './context/watchListContext'
