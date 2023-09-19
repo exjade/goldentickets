@@ -1,7 +1,9 @@
-import React, { lazy, useEffect } from 'react'
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import React, { lazy, Suspense, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import UserContext from './context/user'
 import useAuthListener from './hooks/use-auth-listener'
+import FallBackLoader from './components/FallBackLoader'
+
 
 // - Dashboard
 const Dashboard = lazy(() => import('./pages/dashboard'))
@@ -13,13 +15,17 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user }}>
-        <Router>
-            <Switch>
-             
-                <Dashboard />
+      <Router>
+        <Suspense fallback={<FallBackLoader />} >
 
-            </Switch>
-        </Router>
+          <Switch>
+
+            <Route path="*" component={Dashboard} />
+
+          </Switch>
+
+        </Suspense>
+      </Router>
 
     </UserContext.Provider>
   );

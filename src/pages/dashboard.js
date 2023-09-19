@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -16,7 +15,7 @@ const Dashboard = () => {
           exit={{ opacity: 0 }}
         >
          
-          <p className='text-white-normal'>DASHBOARD</p>
+          <p className='text-white-normal'>Dashboard hola</p>
         
         </motion.div>
       </AnimatePresence>
@@ -26,12 +25,3 @@ const Dashboard = () => {
 
 export default Dashboard
 
-Dashboard.propTypes = {
-  coins: PropTypes.array,
-  search: PropTypes.string,
-  setSearch: PropTypes.func,
-  isOpen: PropTypes.bool,
-  setIsOpen: PropTypes.func,
-  theme: PropTypes.bool,
-  setTheme: PropTypes.func,
-}
