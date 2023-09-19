@@ -5,7 +5,6 @@ import UserContext from './context/user'
 import { WatchListContextProvider } from './context/watchListContext'
 import useAuthListener from './hooks/use-auth-listener'
 import ProtectedRoute from './helpers/protected-routes'
-import IsUserLoggedIn from './helpers/is-user-loggedin'
 import FallBackLoader from './components/FallBackLoader'
 
 // - Dashboard
@@ -34,8 +33,6 @@ function App() {
               <ProtectedRoute user={user} path={ROUTES.ADMIN_DASHBOARD} exact>
                 <AdminDashboard />
               </ProtectedRoute>
-
-              <Route path="*" component={NotFound} />
 
             </Switch>
           </Suspense>

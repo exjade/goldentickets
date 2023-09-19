@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src --ext .js"
+    "lint": "eslint ./src --ext .js",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -55,7 +56,6 @@
     "@welldone-software/why-did-you-render": "^7.0.1",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.11.0",
-    "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.11",
     "postcss-cli": "^9.1.0",
@@ -63,6 +63,7 @@
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
     "react-error-overlay": "6.0.9",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "husky": "^8.0.0"
   }
 }
