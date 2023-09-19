@@ -34,4 +34,4 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /dashboard
-Sitemap: https://artificialtech4u.com/sitemap.xml
+Sitemap: https://goldentickets.com/sitemap.xml

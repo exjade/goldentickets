@@ -1,13 +1,12 @@
 {
   "background_color": "#101010",
   "categories": [
-    "Artificial Tech4u",
-    "financial",
-    "investments",
-    "utilities",
-    "services"
+    "lottery",
+    "lotto",
+    "criptocurrencies",
+    "crypto"
   ],
-  "description": "Artificial Tech4u is a company dedicated to financial services.",
+  "description": "",
   "dir": "ltr",
   "display_override": ["standalone", "fullscreen"],
   "display": "standalone",
@@ -33,13 +32,13 @@
       "purpose": "any"
     }
   ],
-  "name": "Artificial Tech4u",
-  "short_name": "Artificial Tech4u",
+  "name": "",
+  "short_name": "",
   "theme_color": "black",
   "id": "/v1",
   "lang": "en",
   "orientation": "any",
   "prefer_related_applications": false,
   "scope": "/",
-  "start_url": "https://artificialtech4u.com"
+  "start_url": ""
 }

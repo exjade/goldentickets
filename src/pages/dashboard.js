@@ -16,7 +16,7 @@ const Dashboard = () => {
           exit={{ opacity: 0 }}
         >
          
-          
+          <p className='text-white-normal'>DASHBOARD</p>
         
         </motion.div>
       </AnimatePresence>
