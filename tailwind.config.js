@@ -23,6 +23,11 @@ module.exports = {
       black: {
         normal: '#000000',
       },
+      blue: {
+        primary: '#343843',
+        secondary: '#21252E',
+        tertiary: '#11141D',
+      }
 
     },
     // FONTS
