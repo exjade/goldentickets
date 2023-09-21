@@ -23,7 +23,7 @@ const ToggleRounded = (props) => {
             <button
                 type='button'
                 onClick={() => props?.toggleLive()}
-                className={`${styles.live}`}
+                className={`${styles.live} cursor-not-allowed`}
             >
                 <span className={`${styles.iconLive}`} >
                     <img
