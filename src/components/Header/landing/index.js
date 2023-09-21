@@ -3,6 +3,8 @@ import styles from './css/header.module.css';
 import ToggleRounded from '../../toggle/rounded';
 import ButtonMid from '../../Buttons/button-mid';
 import ButtonLarge from '../../Buttons/button-large';
+import * as ROUTES from '../../../constants/routes';
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
@@ -32,7 +34,7 @@ const Header = () => {
             />
             <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
           </div>
-          
+
           {/* TOGGLE GAMBLING / LIVE */}
           <ToggleRounded
             gambling={`gambling`}
@@ -44,12 +46,16 @@ const Header = () => {
 
         {/* BALANCE & WALLET */}
         <div className={`${styles.auth}`} >
-          <ButtonMid
-            text={`Login`}
-          />
-          <ButtonLarge
-            text={`Register`}
-          />
+          <Link to={ROUTES.LOGIN}>
+            <ButtonMid
+              text={`Login`}
+            />
+          </Link>
+          <Link to={ROUTES.SIGNUP}>
+            <ButtonLarge
+              text={`Register`}
+            />
+          </Link>
         </div>
 
         {/* USER PROFILE */}
