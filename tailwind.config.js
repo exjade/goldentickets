@@ -27,6 +27,7 @@ module.exports = {
         primary: '#343843',
         secondary: '#21252E',
         tertiary: '#11141D',
+        createAccount: '#408BFC'
       },
       gray: {
         primary: '#959DA6',
