@@ -8,7 +8,7 @@ const Header = () => {
     <div className={`${styles.container}`} >
       <div className={`${styles.wrapper}`} >
 
-
+        
 
         <Avatar />
         
