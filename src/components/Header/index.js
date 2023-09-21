@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './css/header.module.css';
 import Avatar from '../Avatar';
+import ToggleRounded from '../toggle/rounded';
 
 const Header = () => {
 
@@ -33,6 +34,10 @@ const Header = () => {
         </div>
 
         {/* TOGGLE GAMBLING / LIVE */}
+        <ToggleRounded
+          gambling={`gambling`}
+          live={`live`}
+        />
 
         {/* BALANCE & WALLET */}
 

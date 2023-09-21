@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.gambling {
+    width: 10rem;
+    height: 3rem;
+    margin-right: -6rem;
+    z-index: 999;
+    border-color: white;
+    border-width: thin;
+    font-family: 'Nunito Sans', sans-serif;
+    background: #28374D;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    border-radius: 90px;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+}
+
+.live {
+    width: 15rem;
+    height: 3rem;
+    font-family: 'Nunito Sans', sans-serif;
+    background: #2A303C;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    border-radius: 90px;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.iconLive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: 3rem;
+}
