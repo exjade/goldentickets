@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './css/header.module.css';
-import Avatar from '../Avatar';
-import ToggleRounded from '../toggle/rounded';
-import ButtonMid from '../Buttons/button-mid';
-import ButtonLarge from '../Buttons/button-large';
+import ToggleRounded from '../../toggle/rounded';
+import ButtonMid from '../../Buttons/button-mid';
+import ButtonLarge from '../../Buttons/button-large';
 
 const Header = () => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Error from '../error/error';
-import Header from '../components/Header';
+// import Error from '../error/error';
+
 
 
 const Dashboard = () => {
@@ -15,9 +15,7 @@ const Dashboard = () => {
           exit={{ opacity: 0 }}
         >
 
-          <Error>
-            <Header />
-          </Error>
+        
 
         </motion.div>
       </AnimatePresence>

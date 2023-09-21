@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Error from '../error/error';
-import Header from '../components/Header';
+import Header from '../components/Header/landing';
 
 const Landing = () => {
   return (
