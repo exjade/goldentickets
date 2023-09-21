@@ -1,0 +1,42 @@
+.buttonMid {
+    background: #28374D;
+    color: white;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.buttonLarge {
+    background: #3983F6;
+    color: white;
+    width: 9rem;
+    height: 2.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+
+@media (max-width: 600px) {
+    .buttonMid {
+        background: #28374D;
+        color: white;
+        width: 6rem;
+        height: 2rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 800;
+    }
+
+    .buttonLarge {
+        background: #3983F6;
+        color: white;
+        width: 6rem;
+        height: 2rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 800;
+    }
+}

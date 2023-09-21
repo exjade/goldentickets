@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './css/header.module.css';
 import Avatar from '../Avatar';
 import ToggleRounded from '../toggle/rounded';
+import ButtonMid from '../Buttons/button-mid';
+import ButtonLarge from '../Buttons/button-large';
 
 const Header = () => {
 
-  const logo = 'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fog%2Flogo.png?alt=media&token=e6e2fb27-e8ce-4066-9b5c-b52a816414e6'
+  const logo = 'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fog%2Flogo.png?alt=media&token=e6e2fb27-e8ce-4066-9b5c-b52a816414e6';
 
   return (
 
@@ -29,17 +31,27 @@ const Header = () => {
               alt="logo"
               className={`${styles.img}`}
             />
-            <p className={`${styles.font} text-white-normal uppercase`}>GoldenTickets</p>
+            <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
           </div>
+          
+          {/* TOGGLE GAMBLING / LIVE */}
+          <ToggleRounded
+            gambling={`gambling`}
+            live={`live`}
+          />
         </div>
 
-        {/* TOGGLE GAMBLING / LIVE */}
-        <ToggleRounded
-          gambling={`gambling`}
-          live={`live`}
-        />
+
 
         {/* BALANCE & WALLET */}
+        <div className={`${styles.auth}`} >
+          <ButtonMid
+            text={`Login`}
+          />
+          <ButtonLarge
+            text={`Register`}
+          />
+        </div>
 
         {/* USER PROFILE */}
 

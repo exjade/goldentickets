@@ -2499,4 +2499,12 @@ video {
   .active\:outline:active {
   outline-style: solid;
 }
+  @media (min-width: 640px) {
+  .sm\:inline {
+    display: inline;
+  }
+  .sm\:flex {
+    display: flex;
+  }
+}
 

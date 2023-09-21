@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     align-content: center;
+    animation: slide-out 0.5s ease-in-out;
 }
 
 .gambling {
@@ -58,3 +59,38 @@
     align-content: center;
     margin-left: 3rem;
 }
+
+
+@media (max-width: 1024px) {
+    .container {
+        display: none;
+        animation: fade-out 5s ease-in-out;
+}
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: none;
+        animation: fade-out 5s ease-in-out;
+}
+}
+
+@media (max-width: 600px) {
+    .container {
+        display: none;
+        animation: fade-out 5s ease-in-out;
+}
+}
+
+@keyframes slide-out {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-5%, 0);
+      -webkit-transform: translate(-5%, 0);
+      -moz-transform: translate(-5%, 0);
+      -ms-transform: translate(-5%, 0);
+      -o-transform: translate(-5%, 0);
+}
+  }
