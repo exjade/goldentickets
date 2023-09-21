@@ -2278,6 +2278,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(149 157 166 / var(--tw-text-opacity));
 }
+.text-gray-secondary {
+  --tw-text-opacity: 1;
+  color: rgb(153 160 170 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -2505,6 +2509,17 @@ video {
   }
   .sm\:flex {
     display: flex;
+  }
+  .sm\:h-8 {
+    height: 2rem;
+  }
+  .sm\:w-8 {
+    width: 2rem;
+  }
+}
+  @media (min-width: 768px) {
+  .md\:inline {
+    display: inline;
   }
 }
 

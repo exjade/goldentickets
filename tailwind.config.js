@@ -29,7 +29,8 @@ module.exports = {
         tertiary: '#11141D',
       },
       gray: {
-        primary: '#959DA6'
+        primary: '#959DA6',
+        secondary: '#99A0AA'
       }
 
     },

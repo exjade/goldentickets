@@ -1,0 +1,471 @@
+.container {
+    background: #0F2038;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.wrapper {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* ============================== LEFT SECTION ============================== */
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.button:active {
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+
+.rotateIcon {
+    transform: rotate(-180deg);
+    color: #d6dce3;
+    font-size: 20px;
+}
+
+.brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-right: 2rem;
+    gap: 8px;
+}
+
+/* ============================== FONTS && ASSETS ============================== */
+
+.font {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
+
+
+
+/* ============================== RIGHT SECTION ============================== */
+.auth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+    animation: fade-out 5s ease-in-out;
+}
+
+.balances{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.coin {
+    background: #111A29;
+    width: 15rem;
+    height: 2.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    align-content: center;
+    gap: 0.8rem;
+}
+
+.coinText {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #D9DCE3;
+    font-weight: 700;
+    font-size: medium;
+    margin-right: 4rem;
+}
+
+.wallet {
+    background: #2977EC;
+    width: 9rem;
+    height: 2.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    align-content: center;
+    gap: 0.5rem;
+    margin-left: -6rem;
+}
+
+
+.textWallet {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.wallet:active {
+    background-color: rgb(15, 76, 163);
+    color: #fff;
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    gap: 0.8rem;
+}
+
+.circles {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 30px;
+    background: #28374D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.circles:active {
+    background-color: #364863;
+    color: #fff;
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+
+.circleChat {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 30px;
+    background: #28374D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.circleChat:active {
+    background-color: #364863;
+    color: #fff;
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+
+/* ============================== MEDIA QUERIES ============================== */
+
+@media (max-width: 1024px) {
+    .auth {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        align-content: center;
+        animation: fade-out 5s ease-in-out;
+    }
+
+    .coin {
+        background: #111A29;
+        width: 13rem;
+        height: 2.8rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.8rem;
+    }
+
+    .coinText {
+        font-family: 'Nunito Sans', sans-serif;
+        color: #D9DCE3;
+        font-weight: 700;
+        font-size: 12px;
+        margin-right: 4rem;
+    }
+
+    .wallet {
+        background: #2977EC;
+        width: 7rem;
+        height: 2.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.5rem;
+        margin-left: -5rem !important;
+    }
+
+    .textWallet {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .circles {
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 30px;
+        background: #28374D;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .circleChat {
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 30px;
+        background: #28374D;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .auth {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        align-content: center;
+        animation: fade-out 5s ease-in-out;
+    }
+
+    .coin {
+        background: #111A29;
+        width: 11rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.8rem;
+    }
+
+    .coinText {
+        font-family: 'Nunito Sans', sans-serif;
+        color: #D9DCE3;
+        font-weight: 700;
+        font-size: 12px;
+        margin-right: 4rem;
+    }
+
+    .wallet {
+        background: #2977EC;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.5rem;
+        margin-left: -5rem;
+    }
+
+    .textWallet {
+        display:none;
+    }
+
+    .circles {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 30px;
+        background: #28374D;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .circleChat {
+        display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .coin {
+        background: #111A29;
+        width: 6rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.8rem;
+    }
+
+    .coinText {
+        font-family: 'Nunito Sans', sans-serif;
+        color: #D9DCE3;
+        font-weight: 700;
+        font-size: 10px;
+        margin-right: 2rem;
+    }
+
+    .brand {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin-right: 0rem !important;
+        gap: 8px;
+    }
+    .header_wallet__MEGkt {
+        background: #2977EC;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.5rem;
+        /* margin-left: -5rem; */
+    }
+}
+@media (max-width: 480px) {
+
+    .coin {
+        background: #111A29;
+        width: 6rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.8rem;
+    }
+    .coinImage{
+        display:none;
+    }
+
+    .coinText {
+        font-family: 'Nunito Sans', sans-serif;
+        color: #D9DCE3;
+        font-weight: 700;
+        font-size: 10px;
+        margin-right: 0rem;
+    }
+
+    .brand {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin-right: 0rem !important;
+        gap: 8px;
+    }
+    .header_wallet__MEGkt {
+        background: #2977EC;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        align-content: center;
+        gap: 0.5rem;
+        /* margin-left: -5rem; */
+    }
+}
+
+
+@keyframes slide-out {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-10%, 0);
+        -webkit-transform: translate(-10%, 0);
+        -moz-transform: translate(-10%, 0);
+        -ms-transform: translate(-10%, 0);
+        -o-transform: translate(-10%, 0);
+    }
+}
