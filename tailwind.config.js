@@ -27,16 +27,17 @@ module.exports = {
         primary: '#343843',
         secondary: '#21252E',
         tertiary: '#11141D',
+      },
+      gray: {
+        primary: '#959DA6'
       }
 
     },
     // FONTS
     fontFamily: {
-      // lato
-      'lato-300': ['Lato', 'sans-serif;'],
-      'lato-100': ['Lato', 'sans-serif;'],
-      'lato-bold-700': ['Lato', 'sans-serif;'],
-      'lato-900': ['Lato', 'sans-serif;'],
+      // Nunita Sans
+      'Nunito': ['Nunito Sans', 'sans-serif'],
+   
     }
   },
   variants: {

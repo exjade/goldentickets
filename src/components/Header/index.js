@@ -1,19 +1,45 @@
-import React from 'react'
-import styles from './css/header.module.css'
-import Avatar from '../Avatar'
+import React from 'react';
+import styles from './css/header.module.css';
+import Avatar from '../Avatar';
 
 const Header = () => {
+
+  const logo = 'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fog%2Flogo.png?alt=media&token=e6e2fb27-e8ce-4066-9b5c-b52a816414e6'
+
   return (
 
-    <div className={`${styles.container}`} >
+    <header className={`${styles.container}`} >
       <div className={`${styles.wrapper}`} >
 
-        
+        {/* MENU */}
+        <div className={`${styles.menu}`}>
+          <button
+            type='button'
+            className={`${styles.button} cursor-pointer`}
+            onClick={() => console.log('Open sidebar')}>
+            <span className={`${styles.rotateIcon} material-symbols-outlined text-gray-primary`} >
+              menu_open
+            </span>
+          </button>
 
-        <Avatar />
-        
+          <div className={`${styles.brand}`} >
+            <img
+              src={logo}
+              alt="logo"
+              className={`${styles.img}`}
+            />
+            <p className={`${styles.font} text-white-normal uppercase`}>GoldenTickets</p>
+          </div>
+        </div>
+
+        {/* TOGGLE GAMBLING / LIVE */}
+
+        {/* BALANCE & WALLET */}
+
+        {/* USER PROFILE */}
+
       </div>
-    </div>
+    </header>
   )
 }
 

@@ -9,10 +9,10 @@ import FallBackLoader from './components/FallBackLoader';
 
 
 // - Authentication
-const Landing = lazy(() => import('./pages/landing'))
-const Login = lazy(() => import('./pages/auth/login'))
-const Signup = lazy(() => import('./pages/auth/signup'))
-const ForgotPassword = lazy(() => import('./pages/auth/reset-password'))
+const Landing = lazy(() => import('./pages/landing'));
+const Login = lazy(() => import('./pages/auth/login'));
+const Signup = lazy(() => import('./pages/auth/signup'));
+const ForgotPassword = lazy(() => import('./pages/auth/reset-password'));
 
 // - Dashboard
 const Dashboard = lazy(() => import('./pages/dashboard'))
@@ -57,7 +57,6 @@ function App() {
             <Route path="*" component={NotFound} />
 
           </Switch>
-
         </Suspense>
       </Router>
 

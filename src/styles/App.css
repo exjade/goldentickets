@@ -2129,18 +2129,6 @@ video {
 .align-middle {
   vertical-align: middle;
 }
-.font-lato-300 {
-  font-family: Lato, sans-serif;;
-}
-.font-lato-900 {
-  font-family: Lato, sans-serif;;
-}
-.font-lato-100 {
-  font-family: Lato, sans-serif;;
-}
-.font-lato-bold-700 {
-  font-family: Lato, sans-serif;;
-}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -2285,6 +2273,10 @@ video {
 .text-black-normal {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.text-gray-primary {
+  --tw-text-opacity: 1;
+  color: rgb(149 157 166 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -2483,11 +2475,9 @@ video {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
-/* Lato Font */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+/* Nunito SanS Font */
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900;6..12,1000&display=swap');
 
 /* SCROLLBAR */
 /* width */
