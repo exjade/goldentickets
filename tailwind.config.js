@@ -27,7 +27,10 @@ module.exports = {
         primary: '#343843',
         secondary: '#21252E',
         tertiary: '#11141D',
-        createAccount: '#408BFC'
+        createAccount: '#408BFC',
+        placeholder: '#02346C',
+        button: '#0A58B9',
+        h4: '#408BFC'
       },
       gray: {
         primary: '#959DA6',
