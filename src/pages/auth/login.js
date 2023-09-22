@@ -10,18 +10,20 @@ import FirebaseContext from '../../context/firebase';
 
 const Login = () => {
 
-    // react router dom
+    useEffect(() => {
+        document.title = 'Login | GOLDENTICKETS.CLUB';
+    }, []); //eslint-disable-line
+
+    // Push to another route
     const history = useHistory();
-    // useContext
+    // Auth Context
     const { firebase } = useContext(FirebaseContext);
-    // useState
+    // Login States
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
-
-
-
+    // Error Handlers
     const [error, setError] = useState('');
-    const isInvalid = password === '' && password?.length >= 4 || emailAddress === '' && emailAddress?.length >= 6 ;
+    const isInvalid = password === '' && password?.length >= 4 || emailAddress === '' && emailAddress?.length >= 6;
 
     /*=========================== Auth with Email & Password  ===========================*/
     const handleLogin = async (e) => {
