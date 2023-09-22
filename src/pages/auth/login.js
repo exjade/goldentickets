@@ -1,13 +1,45 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useContext } from 'react';
+import styles from './css/auth.module.css';
 import Header from '../../components/Header/auth';
 import Error from '../../error/error';
-import styles from './css/auth.module.css';
 import * as ROUTES from '../../constants/routes';
-import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useHistory } from 'react-router-dom';
+import FirebaseContext from '../../context/firebase';
 
 
 const Login = () => {
+
+    // react router dom
+    const history = useHistory();
+    // useContext
+    const { firebase } = useContext(FirebaseContext);
+    // useState
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+
+
+
+    const [error, setError] = useState('');
+    const isInvalid = password === '' && password?.length >= 4 || emailAddress === '' && emailAddress?.length >= 6 ;
+
+    /*=========================== Auth with Email & Password  ===========================*/
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        try {
+            await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+            history.push(ROUTES.DASHBOARD);
+        } catch (error) {
+            setError(error.message);
+            setTimeout(() => {
+                if (!isInvalid) setPassword('');
+                setError('');
+            }, 2500);
+        }
+    }
+
+
+
     return (
         <AnimatePresence>
             <motion.div
@@ -39,13 +71,21 @@ const Login = () => {
 
 
                                     <form
-                                        // onSubmit={handleLogin}
+                                        onSubmit={handleLogin}
                                         method="POST"
                                         className={`${styles.form}`}>
 
                                         <span className={`${styles.title}`} >
                                             Login
                                         </span>
+
+                                        {/* Auth Error message */}
+                                        {
+                                            error &&
+                                            <p className='mb-4 text-xs text-blue-createAccount'>
+                                                {error}
+                                            </p>
+                                        }
 
                                         <div className={`${styles.inputContainer}`} >
                                             <label
@@ -58,7 +98,7 @@ const Login = () => {
                                                 type="text"
                                                 aria-label="Enter your email address"
                                                 className={`${styles.input}`}
-                                            // onChange={({ target }) => setEmailAddress(target.value)}
+                                                onChange={({ target }) => setEmailAddress(target.value)}
                                             />
                                         </div>
                                         <div className={`${styles.inputContainer}`}>
@@ -72,16 +112,16 @@ const Login = () => {
                                                 type="password"
                                                 aria-label="Enter your password"
                                                 className={`${styles.input}`}
-                                            // value={password}
-                                            // onChange={({ target }) => setPassword(target.value)}
+                                                value={password}
+                                                onChange={({ target }) => setPassword(target.value)}
                                             />
                                         </div>
 
                                         <motion.button
                                             type='submit'
-                                            className={`bg-blue-button hover:bg-blue-feedback flex items-center justify-center w-full text-white-normal rounded h-14 mt-3 font-bold text-xl `}
+                                            className={`bg-blue-button hover:bg-blue-feedback flex items-center justify-center w-full text-white-normal rounded h-14 mt-3 font-bold text-xl ${isInvalid && 'cursor-not-allowed '}`}
                                             whileTap={{ scale: 0.9 }}
-                                        // disabled={isInvalid}
+                                            disabled={isInvalid}
                                         >
                                             Login
                                         </motion.button>
@@ -105,7 +145,7 @@ const Login = () => {
                 </div>
 
             </motion.div>
-        </AnimatePresence>
+        </AnimatePresence >
     )
 }
 
