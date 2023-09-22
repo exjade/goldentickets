@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ const SignUp = () => {
     const { firebase } = useContext(FirebaseContext);
     // Sign-up States
     const [username, setUsername] = useState('');
-    const [fullName, setFullName] = useState('');
+    const [fullName, setFullName] = useState(''); //eslint-disable-line
     const [wallet, setWallet] = useState(''); //eslint-disable-line
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');

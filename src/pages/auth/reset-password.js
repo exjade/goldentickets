@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as ROUTES from '../../constants/routes'
 import Error from '../../error/error';
