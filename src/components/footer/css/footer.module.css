@@ -1,0 +1,386 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+    width: 95%;
+    height: 100%;
+    gap: 2rem;
+}
+
+/* ================ BRANDING & COPYRIGHT  SECTION ================ */
+
+.leftFooterSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    align-content: center;
+    width: 40%;
+}
+
+.leftFooterRights {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.leftFooterRights>p {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #B8C6DC;
+    font-size: 13px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* ================ CONTACT SECTION ================ */
+.middleFooterSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    align-content: center;
+}
+
+.middleFooterWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.middleFooterText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+}
+
+.middleFooterText>h3 {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #6D7D88;
+    font-size: small;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.middleFooterText>p {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #B8C6DC;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.middleFooterSupport {
+    background: #374A69;
+    width: 10rem;
+    color: white;
+    display: flex;
+    height: 3rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    align-content: center;
+}
+
+/* ================ POLICY  ================ */
+.policyFooterWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.policyFooterWrapper>h4 {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #6D7D88;
+    font-size: x-small;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.middleFooterText>li>a {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+/* ================ REGULATION  ================ */
+.footerRegulations {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.rightFooterWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 4rem;
+        width: 95%;
+        height: 100%;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .leftFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        align-content: center;
+        width: 100%;
+    }
+
+    .leftFooterRights {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .middleFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        align-content: center;
+    }
+
+    .middleFooterWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .middleFooterSupport {
+        background: #374A69;
+        width: 10rem;
+        color: white;
+        display: flex;
+        height: 2.4rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        align-content: center;
+    }
+    .rightFooterWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-end;
+        align-content: center;
+        flex-wrap: wrap;
+    } 
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 4rem;
+        width: 95%;
+        height: 100%;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .leftFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        align-content: center;
+        width: 100%;
+    }
+
+    .leftFooterRights {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .middleFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        align-content: center;
+    }
+
+    .middleFooterWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .middleFooterSupport {
+        background: #374A69;
+        width: 10rem;
+        color: white;
+        display: flex;
+        height: 2.4rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        align-content: center;
+    }
+    .rightFooterWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-end;
+        align-content: center;
+        flex-wrap: wrap;
+    } 
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem;
+        width: 95%;
+        height: 100%;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .leftFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        align-content: center;
+        width: 100%;
+    }
+
+    .leftFooterRights {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .middleFooterSection {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        align-content: center;
+    }
+
+    .middleFooterWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .middleFooterSupport {
+        background: #374A69;
+        width: 10rem;
+        color: white;
+        display: flex;
+        height: 2.4rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        align-content: center;
+    }
+    .rightFooterWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-end;
+        align-content: center;
+        flex-wrap: wrap;
+    } 
+}
