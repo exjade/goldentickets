@@ -42,7 +42,7 @@ const Footer = () => {
 
             <span className={`${styles.middleFooterText}`}>
               <h3>support</h3>
-              <p>marketing@goldentickets.club</p>
+              <p>support@goldentickets.club</p>
             </span>
 
           </div>
