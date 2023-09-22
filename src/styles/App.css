@@ -2298,6 +2298,14 @@ video {
   --tw-text-opacity: 1;
   color: rgb(41 119 236 / var(--tw-text-opacity));
 }
+.text-pink-primary {
+  --tw-text-opacity: 1;
+  color: rgb(171 46 88 / var(--tw-text-opacity));
+}
+.text-green-primary {
+  --tw-text-opacity: 1;
+  color: rgb(12 77 19 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }

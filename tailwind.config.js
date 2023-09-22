@@ -36,6 +36,12 @@ module.exports = {
       gray: {
         primary: '#959DA6',
         secondary: '#99A0AA'
+      },
+      green: {
+        primary: '#0C4D13'
+      },
+      pink: {
+        primary: '#AB2E58'
       }
 
     },
