@@ -88,7 +88,7 @@ const Login = () => {
                                     </form>
 
                                     <div className={`flex justify-center items-center flex-col bg-white p-4`} >
-                                        <p className='text-sm'>
+                                        <p className='text-sm text-center'>
                                             <Link
                                                 to={ROUTES.RECOVER_PASSWORD}
                                                 className='text-blue-h4 font-bold text-lg'>

@@ -12,10 +12,10 @@
 
 .backgroundImage {
     background-image: url("https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2F_1771a657-35c4-41a8-a702-fcf19532989b.png?alt=media&token=f317b0b8-b0a7-4640-9447-82cf287700ed");
+    background-size: cover;
+    background-position: center center;
     width: 100%;
     height: 100vh;
-    background-position: center center;
-    background-size: cover;
     opacity: 90%;
 }
 
@@ -130,6 +130,36 @@
         font-weight: 800;
         color: #a7caff;
     }
+
+    .backgroundImage {
+        display: none;
+    }
+    .loginRight {
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2F_1771a657-35c4-41a8-a702-fcf19532989b.png?alt=media&token=f317b0b8-b0a7-4640-9447-82cf287700ed");
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100vh;
+        opacity: 80%;
+    }
+    .loginWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: flex-start;
+        width: 90%;
+        gap: 2rem;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -145,6 +175,24 @@
         font-size: 15px;
         font-weight: 800;
         color: #a7caff;
+    }
+    .loginWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: flex-start;
+        width: 90%;
+        gap: 2rem;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: center;
+        width: 80%;
+        gap: 1rem;
     }
 }
 
