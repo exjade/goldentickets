@@ -2294,6 +2294,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(64 139 252 / var(--tw-text-opacity));
 }
+.text-blue-terms {
+  --tw-text-opacity: 1;
+  color: rgb(41 119 236 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -2524,6 +2528,16 @@ video {
   }
   .sm\:w-8 {
     width: 2rem;
+  }
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+  @media (min-width: 768px) {
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 

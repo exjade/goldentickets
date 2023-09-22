@@ -30,7 +30,8 @@ module.exports = {
         createAccount: '#408BFC',
         placeholder: '#02346C',
         button: '#0A58B9',
-        h4: '#408BFC'
+        h4: '#408BFC',
+        terms: '#2977EC',
       },
       gray: {
         primary: '#959DA6',
