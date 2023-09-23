@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Wallet from './modal/wallet';
-import Footer from './footer/footer';
+import Wallet from './modal';
 
 const Timeline = (props) => {
 
@@ -19,7 +18,6 @@ const Timeline = (props) => {
             }
             
 
-            <Footer />
         </>
     )
 }

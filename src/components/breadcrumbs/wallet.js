@@ -5,15 +5,14 @@ import useBreadcrumbs from '../../hooks/use-breakcrumbs';
 
 const Breadcrumbwallet = (props) => {
 
-    const { state, setState } = useBreadcrumbs()
 
     return (
         <div className={`${styles.container}`} >
             <div className={`${styles.wrapper}`} >
                 <button
                     type='button'
-                    className={`${state.stateOne ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`}  `}
-                    onClick={() => setState({
+                    className={`${props.state.stateOne ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`}  `}
+                    onClick={() => props.setState({
                         stateOne: true,
                         stateTwo: false,
                         stateThree: false,
@@ -26,8 +25,8 @@ const Breadcrumbwallet = (props) => {
                 </button>
                 <button
                     type='button'
-                    className={`${state.stateTwo ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`}  `}
-                    onClick={() => setState({
+                    className={`${props.state.stateTwo ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`}  `}
+                    onClick={() => props.setState({
                         stateOne: false,
                         stateTwo: true,
                         stateThree: false,
@@ -40,8 +39,8 @@ const Breadcrumbwallet = (props) => {
                 </button>
                 <button
                     type='button'
-                    className={`${state.stateThree ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`} `}
-                    onClick={() => setState({
+                    className={`${props.state.stateThree ? `${styles.breadcrumActive}` : `${styles.breadcrumBg}`} `}
+                    onClick={() => props.setState({
                         stateOne: false,
                         stateTwo: false,
                         stateThree: true,
@@ -77,4 +76,6 @@ Breadcrumbwallet.propTypes = {
     iconThree: PropTypes.any,
     textThree: PropTypes.string,
     closeModal: PropTypes.func,
+    setState: PropTypes.func,
+    state: PropTypes.object,
 }
