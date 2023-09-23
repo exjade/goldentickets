@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './css/header.module.css';
 import ToggleRounded from '../../toggle/rounded';
 
-const Header = () => {
+const Header = (props) => {
 
   const logo = `${process.env.REACT_APP_LOGO}`;
+
 
   return (
 
@@ -55,7 +57,7 @@ const Header = () => {
             <button
               type='button'
               className={`${styles.wallet}`}
-              onClick={() => console.log('Open wallet')}
+              onClick={() => props.openModal()}
             >
               <span className="material-symbols-outlined text-white-normal">
                 account_balance_wallet
@@ -99,3 +101,7 @@ const Header = () => {
 }
 
 export default Header
+
+Header.propTypes = {
+  openModal: PropTypes.func,
+}

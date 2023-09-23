@@ -2306,6 +2306,14 @@ video {
   --tw-text-opacity: 1;
   color: rgb(12 77 19 / var(--tw-text-opacity));
 }
+.text-gray-text {
+  --tw-text-opacity: 1;
+  color: rgb(107 123 149 / var(--tw-text-opacity));
+}
+.text-blue-button {
+  --tw-text-opacity: 1;
+  color: rgb(10 88 185 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -2536,6 +2544,16 @@ video {
   }
   .sm\:w-8 {
     width: 2rem;
+  }
+}
+  @media (min-width: 768px) {
+  .md\:inline {
+    display: inline;
+  }
+}
+  @media (min-width: 1024px) {
+  .lg\:inline {
+    display: inline;
   }
 }
 
