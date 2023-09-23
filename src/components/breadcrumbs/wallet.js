@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './css/wallet.module.css';
-import useBreadcrumbs from '../../hooks/use-breakcrumbs';
 
 const Breadcrumbwallet = (props) => {
 

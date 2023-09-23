@@ -12,42 +12,46 @@ const Wallet = (props) => {
 
   return (
     <div className={`${styles.modalBackground}`} >
-      <div className={`${styles.container}`} >
-        <div className={`${styles.wrapper}`} >
-
-          {/* BREADCRUMB NAV */}
-          <header className={`${styles.header}`} >
-            <Breadcrumbwallet
-              iconOne={`account_balance`}
-              textOne={`Deposit`}
-              iconTwo={`payments`}
-              textTwo={`Withdraw`}
-              iconThree={`collections_bookmark`}
-              textThree={`Address Book`}
-              closeModal={props.closeModal}
-              state={state}
-              setState={setState}
-            />
-          </header>
 
 
-          {
-            state.stateOne ? (
-              <DepositWallet />
-            )
-              :
-              state.stateTwo ? (
-                <WithdrawWallet />
+        <div className={`${styles.container}`} >
+          <div className={`${styles.wrapper}`} >
+
+            {/* BREADCRUMB NAV */}
+            <header className={`${styles.header}`} >
+              <Breadcrumbwallet
+                iconOne={`account_balance`}
+                textOne={`Deposit`}
+                iconTwo={`payments`}
+                textTwo={`Withdraw`}
+                iconThree={`collections_bookmark`}
+                textThree={`Address Book`}
+                closeModal={props.closeModal}
+                state={state}
+                setState={setState}
+              />
+            </header>
+
+
+            {
+              state.stateOne ? (
+                <DepositWallet />
               )
                 :
-                state.stateThree ? (
-                  <>Address Book</>
-                ) : <DepositWallet />
-          }
+                state.stateTwo ? (
+                  <WithdrawWallet />
+                )
+                  :
+                  state.stateThree ? (
+                    <>Address Book</>
+                  ) : <DepositWallet />
+            }
 
 
+          </div>
         </div>
-      </div>
+
+
     </div>
   )
 }
