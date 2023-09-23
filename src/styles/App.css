@@ -2551,9 +2551,4 @@ video {
     display: inline;
   }
 }
-  @media (min-width: 1024px) {
-  .lg\:inline {
-    display: inline;
-  }
-}
 
