@@ -20,10 +20,16 @@ const Wallet = (props) => {
               textThree={`Address Book`}
               closeModal={props.closeModal}
             />
-
-          
           </header>
           {/* DEPOSIT - DEPOSIT HISTORY */}
+          <div className={`${styles.depositContainer}`} >
+            <span className={`${styles.depositWrapper}`}>
+              <h4>deposit</h4>
+              <p>Deposit History</p>
+            </span>
+          </div>
+
+          <div className={`${styles.divider}`}></div>
 
           {/* SELECT COIN & NETWORK */}
 
