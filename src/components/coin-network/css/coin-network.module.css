@@ -34,16 +34,15 @@
 }
 
 .coinInput {
-    background: transparent;
-    width: 4rem;
-    color: white;
+    background: #28374D;
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     font-weight: 700;
+    outline: none;
 }
 .networkInput {
     background: transparent;
     color: white;
-    width: 20rem;
     font-size: 1rem;
     font-weight: 700;
 }
@@ -158,5 +157,13 @@
         width: 5rem;
         font-size: 1rem;
         font-weight: 700;
+    }
+    .coinInput {
+        background: #28374D;
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        font-weight: 700;
+        outline: none;
+        width: 5rem;
     }
 }

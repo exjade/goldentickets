@@ -33,9 +33,9 @@ export default function useCreatePayment({
         'price_amount': priceAmount,
         'price_currency': 'usd',
         'pay_currency': payCurrency,
-        'ipn_callback_url': 'https://artificialtech4u/investment',
+        'ipn_callback_url': 'https://goldentickets.club/wallet',
         'order_id': orderId,
-        'order_description': 'Artificial Tech4U',
+        'order_description': 'goldenTickets.club',
     });
 
     var requestOptions = {

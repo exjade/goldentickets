@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './../css/wallet.module.css';
 import CoinNetwork from '../../coin-network/coin-network';
 
-const DepositWallet = () => {
+const DepositWallet = (props) => {
+    
     return (
         <>
             {/* DEPOSIT - DEPOSIT HISTORY */}
@@ -18,7 +19,13 @@ const DepositWallet = () => {
 
             {/* SELECT COIN & NETWORK */}
             <div className={`${styles.coinNetworkContainer}`} >
-                <CoinNetwork />
+                <CoinNetwork 
+                  setCurrency={props.setCurrency}
+                  currency={props.currency}
+                  coinImages={props.coinImages}
+                  setAmount={props.setAmount}
+                  amount={props.amount}
+                />
             </div>
 
             <div className={`${styles.divider}`}></div>
@@ -53,3 +60,11 @@ const DepositWallet = () => {
 }
 
 export default DepositWallet
+
+DepositWallet.propTypes = {
+    currency: PropTypes.string,
+    setCurrency: PropTypes.func,
+    coinImages: PropTypes.object,
+    amount: PropTypes.number,
+    setAmount: PropTypes.func,
+}
