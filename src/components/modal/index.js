@@ -18,9 +18,9 @@ const Wallet = (props) => {
   //Hooks
   const { state, setState } = useBreadcrumbs()
   //eslint-disable-next-line
-  const { pay } = useCreatePayment({generateQr, orderId, amount, currency}) 
+  const { pay } = useCreatePayment({ generateQr, orderId, amount, currency })
   console.log(pay)
-  
+
   const coinImages = {
     trc20: {
       img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
@@ -52,6 +52,13 @@ const Wallet = (props) => {
     },
   }
 
+  const handleClose = () => {
+    setCurrency('')
+    setAmount(0)
+    setGenerateQr(false)
+    props.closeModal()
+  }
+
   return (
     <div className={`${styles.modalBackground}`} >
 
@@ -68,7 +75,7 @@ const Wallet = (props) => {
               textTwo={`Withdraw`}
               iconThree={`collections_bookmark`}
               textThree={`Address Book`}
-              closeModal={props.closeModal}
+              handleClose={handleClose}
               state={state}
               setState={setState}
             />
@@ -83,8 +90,8 @@ const Wallet = (props) => {
                 coinImages={coinImages}
                 setAmount={setAmount}
                 amount={amount}
-                setGenerateQr={setGenerateQr}
                 pay={pay}
+                setGenerateQr={setGenerateQr}
                 generateQr={generateQr}
               />
             )

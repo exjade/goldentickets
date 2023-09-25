@@ -55,7 +55,7 @@ const Breadcrumbwallet = (props) => {
             <button
                 type='button'
                 className={`${styles.close}`}
-                onClick={() => props.closeModal()}
+                onClick={() => props.handleClose()}
             >
                 <span className="material-symbols-outlined">
                     close
@@ -74,7 +74,7 @@ Breadcrumbwallet.propTypes = {
     textTwo: PropTypes.string,
     iconThree: PropTypes.any,
     textThree: PropTypes.string,
-    closeModal: PropTypes.func,
+    handleClose: PropTypes.func,
     setState: PropTypes.func,
     state: PropTypes.object,
 }

@@ -29,6 +29,7 @@ const DepositWallet = (props) => {
             {/* SELECT COIN & NETWORK */}
             <div className={`${styles.coinNetworkContainer}`} >
                 <CoinNetwork
+                    setGenerateQr={props.setGenerateQr}
                     setCurrency={props.setCurrency}
                     currency={props.currency}
                     coinImages={props.coinImages}
