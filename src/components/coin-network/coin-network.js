@@ -8,6 +8,7 @@ const CoinNetwork = (props) => {
   const handleChangeCurrency = (event) => {
     props.setCurrency(event.target.value);
     props.setAmount(0);
+    props.setGenerateQr(false);
   };
 
 
@@ -118,6 +119,7 @@ export default CoinNetwork
 CoinNetwork.propTypes = {
   currency: PropTypes.string,
   setCurrency: PropTypes.func,
+  setGenerateQr: PropTypes.func,
   coinImages: PropTypes.object,
   amount: PropTypes.any,
   setAmount: PropTypes.func,
