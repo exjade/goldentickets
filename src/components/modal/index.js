@@ -5,40 +5,44 @@ import Breadcrumbwallet from '../breadcrumbs/wallet';
 import useBreadcrumbs from '../../hooks/use-breakcrumbs';
 import DepositWallet from './deposit-wallet/deposit';
 import WithdrawWallet from './wallet-withdraw/withdraw';
-// import useCreatePayment from '../../hooks/use-create-payments';
+import useCreatePayment from '../../hooks/use-create-payments';
+import { v4 as uuidv4 } from 'uuid';
 
 const Wallet = (props) => {
-
-  const { state, setState } = useBreadcrumbs()
-
-  // const { pay } = useCreatePayment()
-
-
+  // States
   const [currency, setCurrency] = useState('')
   const [amount, setAmount] = useState(0)
+  const [generateQr, setGenerateQr] = useState(false)
 
+  const orderId = uuidv4();
+  //Hooks
+  const { state, setState } = useBreadcrumbs()
+  //eslint-disable-next-line
+  const { pay } = useCreatePayment({generateQr, orderId, amount, currency}) 
+  console.log(pay)
+  
   const coinImages = {
-        trc20: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png'
-        },
-        bep20: {
-          img: 'assets/blockchain/usdt-bsc.png'
-        },
-        btc: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png'
-        },
-        eth: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png'
-        },
-        trx: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png'
-        },
-        bnb: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png'
-        },
-        xrp: {
-          img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png'
-        },
+    trc20: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png'
+    },
+    bep20: {
+      img: 'assets/blockchain/usdt-bsc.png'
+    },
+    btc: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png'
+    },
+    eth: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png'
+    },
+    trx: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png'
+    },
+    bnb: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png'
+    },
+    xrp: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png'
+    },
   }
 
   return (
@@ -72,6 +76,9 @@ const Wallet = (props) => {
                 coinImages={coinImages}
                 setAmount={setAmount}
                 amount={amount}
+                setGenerateQr={setGenerateQr}
+                pay={pay}
+                generateQr={generateQr}
               />
             )
               :

@@ -1,33 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './css/coin-network.module.css';
 
 const CoinNetwork = (props) => {
 
-  const [isTyping, setIsTyping] = useState(false);
-  let amount = parseFloat(props.amount)
-
-  const handleChange = (event) => {
-    setIsTyping(true);
-    props.setAmount(event.target.value);
-  };
 
   const handleChangeCurrency = (event) => {
     props.setCurrency(event.target.value);
     props.setAmount(0);
   };
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (!isTyping) {
-        props.setAmount(amount);
-        console.log(amount)
-      }
-      setIsTyping(false);
-    }, 1000);
-
-    return () => clearTimeout(timeoutId);
-  }, [amount, isTyping, props]);
 
 
 
@@ -119,8 +101,8 @@ const CoinNetwork = (props) => {
             type='number'
             name="amount"
             id="amount"
-            value={amount}
-            onChange={handleChange}
+            value={props.amount}
+            onChange={(event) => props.setAmount(event.target.value)}
             className={`${styles.networkInput}`}
           />
         </div>
@@ -136,6 +118,6 @@ CoinNetwork.propTypes = {
   currency: PropTypes.string,
   setCurrency: PropTypes.func,
   coinImages: PropTypes.object,
-  amount: PropTypes.number,
+  amount: PropTypes.any,
   setAmount: PropTypes.func,
 }

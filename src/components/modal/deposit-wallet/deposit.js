@@ -4,7 +4,10 @@ import styles from './../css/wallet.module.css';
 import CoinNetwork from '../../coin-network/coin-network';
 
 const DepositWallet = (props) => {
-    
+
+
+    const isInvalid = parseFloat(props.amount) <= 0 && props.currency === '';
+
     return (
         <>
             {/* DEPOSIT - DEPOSIT HISTORY */}
@@ -19,12 +22,12 @@ const DepositWallet = (props) => {
 
             {/* SELECT COIN & NETWORK */}
             <div className={`${styles.coinNetworkContainer}`} >
-                <CoinNetwork 
-                  setCurrency={props.setCurrency}
-                  currency={props.currency}
-                  coinImages={props.coinImages}
-                  setAmount={props.setAmount}
-                  amount={props.amount}
+                <CoinNetwork
+                    setCurrency={props.setCurrency}
+                    currency={props.currency}
+                    coinImages={props.coinImages}
+                    setAmount={props.setAmount}
+                    amount={props.amount}
                 />
             </div>
 
@@ -37,21 +40,35 @@ const DepositWallet = (props) => {
 
                     <span className={`${styles.generateAddress}`}>
 
-                        <img
-                            src="assets/blockchain/address_icon.png"
-                            alt="network"
-                            className={`${styles.addressIcon} w-24 h-24 object-contain`}
-                        />
-                        <h2>Generate Deposit Address</h2>
-                        <p>Please generate new deposit wallet address,
-                            to enable sending funds to your account</p>
+                        {
+                            props.pay.amount_received > 1 &&
+                                props.generateQr === true ? (
+                                <>GENERAR QR</>
+                            ) :
+                                (
+                                    <>
+                                        <img
+                                            src="assets/blockchain/address_icon.png"
+                                            alt="network"
+                                            className={`${styles.addressIcon} w-24 h-24 object-contain`}
+                                        />
+                                        <h2>Generate Deposit Address</h2>
+                                        <p>Please generate new deposit wallet address,
+                                            to enable sending funds to your account</p>
 
-                        <button
-                            type='button'
-                            className={`${styles.button}`}
-                        >
-                            Generate
-                        </button>
+                                        <button
+                                            type='button'
+                                            className={`${styles.button} ${isInvalid && 'cursor-not-allowed'}`}
+                                            onClick={() => props.setGenerateQr(true)}
+                                            disabled={isInvalid}
+                                        >
+                                            Generate
+                                        </button>
+                                    </>
+                                )
+                        }
+
+
                     </span>
                 </div>
             </div>
@@ -65,6 +82,9 @@ DepositWallet.propTypes = {
     currency: PropTypes.string,
     setCurrency: PropTypes.func,
     coinImages: PropTypes.object,
-    amount: PropTypes.number,
+    amount: PropTypes.any,
     setAmount: PropTypes.func,
+    setGenerateQr: PropTypes.func,
+    generateQr: PropTypes.bool,
+    pay: PropTypes.array,
 }
