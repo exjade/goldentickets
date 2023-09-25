@@ -1,13 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import axios from 'axios';
+import useAuthListener from './use-auth-listener';
+import { firebase } from '../lib/firebase'
+import {
+    getFirestore,
+    collection,
+    addDoc,
+} from 'firebase/firestore';
+const firestore = getFirestore(firebase)
 
 export default function useCreatePayment({
     amount,
     currency,
     generateQr,
     orderId,
+    setError,
 }) {
-
+    const { user } = useAuthListener()
     const [pay, setPay] = useState([])
 
     /* =========================== AUTH ======================================== */
@@ -46,26 +55,78 @@ export default function useCreatePayment({
         redirect: 'follow',
     };
 
+    // minimum deposit amount
+    const minimumAmount = parseInt(amount) > 0.99;
 
-    const getPaymentData = async () => {
-        try {
-            //eslint-disable-next-line
-            const payment = fetch('https://api.nowpayments.io/v1/payment', requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    setPay(result)
-                    console.log(result);
-                })
-                .catch(error => console.log('error', error));
-        } catch (error) {
-            console.log(error)
+    const memoizedValue = useMemo(() => {
+        const depositBalance = []
+
+        // Obtain payment object
+        const getPaymentData = async () => {
+            try {
+                //eslint-disable-next-line
+                const payment = fetch('https://api.nowpayments.io/v1/payment', requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        setPay(result)
+                        depositBalance.push(result)
+                        console.log(result);
+                        setTimeout(() => {
+                            createDepositTicket();
+                        }, 1000)
+                    })
+                    .catch(error => console.log('error', error));
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }
+
+        // Store deposit log in the database
+        const createDepositTicket = async () => {
+            try {
+                if (depositBalance.length > 0 && minimumAmount && generateQr && currency !== undefined || currency !== '') {
+                    //eslint-disable-next-line
+                    const docRef = await addDoc(collection(firestore, 'deposits'), {
+                        currency: 'crypto2crypto',
+                        amount: parseFloat(amount),
+                        date: Date.now(),
+                        userId: user?.uid,
+                        username: user?.displayName,
+                        email: user?.email,
+                        id: orderId,
+                        status: 'NEW',
+                        depositBalance,
+                    });
+                } else {
+                    //eslint-disable-next-line
+                    const docRef = await addDoc(collection(firestore, 'trash-deposit'), {
+                        currency: 'crypto2crypto',
+                        amount: parseFloat(amount),
+                        date: Date.now(),
+                        userId: user?.uid,
+                        username: user?.displayName,
+                        email: user?.email,
+                        id: orderId,
+                        status: 'NEW',
+                        depositBalance,
+                    });
+                    setError('Please, Try again later')
+                }
+            } catch (error) {
+                setError('Please, Try again later')
+            }
+        }
+
+        if (minimumAmount && generateQr) {
+            return getPaymentData();
+        }
+    }, [amount, generateQr, currency]);
+
 
     useEffect(() => {
 
-        if (amount > 0.99 && generateQr) {
-            getPaymentData()
+        if (minimumAmount && generateQr) {
+            return memoizedValue
         }
     }, [amount, generateQr, currency])
 
