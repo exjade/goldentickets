@@ -4,7 +4,7 @@ body {
 
 .modalBackground {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,6 +155,109 @@ body {
     color: white;
 }
 
+/* ==================== QR SECTION ====================== */
+
+.qrContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-content: center;
+}
+
+.qrLabel {
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    color: #99A6BC;
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.qr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    width: 90%;
+    height: 100%;
+    gap: 2rem;
+}
+
+.qrButton {
+    background: #28374D;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 30px;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.qrAddress {
+    background: #28374D;
+    width: 24rem;
+    outline: none;
+}
+
+.qrCopy {
+    background: #1C6CE4;
+    color: white;
+    width: 6rem;
+    height: 2.5rem;
+    border-radius: 30px;
+}
+
+.paymentAddress {
+    background: #1C2533;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+
+.paymentWarninigNote {
+    background: #1C2533;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    align-content: center;
+}
+
+.paymentWarninigNote>h3 {
+    color: #93A0B4;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.paymentWarning {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+}
+
+.paymentWarning>li {
+    color: #93A0B4;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+
 @media (max-width: 768px) {
     .depositWrapper {
         display: flex;
@@ -195,7 +298,7 @@ body {
         letter-spacing: 0.025em;
         text-transform: capitalize;
     }
-    
+
     .generateAddress>p {
         font-size: 10px;
         font-family: 'Nunito Sans', sans-serif;
@@ -204,7 +307,49 @@ body {
         letter-spacing: 0.025em;
         text-transform: capitalize;
     }
+    
+    .qr {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+    }
+
+    .qrButton {
+        background: #28374D;
+        /* padding: 3rem 1rem 2rem 1rem; */
+        /* padding-right: 2rem; */
+        border-radius: 13px;
+        width: 100%;
+        height: 9rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .qrCopy {
+        background: #1C6CE4;
+        color: white;
+        width: 100%;
+        height: 2.5rem;
+        border-radius: 30px;
+    }
+
+    .qrAddress {
+        background: #28374D;
+        outline: none;
+        width: 80%;
+    }
 }
+
 @media (max-width: 480px) {
     .depositWrapper {
         display: flex;
@@ -245,7 +390,7 @@ body {
         letter-spacing: 0.025em;
         text-transform: capitalize;
     }
-    
+
     .generateAddress>p {
         font-size: 10px;
         font-family: 'Nunito Sans', sans-serif;
@@ -254,4 +399,46 @@ body {
         letter-spacing: 0.025em;
         text-transform: capitalize;
     }
+
+    .qr {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+    }
+
+    .qrButton {
+        background: #28374D;
+        /* padding: 3rem 1rem 2rem 1rem; */
+        /* padding-right: 2rem; */
+        border-radius: 13px;
+        width: 100%;
+        height: 9rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .qrCopy {
+        background: #1C6CE4;
+        color: white;
+        width: 100%;
+        height: 2.5rem;
+        border-radius: 30px;
+    }
+
+    .qrAddress {
+        background: #28374D;
+        outline: none;
+        width: 80%;
+    }
+
 }

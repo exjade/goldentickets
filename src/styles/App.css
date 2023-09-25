@@ -1789,6 +1789,15 @@ video {
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
+.stroke-black-normal {
+  stroke: #000000;
+}
+.stroke-2 {
+  stroke-width: 2;
+}
+.stroke-1 {
+  stroke-width: 1;
+}
 .object-contain {
   object-fit: contain;
 }
@@ -2313,6 +2322,10 @@ video {
 .text-blue-button {
   --tw-text-opacity: 1;
   color: rgb(10 88 185 / var(--tw-text-opacity));
+}
+.text-gray-text2 {
+  --tw-text-opacity: 1;
+  color: rgb(147 160 180 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;

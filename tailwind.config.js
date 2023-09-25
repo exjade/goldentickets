@@ -37,6 +37,8 @@ module.exports = {
         primary: '#959DA6',
         secondary: '#99A0AA',
         text: '#6B7B95',
+        text2: '#93A0B4',
+
       },
       green: {
         primary: '#0C4D13'

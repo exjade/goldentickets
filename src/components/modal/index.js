@@ -23,25 +23,32 @@ const Wallet = (props) => {
   
   const coinImages = {
     trc20: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png',
+      name: 'usdt'
     },
     bep20: {
-      img: 'assets/blockchain/usdt-bsc.png'
+      img: 'assets/blockchain/usdt-bsc.png',
+      name: 'usdt'
     },
     btc: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png',
+      name: 'btc'
     },
     eth: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png',
+      name: 'eth'
     },
     trx: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png',
+      name: 'trx'
     },
     bnb: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png',
+      name: 'bnb'
     },
     xrp: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png'
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png',
+      name: 'xrp'
     },
   }
 

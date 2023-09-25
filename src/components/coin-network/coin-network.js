@@ -105,6 +105,7 @@ const CoinNetwork = (props) => {
             onChange={(event) => props.setAmount(event.target.value)}
             className={`${styles.networkInput}`}
           />
+          <p className='text-white-normal font-semibold text-xl'>USD</p>
         </div>
 
       </div>

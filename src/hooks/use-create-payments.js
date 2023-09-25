@@ -64,7 +64,7 @@ export default function useCreatePayment({
 
     useEffect(() => {
 
-        if (amount > 1 && generateQr) {
+        if (amount > 0.99 && generateQr) {
             getPaymentData()
         }
     }, [amount, generateQr, currency])
