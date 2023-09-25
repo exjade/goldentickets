@@ -2,37 +2,38 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 
 export default function useCreatePayment({
-    priceAmount,
+    amount,
+    currency,
+    generateQr,
     orderId,
-    paymentOne,
-    paymentTwo,
-    payCurrency
 }) {
 
     const [pay, setPay] = useState([])
 
-       /* =========================== AUTH ======================================== */
+    /* =========================== AUTH ======================================== */
 
     useEffect(() => {
+        //eslint-disable-next-line
         const getToken = async () => {
             const res = await axios.get(process.env.REACT_APP_NOWPAYMENTS_TKN)
             localStorage.setItem('token', res.data.token);
         }
-        getToken()
+        // getToken()
     }, [])
 
-   const tkn = localStorage.getItem('token')
+    //eslint-disable-next-line
+    const tkn = localStorage.getItem('token')
     /* =========================== AUTH ======================================== */
 
     var myHeaders = new Headers();
     myHeaders.append('x-api-key', process.env.REACT_APP_NOWPAYMENTS_API)
     myHeaders.append('Content-Type', 'application/json')
-      myHeaders.append('Authorization', `Bearer ${tkn}`);
+    // myHeaders.append('Authorization', `Bearer ${tkn}`);
 
     var raw = JSON.stringify({
-        'price_amount': priceAmount,
+        'price_amount': parseFloat(amount),
         'price_currency': 'usd',
-        'pay_currency': payCurrency,
+        'pay_currency': currency,
         'ipn_callback_url': 'https://goldentickets.club/wallet',
         'order_id': orderId,
         'order_description': 'goldenTickets.club',
@@ -47,27 +48,26 @@ export default function useCreatePayment({
 
 
     const getPaymentData = async () => {
-        if (priceAmount) {
+        try {
             //eslint-disable-next-line
             const payment = fetch('https://api.nowpayments.io/v1/payment', requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     setPay(result)
-                    // console.log(result);
+                    console.log(result);
                 })
                 .catch(error => console.log('error', error));
+        } catch (error) {
+            console.log(error)
         }
     }
 
     useEffect(() => {
-        if (priceAmount) {
+
+        if (amount > 1 && generateQr) {
             getPaymentData()
         }
-    }, [
-        priceAmount,
-        paymentOne,
-        paymentTwo,
-    ])
+    }, [amount, generateQr, currency])
 
     return { pay }
 
