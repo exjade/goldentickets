@@ -5,14 +5,6 @@ import styles from '../css/withdraw-network.module.css';
 const CoinNetwork = (props) => {
 
 
-  const handleChangeCurrency = (event) => {
-    props.setCurrency(event.target.value);
-    props.setAmount(0);
-  };
-
-
-
-
   return (
     <div className={`${styles.container}`} >
       <div className={`${styles.wrapper}`} >
