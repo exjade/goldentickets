@@ -36,7 +36,7 @@ const Header = (props) => {
           {/* TOGGLE GAMBLING / LIVE */}
           <ToggleRounded
             gambling={`gambling`}
-            live={`live`}
+            live={`Sports`}
           />
         </div>
 

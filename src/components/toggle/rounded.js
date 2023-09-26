@@ -27,7 +27,7 @@ const ToggleRounded = (props) => {
             >
                 <span className={`${styles.iconLive}`} >
                     <img
-                        src='assets/casino/live.jpg'
+                        src='assets/casino/sports.png'
                         alt="slots"
                         className='w-8 h-8 object-contain'
                     />
