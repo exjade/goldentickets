@@ -41,10 +41,14 @@ module.exports = {
 
       },
       green: {
-        primary: '#0C4D13'
+        primary: '#0C4D13',
+        secondary: '#259682',
       },
       pink: {
         primary: '#AB2E58'
+      },
+      yellow: {
+        pending: '#FFDE5D'
       }
 
     },

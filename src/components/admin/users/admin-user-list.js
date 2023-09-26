@@ -84,8 +84,8 @@ const AdminUserListEarnings = ({
                         <div className='flex flex-col justify-between items-center gap-20'>
 
                             <span className='flex items-center gap-5 justify-center flex-col'>
-                                <h1 className='text-3xl font-bold text-white-primary uppercase mt-10'>platform Users List</h1>
-                                <p className='text-red-logo text-base'>Sponsored accounts will be displayed in Red</p>
+                                <h1 className='text-3xl font-bold text-white-normal uppercase mt-10'>platform Users List</h1>
+                                <p className='text-red-logo text-pink-primary'>Sponsored accounts will be displayed in Red</p>
 
                                 {
                                     !displayStats ? (

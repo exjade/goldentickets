@@ -15,5 +15,5 @@ export default function useUser() {
             getUserObjByUserId()
         }
     }, [user])
-    return { user: activeUser }
+    return { user: activeUser, loading: activeUser === null }
 }

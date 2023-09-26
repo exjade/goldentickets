@@ -6,6 +6,8 @@ import useAuthListener from './hooks/use-auth-listener';
 import ProtectedRoute from './helpers/protected-routes';
 import IsUserLoggedIn from './helpers/is-user-loggedin';
 import FallBackLoader from './components/FallBackLoader';
+import ProtectedRoutes from './helpers/admin-routes';
+import useAuth from './hooks/use-auth';
 
 
 // - Authentication
@@ -25,6 +27,7 @@ const AdminDashboard = lazy(() => import('./pages/dashboard-admin'))
 
 function App() {
   const { user } = useAuthListener()
+  const { user: authUser } = useAuth()
 
   useEffect(() => {
     document.title = 'USDT Casino & Gambling - Crypto Casino | GOLDENTICKET.CLUB'
@@ -33,6 +36,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user }}>
+
       <Router>
         <Suspense fallback={<FallBackLoader />} >
           <Switch>
@@ -57,9 +61,14 @@ function App() {
             </ProtectedRoute>
 
             {/* ADMIN */}
-            <ProtectedRoute user={user} path={ROUTES.ADMIN_DASHBOARD} exact>
+            <ProtectedRoutes
+              user={authUser}
+              path={ROUTES.ADMIN_DASHBOARD}
+              allowedRoles='admin'
+              exact
+            >
               <AdminDashboard />
-            </ProtectedRoute>
+            </ProtectedRoutes>
 
             {/* ALL USERS */}
             <Route path="*" component={NotFound} />

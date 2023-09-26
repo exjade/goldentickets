@@ -18,5 +18,6 @@ const firebase = Firebase.initializeApp(config);
 const analytics = getAnalytics(firebase);
 const { FieldValue } = Firebase.firestore;
 const authentication = getAuth(firebase);
+const firestore = firebase.firestore();
 
-export { firebase, FieldValue, analytics, authentication };
+export { firebase, FieldValue, analytics, authentication, firestore };

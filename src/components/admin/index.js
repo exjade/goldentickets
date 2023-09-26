@@ -1,18 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import Withdrawal from '../../pages/withdrawal'
-// import Transaction from '../../pages/transactions'
+import Transaction from '../../pages/transactions'
 import * as ROUTES from '../../constants/routes'
 import { useHistory } from 'react-router-dom'
 import PlatformEarningsTimeline from './users/admin-earnings-timeline'
 
 const AdminDashboard = () => {
 
-
     const history = useHistory()
+
+    useEffect(() => {
+        document.title = 'admin - GOLDENTICKETS.CLUB'
+    }, []) //eslint-disable-line
+
+
     const [page, setPage] = useState({
         transactions: false,
         walletWithdrawals: false,
-        users: false,
+        users: true,
         withdrawals: false,
         earnings: false,
         sponsored: false,
@@ -29,7 +34,7 @@ const AdminDashboard = () => {
                     <h1 className='font-bold font-2xl text-center cursor-pointer' onClick={() => goDashboard()}>Admin Dashboard</h1>
                 </header>
 
-                <section className="p-4 bg-black-background text-white-normal overflow-scroll">
+                <section className="p-4 bg-black-background text-white-normal overflow-scroll bg-black-normal">
                     <div className="container flex justify-between h-16 mx-auto md:justify-center md:space-x-8">
                         <ul className="space-x-3 md:flex flex justify-center items-center">
                             <li className="flex">
@@ -80,8 +85,7 @@ const AdminDashboard = () => {
                 <section className='overflow-hidden'>
                     {
                         page.transactions && !page.users && !page.withdrawals && !page.earnings && !page.sponsored &&
-                        // <Transaction /> 
-                        <></>
+                        <Transaction />
                     }
                     {
                         page.withdrawals && !page.transactions && !page.users && !page.earnings && !page.sponsored &&
