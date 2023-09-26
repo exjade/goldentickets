@@ -24,7 +24,7 @@ const AdminUserListEarnings = ({
     const [success, setSuccess] = useState('')
     const { users } = useUsers()
     const {
-        toggleModal,
+        // toggleModal,
         closeModal,
         open,
     } = useModal()
