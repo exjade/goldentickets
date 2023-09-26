@@ -1,9 +1,14 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
-import styles from './../css/wallet.module.css';
-import CoinNetwork from '../../coin-network/coin-network';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../css/wallet.module.css';
+import CoinNetwork from '../../coin-network/withdraw/coin-network';
 
-const WithdrawWallet = () => {
+const WithdrawWallet = (props) => {
+
+    useEffect(() => {
+        document.title = 'Withdraw | GOLDENTICKETS.CLUB';
+    }, []); //eslint-disable-line
+
     return (
         <>
             {/* DEPOSIT - DEPOSIT HISTORY */}
@@ -18,7 +23,14 @@ const WithdrawWallet = () => {
 
             {/* SELECT COIN & NETWORK */}
             <div className={`${styles.coinNetworkContainer}`} >
-                <CoinNetwork />
+                <CoinNetwork
+                    setCurrency={props.setCurrency}
+                    currency={props.currency}
+                    coinImages={props.coinImages}
+                    setAmount={props.setAmount}
+                    amount={props.amount}
+                    user={props.user}
+                />
             </div>
 
             <div className={`${styles.divider}`}></div>
@@ -30,21 +42,8 @@ const WithdrawWallet = () => {
 
                     <span className={`${styles.generateAddress}`}>
 
-                        <img
-                            src="assets/blockchain/address_icon.png"
-                            alt="network"
-                            className={`${styles.addressIcon} w-24 h-24 object-contain`}
-                        />
-                        <h2>Generate Deposit Address</h2>
-                        <p>Please generate new deposit wallet address,
-                            to enable sending funds to your account</p>
 
-                        <button
-                            type='button'
-                            className={`${styles.button}`}
-                        >
-                            Generate
-                        </button>
+
                     </span>
                 </div>
             </div>
@@ -53,3 +52,13 @@ const WithdrawWallet = () => {
 }
 
 export default WithdrawWallet
+
+WithdrawWallet.propTypes = {
+    setCurrency: PropTypes.func,
+    setAmount: PropTypes.func,
+    currency: PropTypes.string,
+    coinImages: PropTypes.object,
+    amount: PropTypes.number,
+    user: PropTypes.object,
+
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './css/wallet.module.css';
 import Breadcrumbwallet from '../breadcrumbs/wallet';
@@ -7,8 +7,14 @@ import DepositWallet from './deposit-wallet/deposit';
 import WithdrawWallet from './wallet-withdraw/withdraw';
 import useCreatePayment from '../../hooks/use-create-payments';
 import { v4 as uuidv4 } from 'uuid';
+import useUser from '../../hooks/use-user';
 
 const Wallet = (props) => {
+
+  useEffect(() => {
+    document.title = 'Wallet | GOLDENTICKETS.CLUB';
+  }, []); //eslint-disable-line
+
   // States
   const [currency, setCurrency] = useState('')
   const [amount, setAmount] = useState(0)
@@ -19,6 +25,7 @@ const Wallet = (props) => {
   //Hooks
   const orderId = uuidv4();
   const { state, setState } = useBreadcrumbs()
+  const { user } = useUser()
 
   //eslint-disable-next-line
   const { pay } = useCreatePayment({ generateQr, orderId, amount, currency, setError })
@@ -62,7 +69,7 @@ const Wallet = (props) => {
     props.closeModal()
   }
 
- 
+
 
   return (
     <div className={`${styles.modalBackground}`} >
@@ -103,7 +110,14 @@ const Wallet = (props) => {
             )
               :
               state.stateTwo ? (
-                <WithdrawWallet />
+                <WithdrawWallet
+                  setCurrency={setCurrency}
+                  currency={currency}
+                  coinImages={coinImages}
+                  setAmount={setAmount}
+                  amount={amount}
+                  user={user}
+                />
               )
                 :
                 state.stateThree ? (

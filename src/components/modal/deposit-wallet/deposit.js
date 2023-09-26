@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './../css/wallet.module.css';
 import CoinNetwork from '../../coin-network/coin-network';
@@ -8,6 +8,9 @@ import QRCodeGenerator from './QRCode';
 
 const DepositWallet = (props) => {
 
+    useEffect(() => {
+        document.title = 'Deposit | GOLDENTICKETS.CLUB';
+    }, []); //eslint-disable-line
 
     const isInvalid = parseFloat(props.amount) <= 0 && props.currency === '';
 
