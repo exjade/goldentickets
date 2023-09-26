@@ -14,10 +14,13 @@ const AdminUserListEarnings = ({
     setReferredSeach,
     referredSeach,
 }) => {
-    const [docId, setDocId] = useState(null)//eslint-disable-next-line
+    //eslint-disable-next-line
+    const [docId, setDocId] = useState(null)
     const [rol, setRol] = useState('')
-    const [username, setUsername] = useState('')//eslint-disable-next-line
-    const [referrers, setReferrers] = useState([])//eslint-disable-next-line
+    //eslint-disable-next-line
+    const [username, setUsername] = useState('')
+    //eslint-disable-next-line
+    const [referrers, setReferrers] = useState([])
     const [success, setSuccess] = useState('')
     const { users } = useUsers()
     const {

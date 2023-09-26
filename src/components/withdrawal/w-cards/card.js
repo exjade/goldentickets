@@ -6,7 +6,7 @@ import RequestLoader from '../loader/request-loader';
 import styles from '../../../styles/modules/withdrawal/withdrawal.module.css';
 import { useTranslation } from 'react-i18next';
 
-const AmericanCurrency = ({ makeWithdrawalRequest, makeReinvest, user, loader, loaderError, isInvalid }) => {
+const AmericanCurrency = ({ makeWithdrawalRequest, user, loader, loaderError, isInvalid }) => {
   const { t } = useTranslation()
   const invalid = user?.Withdrawal <= 50;
 
