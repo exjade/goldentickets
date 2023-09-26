@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './css/header.module.css';
 import ToggleRounded from '../../toggle/rounded';
+import useUser from '../../../hooks/use-user';
 
 const Header = (props) => {
 
   const logo = `${process.env.REACT_APP_LOGO}`;
-
+  const { user } = useUser()
 
   return (
 
@@ -51,7 +52,12 @@ const Header = (props) => {
                 alt="coin"
                 className={`${styles.coinImage} w-6 h-6 object-contain`}
               />
-              <p className={`${styles.coinText}`}>0.00000</p>
+              <p className={`${styles.coinText}`}>
+                {parseFloat(`${user?.Balance.toFixed(0)}`).toLocaleString('en-US', {
+                  style: 'currency',
+                  currency: 'USD'
+                })}
+              </p>
             </span>
 
             <button
