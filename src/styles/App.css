@@ -2142,6 +2142,9 @@ video {
 .align-middle {
   vertical-align: middle;
 }
+.font-Nunito {
+  font-family: Nunito Sans, sans-serif;
+}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;

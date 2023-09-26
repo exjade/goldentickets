@@ -92,8 +92,8 @@ const DepositWallet = (props) => {
                                                                     : props.currency === 'eth' ? (
                                                                         <p className={`${styles.qrLabel} text-gray-text2 font-semibold`} >{`${props.coinImages.eth.name}`} address</p>
                                                                     )
-                                                                        : props.currency === 'bnb' ? (
-                                                                            <p className={`${styles.qrLabel} text-gray-text2 font-semibold`} >{`${props.coinImages.bnb.name}`} address</p>
+                                                                        : props.currency === 'ada' ? (
+                                                                            <p className={`${styles.qrLabel} text-gray-text2 font-semibold`} >{`${props.coinImages.ada.name}`} address</p>
                                                                         )
                                                                             : props.currency === 'xrp' ? (
                                                                                 <p className={`${styles.qrLabel} text-gray-text2 font-semibold`} >{`${props.coinImages.xrp.name}`} address</p>
@@ -118,7 +118,7 @@ const DepositWallet = (props) => {
                                                     <button
                                                         type="button"
                                                         className={`${styles.qrCopy}`}
-                                                        onClick={() => console.log('tiktok')}
+                                                        onClick={() => console.log('')}
                                                     >
                                                         Copy
                                                     </button>
@@ -156,6 +156,12 @@ const DepositWallet = (props) => {
                                         <p>Please generate new deposit wallet address,
                                             to enable sending funds to your account</p>
 
+                                        {
+                                            props.error && (
+                                                <p className='text-md font-Nunito font-medium italic text-pink-primary text-center'>{props.error}</p>
+                                            )
+                                        }
+
                                         <button
                                             type='button'
                                             className={`${styles.button} ${isInvalid && 'cursor-not-allowed'}`}
@@ -187,4 +193,5 @@ DepositWallet.propTypes = {
     setGenerateQr: PropTypes.func,
     generateQr: PropTypes.bool,
     pay: PropTypes.any,
+    error: PropTypes.string,
 }

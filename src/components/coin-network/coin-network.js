@@ -38,35 +38,35 @@ const CoinNetwork = (props) => {
                 ) : props.currency === 'btc' ? (
                   <img
                     src={props.coinImages.btc.img}
-                    alt="USDT"
+                    alt="BTC"
                     className='w-8 h-8 object-contain'
                   />
                 )
                   : props.currency === 'eth' ? (
                     <img
                       src={props.coinImages.eth.img}
-                      alt="USDT"
+                      alt="ETH"
                       className='w-8 h-8 object-contain'
                     />
                   )
-                    : props.currency === 'bnb' ? (
+                    : props.currency === 'ada' ? (
                       <img
-                        src={props.coinImages.bnb.img}
-                        alt="USDT"
+                        src={props.coinImages.ada.img}
+                        alt="ADA"
                         className='w-8 h-8 object-contain'
                       />
                     )
                       : props.currency === 'xrp' ? (
                         <img
                           src={props.coinImages.xrp.img}
-                          alt="USDT"
+                          alt="XRP"
                           className='w-8 h-8 object-contain'
                         />
                       )
                         : props.currency === 'trx' ? (
                           <img
                             src={props.coinImages.trx.img}
-                            alt="USDT"
+                            alt="TRX"
                             className='w-8 h-8 object-contain'
                           />
                         )
@@ -89,7 +89,7 @@ const CoinNetwork = (props) => {
             <option value="usdtbsc">USDT (BEP20)</option>
             <option value="btc">BTC</option>
             <option value="eth">ETH</option>
-            <option value="bnb">BNB (BSC)</option>
+            <option value="ada">CARDANO (ADA)</option>
             <option value="xrp">XRP</option>
             <option value="trx">Tron (TRX)</option>
           </select>

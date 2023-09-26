@@ -13,13 +13,16 @@ const Wallet = (props) => {
   const [currency, setCurrency] = useState('')
   const [amount, setAmount] = useState(0)
   const [generateQr, setGenerateQr] = useState(false)
+  const [error, setError] = useState('')
 
-  const orderId = uuidv4();
+
   //Hooks
+  const orderId = uuidv4();
   const { state, setState } = useBreadcrumbs()
+
   //eslint-disable-next-line
-  const { pay } = useCreatePayment({ generateQr, orderId, amount, currency })
-  console.log(pay)
+  const { pay } = useCreatePayment({ generateQr, orderId, amount, currency, setError })
+
 
   const coinImages = {
     trc20: {
@@ -42,9 +45,9 @@ const Wallet = (props) => {
       img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png',
       name: 'trx'
     },
-    bnb: {
-      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png',
-      name: 'bnb'
+    ada: {
+      img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png',
+      name: 'ada'
     },
     xrp: {
       img: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png',
@@ -58,6 +61,8 @@ const Wallet = (props) => {
     setGenerateQr(false)
     props.closeModal()
   }
+
+ 
 
   return (
     <div className={`${styles.modalBackground}`} >
@@ -93,6 +98,7 @@ const Wallet = (props) => {
                 pay={pay}
                 setGenerateQr={setGenerateQr}
                 generateQr={generateQr}
+                error={error}
               />
             )
               :
