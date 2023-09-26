@@ -8,6 +8,10 @@ import WithdrawWallet from './wallet-withdraw/withdraw';
 import useCreatePayment from '../../hooks/use-create-payments';
 import { v4 as uuidv4 } from 'uuid';
 import useUser from '../../hooks/use-user';
+//firebase
+import { firebase } from '../../lib/firebase'
+import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore'
+const firestore = getFirestore(firebase)
 
 const Wallet = (props) => {
 
@@ -20,6 +24,9 @@ const Wallet = (props) => {
   const [amount, setAmount] = useState(0)
   const [generateQr, setGenerateQr] = useState(false)
   const [error, setError] = useState('')
+
+  const [withdrawAmount, setWithdrawAmount] = useState(0)
+  const [withdrawAddress, setWithdrawAddress] = useState('')
 
 
   //Hooks
@@ -70,6 +77,84 @@ const Wallet = (props) => {
   }
 
 
+  const handleChangeAmount = (e) => {
+    setWithdrawAmount(e.target.value)
+  }
+  const handleChangeAddress = (e) => {
+    setWithdrawAddress(e.target.value)
+  }
+
+  const [withdrawalAmountError, setWithdrawalAmountError] = useState('')
+  const [loader, setLoader] = useState('')
+  const [loaderError, setLoaderError] = useState('')
+
+  const bankInformation = {
+    tether: {
+      Currency: 'TETHER',
+      BankName: 'Tether (USDT)',
+      AccountNumber: user?.wallet,
+      AccountName: user?.username,
+      WithdrawalAmount: user?.Withdrawal
+    },
+  }
+
+  const data = {
+    CustomerId: user?.userId,
+    CustomerName: user?.username,
+    CustomerEmail: user?.emailAddress,
+    CustomerWallet: user?.wallet,
+    CustomerCurrentBalance: user?.Balance,
+    CustomerCurrentWithdrawal: user?.Withdrawal,
+    CustomerLastWithdrawal: user?.Withdrawal,
+    WithdrawalAmount: parseInt(withdrawAmount) === parseInt(user?.Withdrawal) ? parseInt(user?.Withdrawal) : withdrawAmount,
+    WithdrawalFee: withdrawAmount * 0.05,
+    WithdrawalStatus: 'Pending',
+    WithdrawalId: uuidv4(),
+    WithdrawalDate: Date.now(),
+    WithdrawalInformation: bankInformation,
+    WithdrawalCurrency: 'TETHER',
+    WithdrawalURL: '',
+    AdminName: '',
+    isReinvestment: false,
+  }
+
+  // Withdrawal Manual Request
+  const makeWithdrawalRequest = async () => {
+    try {
+      if (data?.CustomerId === user?.userId) {
+        if (data?.CustomerId !== '') {
+          if (parseInt(withdrawAmount) <= parseInt(user?.Withdrawal)) {
+            if (parseInt(user?.Withdrawal) >= 20 && parseInt(withdrawAmount) >= 20) {
+              //eslint-disable-next-line no-unused-vars
+              const docRef = await addDoc(collection(firestore, 'Withdrawals'), data);
+              const userRef = doc(firestore, 'users', user.docId);
+              setLoader(true)
+              if (parseInt(user?.Withdrawal) >= 20) {
+                await updateDoc(userRef, {
+                  Withdrawal: parseInt(withdrawAmount) === parseInt(user?.Withdrawal) ? 0 : parseInt(user?.Withdrawal) - withdrawAmount,
+                })
+              }
+            } else {
+              setWithdrawalAmountError('Sorry, the minimum withdrawal amount is ($20 USD)')
+            }
+          } else {
+            setWithdrawalAmountError('ERROR: You cannot withdraw more than available')
+          }
+        }
+      }
+      setTimeout(() => {
+        setLoaderError('')
+        setWithdrawalAmountError('')
+        setLoader(false)
+        setTimeout(() => {
+          window.location.reload()
+        }, 50)
+      }, 2500)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
 
   return (
     <div className={`${styles.modalBackground}`} >
@@ -117,6 +202,14 @@ const Wallet = (props) => {
                   setAmount={setAmount}
                   amount={amount}
                   user={user}
+                  handleChangeAmount={handleChangeAmount}
+                  handleChangeAddress={handleChangeAddress}
+                  withdrawAmount={withdrawAmount}
+                  withdrawAddress={withdrawAddress}
+                  loaderError={loaderError}
+                  loader={loader}
+                  withdrawalAmountError={withdrawalAmountError}
+                  makeWithdrawalRequest={makeWithdrawalRequest}
                 />
               )
                 :

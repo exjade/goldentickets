@@ -53,7 +53,7 @@ const Header = (props) => {
                 className={`${styles.coinImage} w-6 h-6 object-contain`}
               />
               <p className={`${styles.coinText}`}>
-                {parseFloat(`${user?.Balance.toFixed(0)}`).toLocaleString('en-US', {
+                {parseFloat(`${user?.Balance?.toFixed(0)}`).toLocaleString('en-US', {
                   style: 'currency',
                   currency: 'USD'
                 })}
