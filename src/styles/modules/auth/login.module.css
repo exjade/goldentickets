@@ -1,0 +1,73 @@
+.centersignup {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donthaveaccount {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* translation buttom */
+.Translation_Btn_Login {
+    margin: 1em;
+    padding: 2em 0 0 1em;
+
+}
+
+.sign_up_wrapper {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    background: #0D0D0D;
+    box-shadow: -2px 0px 42px 31px rgba(12, 27, 89, 0.6);
+    -webkit-box-shadow: -2px 0px 42px 31px rgba(12, 27, 89, 0.6);
+    -moz-box-shadow: -2px 0px 42px 31px rgba(12, 27, 89, 0.6);
+    border-radius: 20px;
+    backface-visibility: hidden;
+}
+
+@media (min-width: 768px) {
+    .sign_up_wrapper {
+        width: 60% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/*============================================ SCROLLBAR ============================================*/
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

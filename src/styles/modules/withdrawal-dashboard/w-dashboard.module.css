@@ -1,0 +1,34 @@
+/* media queries for galaxy fold  */
+@media (max-width: 280px) {
+    .hiddenMobileFold {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+
+/* media queries for ultra small mobile devices */
+
+@media (max-width: 480px) {
+    .hiddenMobile {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+
+/* media queries for mobile devices */
+@media (max-width: 767px) {
+    .hiddenMobile {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+/* media queries for tablets */
+@media (max-width: 1024px) {
+    .hiddenMobile {
+        display: none;
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,201 @@
+ /* ROOT CSS VARIABLES */
+:root {
+    --color-white: #ffffff;
+    --color-light: #f0eff5;
+    --color-gray-light: #86848c;
+    --color-gray-dark: #56555e;
+    --color-dark: #27282f;
+    --color-primary: rgb(71, 7, 234);
+    --color-success: rgb(34, 202, 75);
+    --color-danger: rgb(255, 67, 54);
+    --color-warning: rgb(234, 181, 7);
+    --color-purple: rgb(160, 99, 245);
+
+    --color-primary-light: rgb(71, 7, 234, 0.2);
+    --color-success-light: rgb(34, 202, 75, 0.2);
+    --color-danger-light: rgb(255, 67, 54, 0.2);
+    --color-purple-light: rgb(160, 99, 245, 0.2);
+
+    --card-padding: 1.6rem;
+    --padding-1: 1rem;
+    --padding-2: 8px;
+
+    --card-border-radius: 1.6rem;
+    --border-radius-1: 1rem;
+    --border-radius-2: 6px;
+}
+
+/* Dark theme varibales */
+.dark-theme {
+    --color-white: #1E1F21;
+    --color-light: #272729;
+    --color-dark: #ddd;
+    --color-gray-dark: #adacb5;
+}
+.light-theme {
+    --color-white: #ffffff;
+    --color-light: #f5f5f5;
+    --color-dark: #27282f;
+    --color-gray-dark: #56555e;
+}
+
+
+/* ================= NAV BAR ================= */
+
+
+.dashboard_header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 95%;
+    height: 5rem;
+    margin: 0 auto;
+}
+
+.dashboard_header_logo {
+    width: 5rem;
+    height: auto;
+}
+
+.dashboard_header_searchbar {
+    background: var(--color-light);
+    padding: var(--padding-2) var(--card-padding);
+    width: 32vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-gray-light);
+    position: absolute;
+    left: 15%;
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+}
+
+.dashboard_header_searchbar>input[type="search"] {
+    color: var(--color-dark);
+    background: transparent;
+    width: 100%;
+}
+
+.dashboard_header_searchbar>input[type="search"]::placeholder {
+    color: var(--color-gray-dark)
+}
+
+.dashboard_header_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-center;
+    gap: 4rem;
+}
+
+.dashboard_header_profile_theme_btn {
+    display: flex;
+    background: var(--color-light);
+    width: 90%;
+    height: 3rem;
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+    cursor: pointer;
+}
+
+.dashboard_header_profile_theme_btn>span {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+/* TENGO QUE HACER UN ESTADO PARA QUE SE CAMBIE EL COLOR DE LOS BOTONES */
+.dashboard_header_profile_theme_btn>.active {
+    background: var(--color-dark);
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+    color: var(--color-white)
+}
+
+.dashboard_header_profile_account {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dashboard_header_profile_photo {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#dashboard_header_button {
+    display: none;
+}
+
+
+
+
+/* =================== MEDIA QUERIES FOR TABLETS  =================== */
+@media screen and (max-width: 1624px) { 
+    .dashboard_header_searchbar {
+        display: none;
+    }
+
+    .dashboard_header_profile {
+        gap: 2rem;
+    }
+
+    #dashboard_header_button {
+        display: inline;
+        background: transparent;
+        color: var(--color-dark);
+    }
+
+    .dashboard_header_profile_account>h5, .dashboard_header_profile_account>span {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .dashboard_header_searchbar {
+        display: none;
+    }
+
+    .dashboard_header_profile {
+        gap: 2rem;
+    }
+
+    #dashboard_header_button {
+        display: inline;
+        background: transparent;
+        color: var(--color-dark);
+    }
+
+    .dashboard_header_profile_account>h5, .dashboard_header_profile_account>span {
+        display: none;
+    }
+}
+
+/* =================== MEDIA QUERIES FOR MOBILE PHONES  =================== */
+@media screen and (max-width: 600px) {
+    .dashboard_header_profile {
+        gap: 2.6rem;
+    }
+
+    .dashboard_header_profile_account>h5, .dashboard_header_profile_account>span {
+        display: none;
+    }
+
+}

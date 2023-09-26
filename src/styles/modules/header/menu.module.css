@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+}
+
+.wrapper {
+    display: flex;
+    height: 6rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.wrapper>.menuHorizontalXyz {
+    display: flex;
+    height: 8rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: var(--color-white);
+    border-top: solid;
+    border-top-width: 2px;
+    border-top-color: #56555e42;
+}
+
+.menuHorizontalXyz>.menuHorizontalButtonXyz {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.menuHorizontalProfileLink {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+}
+.menuHorizontalButtonXyz{
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    height: 100%;
+}
+
+@media screen and (min-width:1640px), screen and (max-width:0px) {
+    .container {
+        display: none;
+    }
+
+}

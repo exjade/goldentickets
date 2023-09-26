@@ -1,0 +1,928 @@
+/* ROOT CSS VARIABLES */
+:root {
+    --color-white: #ffffff;
+    --color-light: #f0eff5;
+    --color-gray-light: #86848c;
+    --color-gray-dark: #56555e;
+    --color-dark: #27282f;
+    --color-primary: rgb(207, 207, 207);
+    --color-success: rgb(34, 202, 75);
+    --color-danger: rgb(255, 67, 54);
+    --color-warning: rgb(234, 181, 7);
+    --color-purple: rgb(160, 99, 245);
+
+    --color-primary-light: rgba(214, 190, 5, 0.104);
+    --color-success-light: rgb(34, 202, 75, 0.2);
+    --color-danger-light: rgb(255, 67, 54, 0.2);
+    --color-purple-light: rgb(160, 99, 245, 0.2);
+
+    --color-blue-artificial: #4956FC;
+
+    --card-padding: 1.6rem;
+    --padding-1: 1rem;
+    --padding-2: 8px;
+
+    --card-border-radius: 1.6rem;
+    --border-radius-1: 1rem;
+    --border-radius-2: 6px;
+}
+
+/* ===================== TIMELINE ======================== */
+main {
+    display: grid;
+    grid-template-columns: 9rem auto 30rem;
+    /* gap: 6rem; */
+    width: 100%;
+    height: 100vh;
+    /* margin: 1rem auto 4rem; */
+    background: #1E1F21;
+}
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;
+    padding: 1rem;
+}
+
+/* .aside_sidebar {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+} */
+
+
+.Sidebar_middle_section {
+    margin-top: 6rem;
+    background: rgb(16, 27, 34);
+}
+
+/* will be shown only on mobile and tablets */
+#sidebar_leftsidebar_button {
+    display: none;
+}
+
+.sidebar_leftsidebar_icons>a {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    height: 4.2rem;
+    position: relative;
+}
+
+.sidebar_leftsidebar_icons>a>span {
+    font-size: 1.7rem;
+    margin-left: 3rem;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+}
+
+.sidebar_leftsidebar_icons>a:hover {
+    color: var(--color-primary);
+}
+
+.sidebar_leftsidebar_icons>a:hover span {
+    margin-left: 1rem;
+}
+
+.sidebar_leftsidebar_icons>a>h4 {
+    font-weight: 500;
+}
+
+/* =================== SIDEBAR UPDATES =================== */
+.sidebar_leftsidebar_updates {
+    background: var(--color-white);
+    border-radius: var(--border-radius-1);
+    -webkit-border-radius: var(--border-radius-1);
+    -moz-border-radius: var(--border-radius-1);
+    -ms-border-radius: var(--border-radius-1);
+    -o-border-radius: var(--border-radius-1);
+    text-align: center;
+    padding: var(--card-padding);
+
+}
+
+.sidebar_leftsidebar_updates>span {
+    font-size: 2.8rem;
+}
+
+.sidebar_leftsidebar_updates>h4 {
+    margin: 1rem 0;
+}
+
+.sidebar_leftsidebar_updates>a {
+    display: block;
+    width: 100%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-1);
+    -webkit-border-radius: var(--border-radius-1);
+    -moz-border-radius: var(--border-radius-1);
+    -ms-border-radius: var(--border-radius-1);
+    -o-border-radius: var(--border-radius-1);
+    padding: 0.8rem 0;
+    margin-top: 2rem;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+}
+
+.sidebar_leftsidebar_updates>a:hover {
+    box-shadow: 0 1rem 2rem var(--color-primary-light)
+}
+
+
+/* =================== MIDDLE SECTION =================== */
+.Sidebar_Middle_Header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    align-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.Sidebar_Middle_Header>h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.Sidebar_Middle_Header>input[type='date'] {
+    padding: 0.5rem 2rem;
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+    background: var(--color-white);
+    color: var(--color-gray-dark);
+}
+
+.Sidebar_Middle_Cards {
+    margin-top: 1rem;
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr);  REGRESAR SÍ TENGO PROBLEMAS CON MULTIPLES CARDS*/
+    gap: 1rem;
+
+}
+
+.Sidebar_Middle_Card {
+    background: linear-gradient(#030725, #1d0402);
+    box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    -webkit-border-radius: var(--card-border-radius);
+    -moz-border-radius: var(--card-border-radius);
+    -ms-border-radius: var(--card-border-radius);
+    -o-border-radius: var(--card-border-radius);
+    color: white;
+    width: 16rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    /* min-width: 22rem; */
+    /* gap: 0em; */
+}
+
+.card-dark-theme {
+    background: linear-gradient(#ff796f, #bd261b) !important;
+    box-shadow: 0 2rem 2rem rgb(0, 0, 0, 0.2) !important;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    -webkit-border-radius: var(--card-border-radius);
+    -moz-border-radius: var(--card-border-radius);
+    -ms-border-radius: var(--card-border-radius);
+    -o-border-radius: var(--card-border-radius);
+    color: white;
+    width: 16rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    /* min-width: 22rem; */
+}
+
+/* NTH CHILD FOR CARDS  */
+/* .Sidebar_Middle_Card:nth-child(1) {
+    background: linear-gradient(#030725, #1d0402);
+    box-shadow: 0 2rem 2rem rgb(0, 0, 0, 0.2);
+}
+
+.Sidebar_Middle_Card:nth-child(2) {
+    background: linear-gradient(#5d70ff, #5719c2);
+    box-shadow: 0 2rem 2rem rgb(--color-primary-light);
+} */
+
+.Sidebar_Middle_Card:hover {
+    box-shadow: none;
+}
+
+/* MIDDLE SECTION TOP */
+.Sidebar_Middle_Card_Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Sidebar_Middle_Card_Top_Left {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.Sidebar_Middle_Card_Top_Left>h2 {
+    font-weight: 200;
+    font-size: 1.4rem;
+}
+
+.Sidebar_Middle_Card_Top_Left>img {
+    width: 2.3rem;
+    height: 2.3rem;
+    border: 1px solid white;
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+    padding: 0.4rem;
+}
+
+.Sidebar_Middle_Card_Top_Right {
+    width: 3.5rem;
+}
+
+.Sidebar_Middle_Card_Middle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Sidebar_Middle_Card_Middle_Chip {
+    width: 3.5rem;
+}
+
+/* MIDDLE SECTION BOTTOM */
+.Sidebar_Middle_Card_Bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.Sidebar_Middle_Card_Bottom_right {
+    display: flex;
+    gap: 2rem;
+}
+
+/* =================== MIDDLE SECTION - MONTHLY REPORT  =================== */
+.middlesection_montly_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.middlesection_monthly_report>div>details>h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+
+}
+
+/* =================== MIDDLE SECTION - FAST CRYPTO  =================== */
+.middlesection_fastcrypto_container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 2rem;
+}
+
+.middlesection_fastcrypto_badges {
+    display: flex;
+    gap: 1rem;
+    align-self: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.middlesection_fastcrypto_badge>span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.middlesection_fastcrypto_badge {
+    padding: 0.6rem var(--card-padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius-2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    height: 9rem;
+    width: 21.40rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.middlesection_fastcrypto_badge:hover {
+    box-shadow: 0 0 1.5rem var(--color-primary-light);
+    cursor: pointer;
+}
+
+.middlesection_fastcrypto_badge:first-child>span {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: fit-content;
+    font-size: 1.5rem;
+}
+
+.middlesection_fastcrypto_badge>div {
+    display: flex;
+    gap: 2rem;
+    align-self: center;
+}
+
+/* =================== MIDDLE SECTION - CHARTJS CANVAS  =================== */
+canvas#chart {
+    background: var(--color-white);
+    max-width: 100%;
+    margin-top: 2rem;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+}
+
+/* =================== RIGHT  SECTION - INVESTMENTS  =================== */
+.rightsection_investments_container {
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    -webkit-border-radius: var(--card-border-radius);
+    -moz-border-radius: var(--card-border-radius);
+    -ms-border-radius: var(--card-border-radius);
+    -o-border-radius: var(--card-border-radius);
+}
+
+.rightsection_investments_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--card-padding);
+    /* padding-bottom: 0; */
+}
+
+.rightsection_investments_header>a {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+}
+
+.rightsection_investment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--card-padding);
+    border-bottom: 1px solid var(--color-light);
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+}
+
+.rightsection_investment>img {
+    width: 2.4rem;
+}
+
+.rightsection_investment:last-child {
+    border: none;
+}
+
+.rightsection_investment:hover {
+    background: var(--color-light);
+    cursor: pointer;
+}
+
+/* =================== RIGHT  SECTION - RECENT TRANSACTIONS  =================== */
+.rightsection_recent_transactions_container {
+    margin-top: 2rem;
+}
+
+.rightsection_recent_transactions_card>img {
+    width: 2.2rem;
+}
+
+.rightsection_recent_transactions_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.rightsection_recent_transactions_header>a {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+}
+
+.rightsection_recent_transactions_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    -webkit-border-radius: var(--card-border-radius);
+    -moz-border-radius: var(--card-border-radius);
+    -ms-border-radius: var(--card-border-radius);
+    -o-border-radius: var(--card-border-radius);
+    transition: all 300 ease;
+    -webkit-transition: all 300 ease;
+    -moz-transition: all 300 ease;
+    -ms-transition: all 300 ease;
+    -o-transition: all 300 ease;
+}
+
+.rightsection_recent_transactions_list:hover {
+    background: var(--color-white);
+    cursor: pointer;
+}
+
+.rightsection_recent_transactions_service {
+    display: flex;
+    gap: 1rem;
+}
+
+.rightsection_recent_transactions_service_icon {
+    padding: var(--padding-2);
+    border-radius: var(--border-radius-1);
+    -webkit-border-radius: var(--border-radius-1);
+    -moz-border-radius: var(--border-radius-1);
+    -ms-border-radius: var(--border-radius-1);
+    -o-border-radius: var(--border-radius-1);
+    display: flex;
+    align-items: center;
+}
+
+.rightsection_recent_transactions_cards_details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rightsection_recent_transactions_card {
+    display: flex;
+    width: 4.6rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-2);
+    -webkit-border-radius: var(--border-radius-2);
+    -moz-border-radius: var(--border-radius-2);
+    -ms-border-radius: var(--border-radius-2);
+    -o-border-radius: var(--border-radius-2);
+}
+
+.leftsidebarMobile_button_logout {
+    width: 80%;
+}
+
+
+@media screen and (max-width: 1230px) {
+    .middlesection_montly_container {
+        display: flex;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        justify-content: space-between;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        place-items: center;
+    }
+
+    .Sidebar_Middle_Card {
+        background: linear-gradient(#030725, #1d0402);
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 15rem;
+        height: 12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+        /* gap: 0em; */
+    }
+
+    .card-dark-theme {
+        background: linear-gradient(#ff796f, #bd261b) !important;
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%) !important;
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 15rem;
+        height: 12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+    }
+
+
+}
+
+
+/* =================== MEDIA QUERIES FOR TABLETS  =================== */
+
+@media screen and (max-width: 1640px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background: var(--color-white);
+        width: 22rem;
+        height: 100% !important;
+        box-shadow: 2rem 0 2rem var(--color-primary-light);
+    }
+
+
+    .aside_hidde {
+        display: none !important;
+    }
+
+    .leftsidebarDesktop_button_logout {
+        display: none !important;
+    }
+
+    #sidebar_leftsidebar_button {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 4;
+        background: transparent;
+        color: var(--color-dark)
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    .sidebar_leftsidebar_icons {
+        margin-top: 4rem;
+    }
+
+    /* .sidebar_leftsidebar_updates {
+    
+        
+    } */
+
+    .Sidebar_Middle_Cards {
+        grid-template-columns: 1rf 1fr;
+    }
+
+    .rightsection_recent_transactions_container {
+        margin-top: 3rem;
+    }
+
+    .Middle_cards_center {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .middlesection_montly_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        justify-content: space-evenly;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        place-items: center;
+    }
+
+    .Sidebar_Middle_Card {
+        background: linear-gradient(#030725, #1d0402);
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 16rem;
+        height: 13rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+        /* gap: 0em; */
+    }
+
+    main aside {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        height: 100vh;
+        padding: 1rem;
+        overflow: scroll;
+    }
+
+    /* MAIN SIDEBAR SCROLLBAR */
+    /* width */
+    main aside::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    /* Track */
+    main aside::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    main aside::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    main aside::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+}
+
+
+@media screen and (max-width: 1924px) {
+    .middlesection_fastcrypto_badge {
+        padding: 0.6rem var(--card-padding);
+        background: var(--color-white);
+        border-radius: var(--card-border-radius-2);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        height: 9rem;
+        width: 22.28rem;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+}
+
+
+/* =================== MEDIA QUERIES FOR MOBILE PHONES  =================== */
+@media screen and (max-width: 600px) {
+    main aside {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        height: 100vh;
+        padding: 1rem;
+        overflow: scroll;
+    }
+
+    /* MAIN SIDEBAR SCROLLBAR */
+    /* width */
+    main aside::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    Track main aside::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    main aside::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    main aside::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .middlesection_fastcrypto_container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1.4rem;
+    }
+
+    .Sidebar_Middle_Cards, .Middle_cards_center {
+        grid-template-columns: 1fr !important;
+    }
+
+    .middlesection_montly_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        justify-content: space-between;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        place-items: center;
+    }
+
+    .card-dark-theme {
+        background: linear-gradient(#ff796f, #bd261b) !important;
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%) !important;
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 12rem;
+        height: 12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+    }
+
+    .Sidebar_Middle_Card {
+        background: linear-gradient(#030725, #1d0402);
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 13.5em;
+        height: 12em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+        /* gap: 0em; */
+    }
+
+    .middlesection_fastcrypto_badge {
+        padding: 0.6rem var(--card-padding);
+        background: var(--color-white);
+        border-radius: var(--card-border-radius-2);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        height: 9rem;
+        width: 45%;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .middlesection_fastcrypto_badges {
+        display: flex;
+        gap: 1rem;
+        align-self: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    .middlesection_fastcrypto_container {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        margin-left: 0rem;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        gap: 2rem;
+    }
+
+}
+
+/* =================== MEDIA QUERIES FOR GALAXY FOLD  =================== */
+@media (max-width: 280px) {
+    .Sidebar_Middle_Card {
+        background: linear-gradient(#030725, #1d0402);
+        box-shadow: 0 2rem 2rem rgb(0 0 0 / 20%);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        -webkit-border-radius: var(--card-border-radius);
+        -moz-border-radius: var(--card-border-radius);
+        -ms-border-radius: var(--card-border-radius);
+        -o-border-radius: var(--card-border-radius);
+        color: white;
+        width: 10.9em !important;
+        height: 12em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        /* min-width: 22rem; */
+        /* gap: 0em; */
+    }
+}
+
+
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

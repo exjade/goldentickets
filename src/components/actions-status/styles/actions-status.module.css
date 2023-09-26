@@ -1,0 +1,50 @@
+.successContainer {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    position: absolute;
+    right: 2rem;
+    bottom: 5rem;
+}
+
+.successwrapper {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    background: white;
+    border-radius: 6px;
+}
+
+.successIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 5rem;
+    height: 100%;
+    background: #10c6af;
+}
+
+.successIcon>svg>path {
+    fill: #0d938a;
+    stroke: rgb(255 255 255);
+    stroke-width: 1px;
+}
+
+.successMessage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 1rem;
+}

@@ -20,6 +20,9 @@ const Dashboard = lazy(() => import('./pages/dashboard'))
 // - Error: Not Found
 const NotFound = lazy(() => import('./pages/not-found'))
 
+// - Admin
+const AdminDashboard = lazy(() => import('./pages/dashboard-admin'))
+
 function App() {
   const { user } = useAuthListener()
 
@@ -51,6 +54,11 @@ function App() {
             {/* LOGGED USERS */}
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
+            </ProtectedRoute>
+
+            {/* ADMIN */}
+            <ProtectedRoute user={user} path={ROUTES.ADMIN_DASHBOARD} exact>
+              <AdminDashboard />
             </ProtectedRoute>
 
             {/* ALL USERS */}

@@ -1,0 +1,168 @@
+.main {
+    background: #17171F;
+    color: #EAEAEA;
+    /* border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px; */
+    /* margin-right: 2em; */
+    /* margin-left: 2em; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.darkmain {
+    background: #101010;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin-right: 2em;
+    margin-left: 2em;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 12rem;
+}
+
+.mycards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardWrapper {
+    height: 15rem;
+    width: 28rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+    -webkit-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+    -moz-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+}
+
+/* RIGHT PROFILE COMPONENT */
+
+.dropshadow {
+    box-shadow: 0px -3px 33px 7px rgba(37,150,130,0.75);
+    -webkit-box-shadow: 0px -3px 33px 7px rgba(37,150,130,0.75);
+    -moz-box-shadow: 0px -3px 33px 7px rgba(37,150,130,0.75);
+}
+
+.walletcardContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.walletcardWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: stretch;
+    justify-content: center;
+    align-content: center;
+    gap: 4rem;
+}
+.walletcardCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 2rem;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1024px) {
+
+    .main {
+        background: #17171F;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        /* margin-right: 2em; */
+        /* margin-left: 2em; */
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 12rem;
+    }
+    .cardWrapper {
+        height: 15rem;
+        width: 24rem;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+        -webkit-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+        -moz-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .main {
+        background: #17171F;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        /* margin-right: 2em; */
+        /* margin-left: 2em; */
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 12rem;
+    }
+    .cardWrapper {
+        height: 15rem;
+        width: 24rem;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+        -webkit-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+        -moz-box-shadow: 2px 27px 7px -14px rgba(140, 214, 177, 1);
+    }
+}

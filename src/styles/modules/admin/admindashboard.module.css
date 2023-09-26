@@ -1,0 +1,11 @@
+/* MEDIA QUERIES */
+@media (max-width: 900px) {
+    .mobileHidden {
+        display: none;
+    }
+ }
+@media (max-width: 500px) {
+    .mobileHidden {
+        display: none;
+    }
+ }
