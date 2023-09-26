@@ -16,13 +16,15 @@ const Login = lazy(() => import('./pages/auth/login'));
 const Signup = lazy(() => import('./pages/auth/signup'));
 const ForgotPassword = lazy(() => import('./pages/auth/reset-password'));
 
-// - Dashboard
+// - Members Routes
 const Dashboard = lazy(() => import('./pages/dashboard'))
+const BuyTickets = lazy(() => import('./pages/draw/buy-tickets'))
+const Draw = lazy(() => import('./pages/draw/draw'))
 
 // - Error: Not Found
 const NotFound = lazy(() => import('./pages/not-found'))
 
-// - Admin
+// - Admin Routes
 const AdminDashboard = lazy(() => import('./pages/dashboard-admin'))
 
 function App() {
@@ -41,7 +43,7 @@ function App() {
         <Suspense fallback={<FallBackLoader />} >
           <Switch>
 
-            {/* GUEST USERS */}
+            {/* Not Logged In  */}
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.LOGIN} path={ROUTES.LANDING} exact>
               <Landing />
             </IsUserLoggedIn>
@@ -55,12 +57,18 @@ function App() {
               <ForgotPassword />
             </IsUserLoggedIn>
 
-            {/* LOGGED USERS */}
+            {/* Logged In USERS */}
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.BUY_TICKETS} exact>
+              <BuyTickets />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.DRAW} exact>
+              <Draw />
+            </ProtectedRoute>
 
-            {/* ADMIN */}
+            {/* administration */}
             <ProtectedRoutes
               user={authUser}
               path={ROUTES.ADMIN_DASHBOARD}
