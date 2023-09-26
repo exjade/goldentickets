@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 //hooks
 import useAuthListener from '../../../hooks/use-auth-listener';
 import useUser from '../../../hooks/use-user'
@@ -19,7 +18,6 @@ import {
 const firestore = getFirestore(firebase)
 
 const TableWithdrawals = ({ withdrawals }) => {
-    const { t } = useTranslation()
     const { user: currentUser } = useUser()
     const { user } = useAuthListener();
     const [withdrawalSearch, setWithdrawalSearch] = useState('');
@@ -49,6 +47,7 @@ const TableWithdrawals = ({ withdrawals }) => {
     const [withdrawalAccountNumber, setWithdrawalAccountNumber] = useState(null);
     const [withdrawalHolderName, setWithdrawalHolderName] = useState(null);
     const [withdrawalCurrency, setWithdrawalCurrency] = useState(null);
+    const [WithdrawalFee, setWithdrawalFee] = useState(null);
     const [withdrawalId, setWithdrawalId] = useState(null);
     const [blockchainURL, setBlockchainURL] = useState(null);
     const [withdrawalDocId, setWithdrawalDocId] = useState(null);
@@ -128,7 +127,7 @@ const TableWithdrawals = ({ withdrawals }) => {
                             <input
                                 type="text"
                                 className='w-9/12 text-center outlined-none'
-                                placeholder={t('Search_withdrawal_information')}
+                                placeholder='Search_withdrawal_information'
                                 onChange={e => {
                                     setWithdrawalSearch(e.target.value)
                                 }}
@@ -137,7 +136,7 @@ const TableWithdrawals = ({ withdrawals }) => {
 
                         <div className="w-full h-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
                             <header className="px-5 py-4 border-b border-gray-100">
-                                <h2 className="font-semibold text-2xl capitalize text-center">{t('Customers_withdrawal_requests')}</h2>
+                                <h2 className="font-semibold text-2xl capitalize text-center">Customers_withdrawal_requests</h2>
                             </header>
                             <div className="p-3">
                                 <div className="overflow-x-auto">
@@ -146,31 +145,28 @@ const TableWithdrawals = ({ withdrawals }) => {
                                         <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                                             <tr>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('ID')}</div>
+                                                    <div className="text-left font-bold text-base">ID</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Status')}</div>
+                                                    <div className="text-left font-bold text-base">Status</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('CustomerId')}</div>
+                                                    <div className="text-left font-bold text-base">CustomerId</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Holder Name')}</div>
+                                                    <div className="text-left font-bold text-base">Username</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Username')}</div>
+                                                    <div className="text-left font-bold text-base">Bank Name</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Bank Name')}</div>
+                                                    <div className="text-left font-bold text-base">Account Number</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Account Number')}</div>
+                                                    <div className="text-left font-bold text-base">Fee</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Fee')}</div>
-                                                </th>
-                                                <th className="p-2 whitespace-nowrap">
-                                                    <div className="text-left font-bold text-base">{t('Spent')}</div>
+                                                    <div className="text-left font-bold text-base">Spent</div>
                                                 </th>
                                                 <th className="p-2 whitespace-nowrap">
                                                     <div className="text-center font-bold"></div>
@@ -195,9 +191,9 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                                         <td className="p-2 whitespace-nowrap">
                                                                             {
                                                                                 withdrawal.WithdrawalStatus === 'Pending' ? (
-                                                                                    <div className="text-left text-badges-gold font-extrabold">{t('Pending')}</div>
+                                                                                    <div className="text-left text-blue-button font-extrabold">Pending</div>
                                                                                 ) : (
-                                                                                    <div className="text-left text-green-success font-extrabold">{t('Reinvestment')}</div>
+                                                                                    <div className="text-left text-green-success font-extrabold">Reinvestment</div>
                                                                                 )
                                                                             }
                                                                         </td>
@@ -207,9 +203,9 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                                         <td className="p-2 whitespace-nowrap">
                                                                             {
                                                                                 withdrawal.WithdrawalStatus === 'Pending' ? (
-                                                                                    <div className="text-left text-badges-gold font-extrabold">{t('Pending')}</div>
+                                                                                    <div className="text-left text-blue-button font-extrabold">Pending</div>
                                                                                 ) : (
-                                                                                    <div className="text-left text-green-success font-extrabold">{t('Deposited')}</div>
+                                                                                    <div className="text-left text-green-success font-extrabold">Deposited</div>
                                                                                 )
                                                                             }
                                                                         </td>
@@ -219,11 +215,7 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                             <td className="p-2 whitespace-nowrap">
                                                                 <div className="text-left font-semibold">{withdrawal.CustomerId}</div>
                                                             </td>
-                                                            <td className="p-2 whitespace-nowrap">
-                                                                <div className="flex items-center">
-                                                                    <div className="font-medium text-gray-800">{withdrawal?.CustomerName}</div>
-                                                                </div>
-                                                            </td>
+                                                          
                                                             <td className="p-2 whitespace-nowrap">
                                                                 <div className="text-left font-semibold">{withdrawal.WithdrawalInformation?.tether?.AccountName}</div>
                                                             </td>
@@ -255,7 +247,7 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                                     (<>
                                                                         <button
                                                                             type='button'
-                                                                            className="p-2 text-center whitespace-nowrap bg-green-radored rounded-lg text-white-normal font-semibold text-sm
+                                                                            className="p-2 text-center whitespace-nowrap bg-green-primary rounded-lg text-white-normal font-semibold text-sm
                                                                               hover:bg-gray-button uppercase cursor-not-allowed"
                                                                             disabled
                                                                         >
@@ -266,7 +258,7 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                                     (<>
                                                                         <button
                                                                             type='button'
-                                                                            className="p-2 text-center whitespace-nowrap bg-green-button rounded-lg text-white-normal font-semibold text-sm  hover:bg-green-success uppercase"
+                                                                            className="p-2 text-center whitespace-nowrap bg-green-primary rounded-lg text-white-normal font-semibold text-sm  hover:bg-green-success uppercase"
                                                                             onClick={() => {
                                                                                 setCustomerName(withdrawal.CustomerName);
                                                                                 setCustomerWallet(withdrawal.CustomerWallet);
@@ -281,10 +273,11 @@ const TableWithdrawals = ({ withdrawals }) => {
                                                                                 setWithdrawalCurrency(withdrawal.WithdrawalInformation?.tether?.BankName)
                                                                                 setCustomerAgencia(withdrawal?.Agencia)
                                                                                 setCustomerChavePix(withdrawal?.ChavePix)
+                                                                                setWithdrawalFee(withdrawal?.WithdrawalFee)
                                                                                 handleOpenModal();
                                                                             }}
                                                                         >
-                                                                            {t('Activate')}
+                                                                            Activate
                                                                         </button>
                                                                     </>)
                                                             }
@@ -318,6 +311,7 @@ const TableWithdrawals = ({ withdrawals }) => {
                                     withdrawalCurrency={withdrawalCurrency}
                                     CustomerAgencia={CustomerAgencia}
                                     CustomerChavePix={CustomerChavePix}
+                                    WithdrawalFee={WithdrawalFee}
                                 />
                             )
                         }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import Withdrawal from '../../pages/withdrawal'
+import Withdrawal from '../../pages/withdrawal'
 import Transaction from '../../pages/transactions'
 import * as ROUTES from '../../constants/routes'
 import { useHistory } from 'react-router-dom'
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
 
                         </ul>
                         <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
-                            <span className="material-symbols-sharp text-red-logo">
+                            <span className="material-symbols-outlined text-red-logo">
                                 admin_panel_settings
                             </span>
                         </a>
@@ -89,8 +89,7 @@ const AdminDashboard = () => {
                     }
                     {
                         page.withdrawals && !page.transactions && !page.users && !page.earnings && !page.sponsored &&
-                        // <Withdrawal />
-                        <></>
+                        <Withdrawal />
                     }
                     {
                         page.users && !page.transactions && !page.withdrawals && !page.earnings && !page.sponsored && (

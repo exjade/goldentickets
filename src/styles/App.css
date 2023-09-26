@@ -1823,6 +1823,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(12 77 19 / var(--tw-bg-opacity));
 }
+.bg-pink-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(171 46 88 / var(--tw-bg-opacity));
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }

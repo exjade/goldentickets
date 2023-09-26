@@ -92,7 +92,7 @@ const Wallet = (props) => {
     tether: {
       Currency: 'TETHER',
       BankName: 'Tether (USDT)',
-      AccountNumber: user?.wallet,
+      AccountNumber: withdrawAddress,
       AccountName: user?.username,
       WithdrawalAmount: user?.Withdrawal
     },
@@ -102,7 +102,7 @@ const Wallet = (props) => {
     CustomerId: user?.userId,
     CustomerName: user?.username,
     CustomerEmail: user?.emailAddress,
-    CustomerWallet: user?.wallet,
+    CustomerWallet: withdrawAddress,
     CustomerCurrentBalance: user?.Balance,
     CustomerCurrentWithdrawal: user?.Withdrawal,
     CustomerLastWithdrawal: user?.Withdrawal,
@@ -131,7 +131,7 @@ const Wallet = (props) => {
               setLoader(true)
               if (parseInt(user?.Withdrawal) >= 20) {
                 await updateDoc(userRef, {
-                  Withdrawal: parseInt(withdrawAmount) === parseInt(user?.Withdrawal) ? 0 : parseInt(user?.Withdrawal) - withdrawAmount,
+                  Balance: parseInt(withdrawAmount) === parseInt(user?.Withdrawal) ? 0 : parseInt(user?.Withdrawal) - withdrawAmount,
                 })
               }
             } else {

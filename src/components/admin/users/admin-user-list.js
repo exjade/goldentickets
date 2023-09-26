@@ -185,22 +185,22 @@ const AdminUserListEarnings = ({
                                 {filteredTransactions.map((user, k) => (
                                     <tbody key={k} className='w-full text-center overflow-scroll'>
                                         <tr className='text-gray-700'>
-                                            <td className='border p-4 dark:border-gray-info capitalize text-white-normal'>
+                                            <td className='border p-4 dark:border-gray-primary capitalize text-white-normal'>
                                                 {k + 1}
                                             </td>
-                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-info text-white-normal`} >
+                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary text-white-normal`} >
                                                 {user.emailAddress.toLowerCase()}
                                             </td>
-                                            <td className={`border p-4 dark:border-gray-info ${user.rol === 'sponsored' ? 'text-red-logo' : 'text-white-normal'}`} >
+                                            <td className={`border p-4 dark:border-gray-primary ${user.rol === 'sponsored' ? 'text-red-logo' : 'text-white-normal'}`} >
                                                 {user.username.toLowerCase()}
                                             </td>
-                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-info capitalize text-white-normal`}>
+                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
                                                 {`$${parseInt(user.Applied).toFixed(2)}`}
                                             </td>
-                                            <td className={`} border p-4 dark:border-gray-info capitalize text-white-normal`}>
+                                            <td className={`} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
                                                 {`$${parseInt(user.Balance).toFixed(2)}`}
                                             </td>
-                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-info capitalize text-white-normal`}>
+                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
                                                 {`$${parseInt(user.Profit).toFixed(2)}`}
                                             </td>
                                            

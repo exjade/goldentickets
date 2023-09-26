@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import TableWithdrawals from './table-withdrawals'
 //styles
 import styles from '../../../styles/modules/withdrawal/withdrawal.module.css'; //eslint-disable-line
-import { useTranslation } from 'react-i18next';
+
 const WithdrawalHistory = ({ withdrawals }) => {
-  const { t } = useTranslation()
   useEffect(() => {
-    document.title = 'Admin Withdrawal Activation - Artificial '
+    document.title = 'Withdrawal Activation | GOLDENTICKETS.CLUB '
   }, [])
 
   return (
@@ -24,7 +23,7 @@ const WithdrawalHistory = ({ withdrawals }) => {
         : (
           <>
             <div className={`${styles.withdrawalHistoryNotFound} flex justify-center items-center mt-32 h-full w-full`} >
-              <p className='text-4xl font-semibold text-black-btnicon '>{t('No recent withdrawals')}</p>
+              <p className='text-4xl font-semibold text-black-btnicon '>No recent withdrawals</p>
             </div>
           </>
         )

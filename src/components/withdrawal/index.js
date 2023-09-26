@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import shortid from 'shortid';
 //custom hooks
 import useMenu from '../../hooks/use-menu'
@@ -6,22 +6,15 @@ import useUser from '../../hooks/use-user'
 import useWithdrawals from '../../hooks/use-withdrawals'
 //components
 import AdminView from './adminView'
-import Header from './header'
-import CardsComponent from './cards'
-import WithdrawalHistory from './history'
-import ReinvestmentHistory from './reinvestment';
-import WithdrawalTabs from './withdrawal-tabs';
-//styles
+//eslint-disable-next-line
 import styles from '../../styles/modules/withdrawal/withdrawal.module.css';
 //firebase
 import { firebase } from '../../lib/firebase'
 import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore'
-import { useTranslation } from 'react-i18next';
 const firestore = getFirestore(firebase)
 
 const WithdrawalTimeline = () => {
 
-    useEffect(() => { document.title = 'Withdrawals - Artificial' }, [])
     const { user,
         user: {
             userId, fullName,
@@ -30,27 +23,30 @@ const WithdrawalTimeline = () => {
             Balance,
             rol,
         } } = useUser()
-    const { t } = useTranslation()
     const { openMenu, toggleOpen, toggleClose } = useMenu()
     const { withdrawals } = useWithdrawals()
     //eslint-disable-next-line no-unused-vars
     const orderByDate = withdrawals.sort((a, b) => {
         return new Date(b.WithdrawalDate) - new Date(a.WithdrawalDate)
     })
+    //eslint-disable-next-line 
     const [loader, setLoader] = useState(false);
+    //eslint-disable-next-line 
     const [loaderError, setLoaderError] = useState('');
+    //eslint-disable-next-line 
     const [isInvalid, setIsInvalid] = useState(false);
-
-    //Currency
-    // const [currency, setCurrency] = useState(null);
+    
+    
     const [withdrawalAmount, setWithdrawalAmount] = useState(0)
+    //eslint-disable-next-line 
     const [withdrawalAmountError, setWithdrawalAmountError] = useState('')
-
+    
+    //eslint-disable-next-line 
     const [withdrawalTab, setWithdrawalTab] = useState({
         withdrawal: true,
         reinvestment: false
     })
-
+    
 
     const bankInformation = {
         tether: {
@@ -81,7 +77,7 @@ const WithdrawalTimeline = () => {
         AdminName: '',
         isReinvestment: false,
     }
-
+    
     const reinvestmentData = {
         CustomerName: fullName,
         CustomerId: userId,
@@ -102,154 +98,10 @@ const WithdrawalTimeline = () => {
         isReinvestment: true,
     }
 
-
-    // Withdrawal Manual Request
-    const makeWithdrawalRequest = async () => {
-        try {
-            if (data?.CustomerId === user?.userId) {
-                if (data?.CustomerId !== '' ) {
-                    if (parseInt(withdrawalAmount) <= parseInt(user?.Withdrawal)) {
-                        if (parseInt(user?.Withdrawal) >= 20 && parseInt(withdrawalAmount) >= 20) {
-                            //eslint-disable-next-line no-unused-vars
-                            const docRef = await addDoc(collection(firestore, 'Withdrawals'), data);
-                            setIsInvalid(true)
-                            const userRef = doc(firestore, 'users', user.docId);
-                            setLoader(true)
-                            if (parseInt(user?.Withdrawal) >= 20) {
-                                await updateDoc(userRef, {
-                                    Withdrawal: parseInt(withdrawalAmount) === parseInt(user?.Withdrawal) ? 0 : parseInt(user?.Withdrawal) - withdrawalAmount,
-                                })
-                            }
-                        } else {
-                            setWithdrawalAmountError('Sorry, the minimum withdrawal amount is ($20 USD)')
-                        }
-                    } else {
-                        setWithdrawalAmountError('ERROR: You cannot withdraw more than available')
-                    }
-                }
-            }
-            setTimeout(() => {
-                setLoaderError('')
-                setWithdrawalAmountError('')
-                setLoader(false)
-                setTimeout(() => {
-                    window.location.reload()
-                }, 50)
-            }, 3500)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-
-    /* ==== REINVEST  ==== */
-    const makeReinvest = async () => {
-        try {
-            // Withdrawal Request - Tether (USDT)
-            if (data?.CustomerId === user?.userId) {
-                if (user?.Applied > 0) {
-                    if (data?.CustomerId !== '') {
-                        if (parseInt(user?.Withdrawal) >= 20) {
-                            //eslint-disable-next-line no-unused-vars
-                            const docRef = await addDoc(collection(firestore, 'Reinvestment'), reinvestmentData);
-                            setIsInvalid(true)
-                            const userRef = doc(firestore, 'users', user?.docId);
-                            setLoader(true)
-                            await updateDoc(userRef, {
-                                Applied: parseInt(user?.Withdrawal) + parseInt(user?.Applied),
-                            })
-                            if (user?.Withdrawal > 1) {
-                                await updateDoc(userRef, {
-                                    Withdrawal: 0,
-                                })
-                            }
-                        } else {
-                            setLoaderError(t('Your account balance is less than the minimum withdrawal amount. Please wait until you have more money in your account before attempting to withdraw.'))
-                        }
-                    }
-                }
-            }
-
-            setTimeout(() => {
-                setLoader(false)
-                setTimeout(() => {
-                    window.location.reload()
-                }, 1400)
-            }, 1000)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-
-
-    // const handleOnChange = (e) => {
-    //     setCurrency(
-    //         {
-    //             ...currency,
-    //             [e.target.name]: e.target.value
-    //         })
-    // }
     return (
         <>
             {
-                rol === 'investor' && rol !== 'admin' || rol === 'sponsored' && rol !== 'admin' ? (
-                    <>
-                        <div className='h-screen w-screen overflow-x-hidden' >
-                            <Header
-                                openMenu={openMenu}
-                                toggleOpen={toggleOpen}
-                                toggleClose={toggleClose}
-                                user={user}
-                            />
-                            <div className='w-full mt-36 h-full flex flex-col gap-9'>
-                                {/* <section className='w-full flex justify-center items-center'>
-                                    <SelectCurrency
-                                        handleOnChange={handleOnChange}
-                                    />
-                                </section> */}
-                                <section>
-                                    <CardsComponent
-                                        makeWithdrawalRequest={makeWithdrawalRequest}
-                                        user={user}
-                                        loader={loader}
-                                        loaderError={loaderError}
-                                        isInvalid={isInvalid}
-                                        // currency={currency}
-                                        withdrawalAmountError={withdrawalAmountError}
-                                        withdrawalAmount={Number(withdrawalAmount)}
-                                        setWithdrawalAmount={setWithdrawalAmount}
-                                        makeReinvest={makeReinvest}
-                                    />
-                                </section>
-                                <WithdrawalTabs
-                                    setWithdrawalTab={setWithdrawalTab}
-                                    withdrawalTab={withdrawalTab}
-                                />
-                                {
-                                    withdrawalTab.withdrawal ?
-                                        (
-                                            <section className={`${styles.MainWithdrawalHistory} `} >
-                                                <WithdrawalHistory
-                                                    withdrawals={withdrawals}
-                                                />
-                                            </section>
-                                        )
-                                        :
-                                        (
-                                            <section className={`${styles.MainWithdrawalHistory} `} >
-                                                <ReinvestmentHistory
-                                                />
-                                            </section>
-                                        )
-                                }
-
-
-
-                            </div>
-                        </div>
-                    </>
-                ) : rol === 'admin' || rol === 'owner' && rol !== 'investor' && rol !== 'sponsored' ? (
+                rol === 'admin' || rol === 'owner' && rol !== 'Member' && rol !== 'guest' ? (
                     <>
                         <AdminView
                             user={user}

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next';
 //styles
 import styles from '../../../styles/modules/withdrawal/withdrawal.module.css';
 import RequestLoader from '../loader/request-loader';
@@ -7,39 +6,38 @@ import RequestLoader from '../loader/request-loader';
 const ModalWithdrawal = ({
     handleCloseModal,
     updateWithdrawal,
-    customerName,
     customerWallet,
     withdrawalId,
     withdrawalAmount,
     withdrawalStatus,
     setBlockchainURL,
     processing,
-    withdrawalCurrency
+    withdrawalCurrency,
+    WithdrawalFee,
 }) => {
-    const { t } = useTranslation()
     return (
         <>
 
             <dh-component>
-                <div className="py-12 bg-white-primary transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0" id="modal">
+                <div className="py-12 bg-white-normal transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0" id="modal">
                     <div role="alert" className={` ${styles.centerModal} container mx-auto w-11/12 md:w-2/3 max-w-lg`} >
                         <div className="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
                             <div className={`${styles.svg}w-full flex justify-start text-white-normal mb-3 `} >
-                                <span className="material-icons-outlined text-black-normal text-5xl">
+                                <span className="material-symbols-outlined text-black-normal text-5xl">
                                     account_balance_wallet
                                 </span>
                             </div>
-                            <h1 className="text-black-normal font-lg font-bold tracking-normal leading-tight mb-4">{t('Enter Withdrawal Details')}</h1>
+                            <h1 className="text-black-normal font-lg font-bold tracking-normal leading-tight mb-4">Withdrawal Details</h1>
                             {/* Holder Name */}
-                            <label htmlFor="HolderName" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Holder Name')}</label>
+                            {/* <label htmlFor="HolderName" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Holder Name</label>
                             <input
                                 id="HolderName"
                                 className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-bold w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
                                 defaultValue={customerName}
                                 disabled
-                            />
+                            /> */}
                             {/* Bank Name */}
-                            <label htmlFor="BankName" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Bank Name')}</label>
+                            <label htmlFor="BankName" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Bank Name</label>
                             <input
                                 id="BankName"
                                 className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-bold w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
@@ -49,10 +47,10 @@ const ModalWithdrawal = ({
 
                             {/* Account Number */}
                             <label htmlFor="email2" className="text-gray-800 text-sm font-bold leading-tight 
-                            tracking-normal">{t('Account Number')}</label>
+                            tracking-normal">Account Number</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute text-gray-600 flex items-center px-4 border-r h-full">
-                                    <span className="material-icons-outlined">
+                                    <span className="material-symbols-outlined">
                                         credit_card
                                     </span>
                                 </div>
@@ -65,10 +63,10 @@ const ModalWithdrawal = ({
                             </div>
 
                             {/* ID */}
-                            <label htmlFor="expiry" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('ID Code')}</label>
+                            <label htmlFor="expiry" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">ID Code</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <span className="material-icons-sharp">
+                                    <span className="material-symbols-outlined text-black-normal">
                                         fingerprint
                                     </span>
                                 </div>
@@ -80,25 +78,25 @@ const ModalWithdrawal = ({
                                 />
                             </div>
                             {/* STATUS */}
-                            <label htmlFor="status" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Withdrawal Status')}</label>
+                            <label htmlFor="status" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Withdrawal Status</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <span className="material-icons-sharp">
+                                    <span className="material-symbols-outlined text-black-normal">
                                         receipt_long
                                     </span>
                                 </div>
                                 <input
                                     id="status"
                                     className="text-badges-gold font-semibold text-base focus:outline-none focus:border focus:border-indigo-700 w-full h-10 flex items-center pl-3 border-gray-300 rounded border"
-                                    defaultValue={t(`${withdrawalStatus}`)}
+                                    defaultValue={withdrawalStatus}
                                     disabled
                                 />
                             </div>
                             {/* AMOUNT */}
-                            <label htmlFor="cvc" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Withdrawal Amount')}</label>
+                            <label htmlFor="cvc" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Withdrawal Amount</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <span className="material-icons-sharp">
+                                    <span className="material-symbols-outlined text-black-normal">
                                         attach_money
                                     </span>
                                 </div>
@@ -110,31 +108,31 @@ const ModalWithdrawal = ({
                                 />
                             </div>
                             {/* FEE */}
-                            <label htmlFor="cvc" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Withdrawal Fee')}</label>
+                            <label htmlFor="cvc" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Withdrawal Fee</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <span className="material-icons-sharp">
+                                    <span className="material-symbols-outlined text-black-normal">
                                         attach_money
                                     </span>
                                 </div>
                                 <input
                                     id="cvc"
                                     className="mb-8 text-xl focus:outline-none focus:border focus:border-indigo-700 font-semibold w-full h-10 flex items-center pl-3 border-gray-300 rounded border text-red-card"
-                                    defaultValue={`$${parseFloat(withdrawalAmount * 0.05).toFixed(2)}`}
+                                    defaultValue={WithdrawalFee}
                                     disabled
                                 />
                             </div>
                             {/* BLOCKCHAIN URL */}
-                            <label htmlFor="blockchain" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">{t('Payment URL')}</label>
+                            <label htmlFor="blockchain" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">Payment URL</label>
                             <div className="relative mb-5 mt-2">
                                 <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                                    <span className="material-icons-sharp">
+                                    <span className="material-symbols-outlined text-white-normal">
                                         link
                                     </span>
                                 </div>
                                 <input
                                     id="blockchain"
-                                    className="text-badges-gold font-semibold text-base focus:outline-none focus:border focus:border-indigo-700 w-full h-10 flex items-center pl-3 border-gray-300 rounded border"
+                                    className="bg-blue-button font-semibold text-base focus:outline-none focus:border focus:border-indigo-700 w-full h-10 flex items-center pl-3 text-white-normal rounded border"
                                     onChange={(e) => setBlockchainURL(e.target.value)}
                                 />
                             </div>
@@ -146,17 +144,17 @@ const ModalWithdrawal = ({
                             {/* SUBMIT BUTTON */}
                             <div className="flex items-center justify-start w-full">
                                 <button
-                                    className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-blue-primary bg-blue-emblema rounded text-white-normal px-8 py-2 text-sm"
+                                    className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out bg-blue-primary bg-blue-emblema rounded text-white-normal px-8 py-2 text-sm"
                                     onClick={() => updateWithdrawal()}
                                 >
-                                    {t('Submit')}
+                                    Submit
                                 </button>
                                 {/* CANCEL BUTTON */}
                                 <button
-                                    className="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-info transition duration-150 text-white-normal ease-in-out hover:border-gray-400 hover:bg-gray-button border rounded px-8 py-2 text-sm"
+                                    className="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-pink-primary transition duration-150 text-white-normal ease-in-out hover:border-gray-400 hover:bg-gray-button border rounded px-8 py-2 text-sm"
                                     onClick={() => handleCloseModal()}
                                 >
-                                    {t('Cancel')}
+                                    Cancel
                                 </button>
                             </div>
                         </div>
@@ -187,4 +185,5 @@ ModalWithdrawal.propTypes = {
     CustomerAgencia: PropTypes.string,
     CustomerChavePix: PropTypes.string,
     withdrawalCurrency: PropTypes.string,
+    WithdrawalFee: PropTypes.number,
 }
