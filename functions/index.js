@@ -8,14 +8,12 @@ admin.initializeApp({
 
 
 const {
-    BuyTickets,
-    BuyTicketsV2,
+    BuyTicketsV3,
 } = require('./utils/scheduled-functions.js');
 
 const db = admin.firestore();
 
 
-exports.BuyTickets = BuyTickets; 
-exports.BuyTicketsV2 = BuyTicketsV2; 
+exports.BuyTicketsV3 = BuyTicketsV3; 
 
 
