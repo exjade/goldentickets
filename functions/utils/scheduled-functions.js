@@ -2,9 +2,18 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const db = admin.firestore();
 
-exports.BuyTicketsV2 = functions.https.onCall(async (data, context) => {
+exports.BuyTicketsV3 = functions.https.onCall(async (data, context) => {
 
-  const { selectedNumbers, userId, costoTicket, totalPrice } = data;
+  const {
+    selectedNumbers,
+    userId,
+    costoTicket,
+    totalPrice,
+    purchaseDate,
+    id,
+    username,
+    drawType,
+  } = data;
 
   try {
     // Verifica que el usuario esté autenticado
@@ -32,6 +41,10 @@ exports.BuyTicketsV2 = functions.https.onCall(async (data, context) => {
             numeroTicket: numeroTicket,
             userId: userId,
             costoTicket: costoTicket,
+            purchaseDate: purchaseDate,
+            id: id,
+            username: username,
+            drawType: drawType,
           };
 
           // Agrega la compra del ticket como un documento en la subcolección "compras"
