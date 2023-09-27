@@ -48,16 +48,22 @@ const Header = (props) => {
           <div className={`${styles.balances}`} >
             <span className={`${styles.coin}`}>
               <img
-                src="assets/casino/gold_coin_icon.png"
+                src={'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fgold_coin_icon.png?alt=media&token=210e9686-d192-4973-9a0a-8662a7beea9a' }
                 alt="coin"
                 className={`${styles.coinImage} w-6 h-6 object-contain`}
               />
-              <p className={`${styles.coinText}`}>
-                {parseFloat(`${user?.Balance}`).toLocaleString('en-US', {
-                  style: 'currency',
-                  currency: 'USD'
-                })}
-              </p>
+              {
+                user?.Balance === null || user?.Balance === undefined ?
+                <p className={`${styles.coinText} animate-pulse bg-blue-primary w-12 h-4 rounded-sm opacity-10`}></p>
+                  :
+                  <p className={`${styles.coinText}`}>
+                    {parseFloat(`${user?.Balance}`).toLocaleString('en-US', {
+                      style: 'currency',
+                      currency: 'USD'
+                    })}
+                  </p>
+              }
+
             </span>
 
             <button
@@ -82,7 +88,7 @@ const Header = (props) => {
               onClick={() => console.log('Open Profile Dropdown')}
             >
               <img
-                src="assets/shiba/profile_shiba_inu.png"
+                src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
                 alt="shiba avatar"
                 className='object-contain w-6 h-6 sm:w-8 sm:h-8'
               />

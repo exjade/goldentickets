@@ -9,7 +9,7 @@ const BuyTickets = () => {
 
   const {
     //  open,
-     openModal, 
+    openModal,
     // closeModal 
   } = useModal()
 
@@ -27,7 +27,7 @@ const BuyTickets = () => {
               openModal={openModal}
             />
           </Error>
-          
+
           <Error>
             <DrawTimeline />
           </Error>

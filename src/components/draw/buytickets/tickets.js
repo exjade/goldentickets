@@ -33,7 +33,7 @@ const Tickets = () => {
 
             if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
                 // Llama a la función comprarTickets en el backend
-                const ComprarTickets = functions.httpsCallable('BuyTicketsV2'); // Ajusta el nombre de la función
+                const ComprarTickets = functions.httpsCallable('BuyTicketsV3'); // Ajusta el nombre de la función
                 const response = await ComprarTickets({
                     selectedNumbers,
                     userId,
