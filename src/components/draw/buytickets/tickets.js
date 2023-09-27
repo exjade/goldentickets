@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './css/buytickets.module.css';
 import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
+import shortid from 'shortid';
 import { functions, firebase } from '../../../lib/firebase';
 const db = firebase.firestore();
 
@@ -21,6 +22,10 @@ const Tickets = () => {
     const comprarTickets = async () => {
         try {
             const userId = user?.userId; // Reemplaza con el ID del usuario autenticado
+            const username = user?.username; // Nombre de usuario
+            const purchaseDate = Date.now(); // fecha de compra
+            const id = shortid.generate().trim(); // ID de ticket
+            const drawType = 'Lotería de $1 USD'; // Nombre de la loteria
             const costoTicket = 1; // Reemplaza con el costo del ticket
             const totalPrice = price + fee; // Costo total del ticket
 
@@ -34,6 +39,10 @@ const Tickets = () => {
                     userId,
                     costoTicket,
                     totalPrice,
+                    purchaseDate,
+                    id,
+                    username,
+                    drawType,
                 });
 
                 if (response.data && response.data.message) {
