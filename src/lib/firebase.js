@@ -2,8 +2,10 @@ import Firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import 'firebase/compat/functions';
 import { getAnalytics } from 'firebase/analytics';
-import { getAuth } from 'firebase/auth'
+import { getAuth } from 'firebase/auth';
+
 /* eslint-disable*/
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -19,5 +21,6 @@ const analytics = getAnalytics(firebase);
 const { FieldValue } = Firebase.firestore;
 const authentication = getAuth(firebase);
 const firestore = firebase.firestore();
+const functions = firebase.functions();
 
-export { firebase, FieldValue, analytics, authentication, firestore };
+export { firebase, FieldValue, analytics, authentication, firestore,functions };
