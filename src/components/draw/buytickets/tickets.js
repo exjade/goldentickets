@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styles from './css/buytickets.module.css';
 import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
-import { functions } from '../../../lib/firebase';
+import { functions, firebase } from '../../../lib/firebase';
+const db = firebase.firestore();
 
 const Tickets = () => {
 
@@ -11,46 +12,74 @@ const Tickets = () => {
     const [selectedNumbers, setSelectedNumbers] = useState([]);
     const [price, setPrice] = useState(0);
     const [fee, setFee] = useState(0);
+    const [unavailableNumbers, setUnavailableNumbers] = useState([]);
     const [mensaje, setMensaje] = useState('');
+    const [messageUnavailableNumbers, setMessageUnavailableNumbers] = useState('');
+
 
 
     const comprarTickets = async () => {
         try {
-          const userId = user?.userId; // Reemplaza con el ID del usuario autenticado
-          const costoTicket = 1; // Reemplaza con el costo del ticket
-            
-          // Llama a la función comprarTickets en el backend
-          const ComprarTickets = functions.httpsCallable('BuyTicketsV2'); // Ajusta el nombre de la función
-          const response = await ComprarTickets({
-            selectedNumbers,
-            userId,
-            costoTicket,
-          });
-          
+            const userId = user?.userId; // Reemplaza con el ID del usuario autenticado
+            const costoTicket = 1; // Reemplaza con el costo del ticket
+            const totalPrice = price + fee; // Costo total del ticket
 
-          if (response.data && response.data.message) {
+            const doesUserHaveSufficientBalance = user?.Balance >= totalPrice && totalPrice <= user?.Balance;
 
-            setMensaje('Compra exitosa');
+            if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
+                // Llama a la función comprarTickets en el backend
+                const ComprarTickets = functions.httpsCallable('BuyTicketsV2'); // Ajusta el nombre de la función
+                const response = await ComprarTickets({
+                    selectedNumbers,
+                    userId,
+                    costoTicket,
+                    totalPrice,
+                });
 
-            setTimeout(() => {
-                setSelectedNumbers([])
-                setPrice(0)
-                setFee(0)
-                setMensaje('') 
-            }, 2000);
+                if (response.data && response.data.message) {
+                    setMensaje('Compra exitosa');
+                    setTimeout(() => {
+                        setSelectedNumbers([])
+                        setPrice(0)
+                        setFee(0)
+                        setMensaje('')
+                        setMessageUnavailableNumbers('')
+                    }, 2000);
+                } else if (response.data && response.data.error) {
+                    setMensaje(response.data.error);
+                    setTimeout(() => {
+                        setSelectedNumbers([])
+                        setPrice(0)
+                        setFee(0)
+                        setMensaje('')
+                        setMessageUnavailableNumbers('')
+                    }, 2000);
+                }
 
-        } else if (response.data && response.data.error) {
-              console.log('error')
-            setMensaje(response.data.error);
-          }
+            } else {
+                setMensaje('Insufficient balance');
+                setTimeout(() => {
+                    setSelectedNumbers([])
+                    setPrice(0)
+                    setFee(0)
+                    setMensaje('')
+                    setMessageUnavailableNumbers('')
+                }, 2000);
+            }
         } catch (error) {
-          console.error('Error al comprar tickets:', error);
+            console.error('Error al comprar tickets:', error);
         }
-      };
+    };
 
 
+    // Función para verificar si un número de ticket está comprado
+    const checkNumeroComprado = async (numero) => {
+        const estadoLoteriaRef = db.collection('loteria').doc('estado');
+        const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+        return !querySnapshot.empty;
+    };
 
-    const handleNumberClick = (number) => {
+    const handleNumberClick = async (number) => {
         if (selectedNumbers.includes(number)) {
             // Si el número ya está seleccionado, lo deseleccionamos
             setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
@@ -59,12 +88,25 @@ const Tickets = () => {
 
             handleRemoveFee()
         } else {
-            // Si el número no está seleccionado, lo agregamos a la lista
-            setSelectedNumbers([...selectedNumbers, number]);
-            // Sumamos $1 al costo cuando se selecciona un número
-            setPrice(price + 1);
 
-            handleAddFee()
+            // Si el número no está seleccionado, verificamos si está comprado
+            const estaComprado = await checkNumeroComprado(number);
+
+            if (!estaComprado) {
+                // Si el número no está seleccionado, lo agregamos a la lista
+                setSelectedNumbers([...selectedNumbers, number]);
+                // Sumamos $1 al costo cuando se selecciona un número
+                setPrice(price + 1);
+
+                handleAddFee()
+            } else {
+                // Si está comprado, agregamos el número a los no disponibles
+                setUnavailableNumbers([...unavailableNumbers, number]);
+                setMessageUnavailableNumbers('Ticket no disponible') 
+                setTimeout(() => {
+                    setMessageUnavailableNumbers('') 
+                }, 2500);
+            }
         }
     };
 
@@ -85,6 +127,7 @@ const Tickets = () => {
             setFee(selectedNumbers.length >= 1 ? fee + 1 : 1);
         }
     };
+
 
 
     return (
@@ -109,6 +152,7 @@ const Tickets = () => {
                                 key={index + 1}
                                 number={index + 1}
                                 isSelected={selectedNumbers.includes(index + 1)}
+                                isUnavailable={unavailableNumbers.includes(index + 1)}
                                 onClick={handleNumberClick}
                             />
                         ))}
@@ -168,11 +212,15 @@ const Tickets = () => {
                                     })} USD
                                 </p>
                             </span>
-                        </div>  
+                        </div>
 
                         {
                             mensaje !== '' &&
                             <p className='text-lg font-semibold font-Nunito text-green-secondary text-center'>{mensaje}</p>
+                        }
+                        {
+                            messageUnavailableNumbers !== '' &&
+                            <p className='text-lg font-semibold font-Nunito text-pink-primary text-center'>{messageUnavailableNumbers}</p>
                         }
 
                         {/* BUTÓN DE COMPRAR */}
