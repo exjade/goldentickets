@@ -7,7 +7,11 @@ import DrawTimeline from '../../components/draw';
 
 const BuyTickets = () => {
 
-  const { open, openModal, closeModal } = useModal()
+  const {
+    //  open,
+     openModal, 
+    // closeModal 
+  } = useModal()
 
   return (
     <>

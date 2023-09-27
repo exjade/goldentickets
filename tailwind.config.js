@@ -32,6 +32,7 @@ module.exports = {
         button: '#0A58B9',
         h4: '#408BFC',
         terms: '#2977EC',
+        numbers: '#2977EC'
       },
       gray: {
         primary: '#959DA6',

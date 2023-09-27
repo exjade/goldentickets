@@ -3,12 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Error from '../../error/error';
 import Header from '../../components/Header/dashboard';
 import useModal from '../../hooks/use-modal';
-import DisplayDraw from '../../components/draw/show-draw/draw';
+// import DisplayDraw from '../../components/draw/show-draw/draw';
 import DrawTimeline from '../../components/draw';
 
 const Draw = () => {
 
-  const { open, openModal, closeModal } = useModal()
+  const {
+    // open,
+    openModal,
+    // closeModal
+  } = useModal()
 
   return (
     <>
