@@ -1,10 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './css/buytickets.module.css';
+import NumberSelector from './number-selector';
 
 const Tickets = () => {
 
+    const [selectedNumbers, setSelectedNumbers] = useState([]);
+    const [price, setPrice] = useState(0);
+    const [fee, setFee] = useState(0);
 
-    const numbersComplete = Array.from({ length: 100 }, (_, i) => i + 1);
+
+    const handleNumberClick = (number) => {
+        if (selectedNumbers.includes(number)) {
+            // Si el número ya está seleccionado, lo deseleccionamos
+            setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
+            // Restamos $1 al costo cuando se deselecciona un número
+            setPrice(price - 1);
+
+            handleRemoveFee()
+        } else {
+            // Si el número no está seleccionado, lo agregamos a la lista
+            setSelectedNumbers([...selectedNumbers, number]);
+            // Sumamos $1 al costo cuando se selecciona un número
+            setPrice(price + 1);
+
+            handleAddFee()
+        }
+    };
+
+    const handleRemoveFee = () => {
+        // Resta la comisión de servicio
+        setFee(selectedNumbers.length >= 2 ? fee - 0.50 : 0);
+    };
+
+    const handleAddFee = () => {
+        // Suma la comisión de servicio
+        setFee(selectedNumbers.length >= 1 ? fee + 0.50 : 1);
+    };
+
 
     return (
         <div className={`${styles.container}`} >
@@ -12,34 +44,25 @@ const Tickets = () => {
 
 
                 {/*================ Sección izquierda ================*/}
-                {/* TITULO */}
-                {/* SUBTITULO */}
-                {/* CUENTA ATRÁS DE SORTEO */}
-
                 <section className={`${styles.leftContainer}`} >
                     <h2>Pick your <b className={`${styles.leftBold}`}>lucky</b> number</h2>
 
-            
+
                 </section>
 
 
                 {/*================ Sección central ================*/}
-
-                {/* NÚMEROS DEL 1 - 100 */}
-
                 <section className={`${styles.middleContainer}`} >
                     <div className={`${styles.middleWrapper}`}>
 
-
-                        {numbersComplete.map((number) => (
-                            <span
-                                key={number}
-                                className={`${styles.middleCircle}`}
-                            >
-                                <p className={`${styles.middleNumber}`}>{number}</p>
-                            </span>
+                        {Array.from({ length: 100 }, (_, index) => (
+                            <NumberSelector
+                                key={index + 1}
+                                number={index + 1}
+                                isSelected={selectedNumbers.includes(index + 1)}
+                                onClick={handleNumberClick}
+                            />
                         ))}
-
 
                     </div>
                 </section>
@@ -55,31 +78,46 @@ const Tickets = () => {
 
                         {/* TICKET SELECCIONADO */}
                         <div className={`${styles.rightTicket}`} >
-                            <span
-                                className={`${styles.middleCircle}`}
-                            >
-                                <p className={`${styles.middleNumber}`}>1</p>
-                            </span>
-                            <span
-                                className={`${styles.middleCircle}`}
-                            >
-                                <p className={`${styles.middleNumber}`}>2</p>
-                            </span>
+                            {
+                                selectedNumbers?.map((number) => (
+                                    <span
+                                        key={number}
+                                        className={`${styles.middleCircle}`}
+                                    >
+                                        <p className={`${styles.middleNumber}`}>{number}</p>
+                                    </span>
+                                ))
+                            }
                         </div>
 
                         {/* DETALLES DE COMPRA */}
                         <div className={`${styles.rightSummary}`} >
                             <span className={`${styles.rightDetails}`}>
                                 <p>Costo de ticket</p>
-                                <p>$1 USD</p>
+                                <p>
+                                    {parseFloat(`${price}`).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })} USD
+                                </p>
                             </span>
                             <span className={`${styles.rightDetails}`}>
                                 <p>Comisión</p>
-                                <p>$1 USD</p>
+                                <p>
+                                    {parseFloat(`${fee}`).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })} USD
+                                </p>
                             </span>
                             <span className={`${styles.rightDetails}`}>
                                 <p>Total</p>
-                                <p>$2 USD</p>
+                                <p>
+                                    {parseFloat(`${fee + price}`).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })} USD
+                                </p>
                             </span>
                         </div>
 
