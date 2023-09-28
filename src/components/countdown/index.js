@@ -1,6 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './css/countdown.module.css';
+import React from 'react';import styles from './css/countdown.module.css';
 import useHourlyCountdown from './hooks/Hourly-countdown/use-hourlyCountdown';
 
 const DrawCountDown = () => {
@@ -87,7 +85,3 @@ const DrawCountDown = () => {
 }
 
 export default DrawCountDown
-
-DrawCountDown.propTypes = {
-
-}
