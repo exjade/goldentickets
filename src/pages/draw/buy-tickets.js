@@ -4,6 +4,9 @@ import Error from '../../error/error';
 import Header from '../../components/Header/dashboard';
 import useModal from '../../hooks/use-modal';
 import DrawTimeline from '../../components/draw';
+import UserDrawTickets from '../../components/draw/draw-tickets';
+import useUserTickets from '../../hooks/draw/use-userTickets';
+import useAuthListener from '../../hooks/use-auth-listener';
 
 const BuyTickets = () => {
 
@@ -12,6 +15,11 @@ const BuyTickets = () => {
     openModal,
     // closeModal 
   } = useModal()
+  const { user } = useAuthListener()
+  const { tickets } = useUserTickets()
+
+
+  const filterTickets = tickets?.filter(ticket => ticket.userId === user?.uid)
 
   return (
     <>
@@ -31,6 +39,16 @@ const BuyTickets = () => {
           <Error>
             <DrawTimeline />
           </Error>
+
+          {
+            filterTickets?.length > 0 && (
+              <Error>
+                <UserDrawTickets
+                  filterTickets={filterTickets}
+                />
+              </Error>
+            )
+          }
 
         </motion.div>
       </AnimatePresence>
