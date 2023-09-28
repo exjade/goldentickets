@@ -30,6 +30,11 @@ const UserDrawTickets = (props) => {
     setRandomNumbers(numbers);
   }, []);
 
+
+  const orderByDate = props?.filterTickets?.sort((a, b) => {
+    return new Date(a.purchaseDate) - new Date(b.purchaseDate)
+  })
+
   return (
 
     <div className={`${styles.container}`} >
@@ -47,7 +52,7 @@ const UserDrawTickets = (props) => {
         <div className={`${styles.ticketsContainer}`}>
 
           {
-            props?.filterTickets?.map((ticket, index) => (
+            orderByDate?.map((ticket, index) => (
               <div
                 key={index}
                 className={`${styles.tickets}`}
