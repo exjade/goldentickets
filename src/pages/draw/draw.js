@@ -1,18 +1,22 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
+import { useHistory } from 'react-router-dom';
 import Error from '../../error/error';
-import Header from '../../components/Header/dashboard';
-import useModal from '../../hooks/use-modal';
 import DisplayDraw from '../../components/draw/show-draw/draw';
+import * as ROUTES from '../../constants/routes'
+import useLastWinner from '../../hooks/draw/use-lastWinner';
 
 
 const Draw = () => {
 
-  const {
-    // open,
-    openModal,
-    // closeModal
-  } = useModal()
+  let history = useHistory()
+
+  const handleRedirect = () => {
+    history.push(ROUTES.DASHBOARD)
+  }
+
+  const { loterry } = useLastWinner()
+
 
   return (
     <>
@@ -24,13 +28,10 @@ const Draw = () => {
         >
 
           <Error>
-            <Header
-              openModal={openModal}
+            <DisplayDraw
+              handleRedirect={handleRedirect}
+              loterry={loterry}
             />
-          </Error>
-
-          <Error>
-            <DisplayDraw />
           </Error>
 
         </motion.div>
