@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styles from './css/header.module.css';
 import ToggleRounded from '../../toggle/rounded';
 import useUser from '../../../hooks/use-user';
+import useUserData from '../../../hooks/user/use-data';
 
 const Header = (props) => {
 
   const logo = `${process.env.REACT_APP_LOGO}`;
   const { user } = useUser()
+  const { activeUser } = useUserData()
 
   return (
 
@@ -57,7 +59,7 @@ const Header = (props) => {
                 <p className={`${styles.coinText} animate-pulse bg-blue-primary w-12 h-4 rounded-sm opacity-10`}></p>
                   :
                   <p className={`${styles.coinText}`}>
-                    {parseFloat(`${user?.Balance}`).toLocaleString('en-US', {
+                    {parseFloat(`${activeUser?.Balance}`).toLocaleString('en-US', {
                       style: 'currency',
                       currency: 'USD'
                     })}
