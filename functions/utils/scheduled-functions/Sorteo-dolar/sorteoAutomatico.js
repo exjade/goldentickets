@@ -100,6 +100,14 @@ exports.sorteoAutomaticoDolarHoraV3 = functions.pubsub.schedule('0 * * * *').tim
 
             const cumulativePrize = db.collection('accumulated-prize').add(informaciónSorteo);
 
+              // 12. Después del sorteo, elimina la colección "compras"
+              await db.collection('loteria').doc('estado').collection('compras').get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    doc.ref.delete();
+                });
+            });
+
+
             console.log(`Nadie compró el número ganador. Premio acumulado: $${premioData?.data()?.premioAcumulado}`);
         }
 
