@@ -10,7 +10,8 @@ body {
     justify-content: center;
     align-content: center;
     flex-direction: row;
-    background: #041b3b7a;
+    position: absolute;
+    background: #041b3bcf;
     z-index: 9999;
 }
 

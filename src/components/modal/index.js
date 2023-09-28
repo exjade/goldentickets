@@ -44,7 +44,7 @@ const Wallet = (props) => {
       name: 'usdt'
     },
     bep20: {
-      img: 'assets/blockchain/usdt-bsc.png',
+      img: 'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fblockchain%2Fusdt-bsc.png?alt=media&token=6bd450f7-2db3-4e25-b58b-32a5f0c2e31a',
       name: 'usdt'
     },
     btc: {

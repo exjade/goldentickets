@@ -4,6 +4,8 @@ import styles from './../css/wallet.module.css';
 import CoinNetwork from '../../coin-network/coin-network';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import QRCodeGenerator from './QRCode';
+import Lottie from 'lottie-react';
+import AnimationDepositWallet from '../lottie/animation_depositWallet.json'
 
 
 const DepositWallet = (props) => {
@@ -150,10 +152,11 @@ const DepositWallet = (props) => {
                             ) :
                                 (
                                     <>
-                                        <img
-                                            src="assets/blockchain/address_icon.png"
-                                            alt="network"
-                                            className={`${styles.addressIcon} w-24 h-24 object-contain`}
+                                        <Lottie
+                                            animationData={AnimationDepositWallet}
+                                            style={{
+                                                width: '250px', 
+                                            }}
                                         />
                                         <h2>Generate Deposit Address</h2>
                                         <p>Please generate new deposit wallet address,
