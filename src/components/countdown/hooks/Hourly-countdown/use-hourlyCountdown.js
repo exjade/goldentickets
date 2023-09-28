@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import useLastWinner from '../../../../hooks/draw/use-lastWinner';
 
 export default function useHourlyCountdown() {
+
+  const { loterry } = useLastWinner()
+
+
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [days, setDays] = useState([0, 0]);
   const [hours, setHours] = useState([0, 0]);
   const [minutes, setMinutes] = useState([0, 0]);
   const [seconds, setSeconds] = useState([0, 0]);
 
-  const history = useHistory();
 
   useEffect(() => {
     function countdownAndRestart(timestamp) {
@@ -31,13 +34,13 @@ export default function useHourlyCountdown() {
     }
 
     // Timestamp inicial (ejemplo)
-    const initialTimestamp = 1695870006000;
+    const initialTimestamp = loterry[0]?.date;
 
     // Función para calcular la cuenta atrás y reiniciar cada hora
     countdownAndRestart(initialTimestamp);
 
     return () => clearInterval(countdownAndRestart);
-  }, [history]);
+  }, [loterry]);
 
   useEffect(() => {
     if (timeRemaining !== null) {
