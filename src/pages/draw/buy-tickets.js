@@ -11,9 +11,9 @@ import useAuthListener from '../../hooks/use-auth-listener';
 const BuyTickets = () => {
 
   const {
-    //  open,
+    open,
     openModal,
-    // closeModal 
+    closeModal
   } = useModal()
   const { user } = useAuthListener()
   const { tickets } = useUserTickets()
@@ -37,7 +37,10 @@ const BuyTickets = () => {
           </Error>
 
           <Error>
-            <DrawTimeline />
+            <DrawTimeline
+              open={open}
+              closeModal={closeModal}
+            />
           </Error>
 
           {
