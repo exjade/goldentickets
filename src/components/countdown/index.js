@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './css/countdown.module.css';
+import useHourlyCountdown from './hooks/Hourly-countdown/use-hourlyCountdown';
 
 const DrawCountDown = () => {
+
+    const {
+        days,
+        hours,
+        minutes,
+        seconds,
+    } = useHourlyCountdown()
+
+
     return (
         <div className={`${styles.container}`} >
             <div className={`${styles.wrapper}`} >
@@ -16,10 +26,10 @@ const DrawCountDown = () => {
                         <div className={`${styles.numbers}`} >
 
                             <span className={`${styles.numberBox}`}>
-                                <p>0</p>
+                                <p> {days[0]} </p>
                             </span>
                             <span className={`${styles.numberBox}`}>
-                                <p>1</p>
+                                <p> {days[1]} </p>
                             </span>
                         </div>
                         <h3>Days</h3>
@@ -31,10 +41,10 @@ const DrawCountDown = () => {
                         <div className={`${styles.numbers}`} >
 
                             <span className={`${styles.numberBox}`}>
-                                <p>1</p>
+                                <p> {hours[0]} </p>
                             </span>
                             <span className={`${styles.numberBox}`}>
-                                <p>5</p>
+                                <p> {hours[1]} </p>
                             </span>
                         </div>
                         <h3>Hours</h3>
@@ -46,10 +56,10 @@ const DrawCountDown = () => {
                         <div className={`${styles.numbers}`} >
 
                             <span className={`${styles.numberBox}`}>
-                                <p>4</p>
+                                <p> {minutes[0]} </p>
                             </span>
                             <span className={`${styles.numberBox}`}>
-                                <p>6</p>
+                                <p> {minutes[1]} </p>
                             </span>
                         </div>
                         <h3>Minutes</h3>
@@ -60,10 +70,10 @@ const DrawCountDown = () => {
                         <div className={`${styles.numbers}`} >
 
                             <span className={`${styles.numberBox}`}>
-                                <p>3</p>
+                                <p> {seconds[0]} </p>
                             </span>
                             <span className={`${styles.numberBox}`}>
-                                <p>3</p>
+                                <p> {seconds[1]} </p>
                             </span>
                         </div>
                         <h3>Seconds</h3>
