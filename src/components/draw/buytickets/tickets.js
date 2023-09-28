@@ -4,6 +4,7 @@ import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
 import shortid from 'shortid';
 import { functions, firebase } from '../../../lib/firebase';
+import DrawCountDown from '../../countdown';
 const db = firebase.firestore();
 
 const Tickets = () => {
@@ -111,9 +112,9 @@ const Tickets = () => {
             } else {
                 // Si está comprado, agregamos el número a los no disponibles
                 setUnavailableNumbers([...unavailableNumbers, number]);
-                setMessageUnavailableNumbers('Ticket no disponible') 
+                setMessageUnavailableNumbers('Ticket no disponible')
                 setTimeout(() => {
-                    setMessageUnavailableNumbers('') 
+                    setMessageUnavailableNumbers('')
                 }, 2500);
             }
         }
@@ -148,7 +149,7 @@ const Tickets = () => {
                 <section className={`${styles.leftContainer}`} >
                     <h2>Pick your <b className={`${styles.leftBold}`}>lucky</b> number</h2>
 
-
+                    <DrawCountDown />
                 </section>
 
 
