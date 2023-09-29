@@ -1,0 +1,22 @@
+.lotteryHistoryWrapper {
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 4rem;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    background: #2281e118;
+}
+
+
+.lotteryHistory {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    background: #2281e118;
+}
