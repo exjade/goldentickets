@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes from 'prop-types';
 import styles from './css/header.module.css';
 import ToggleRounded from '../../toggle/rounded';
 import useUser from '../../../hooks/use-user';
 import useUserData from '../../../hooks/user/use-data';
+import * as ROUTES from '../../../constants/routes'
 
 const Header = (props) => {
 
@@ -27,14 +29,16 @@ const Header = (props) => {
             </span>
           </button>
 
-          <div className={`${styles.brand}`} >
-            <img
-              src={logo}
-              alt="logo"
-              className={`${styles.img}`}
-            />
-            <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
-          </div>
+          <Link to={ROUTES.DASHBOARD}>
+            <div className={`${styles.brand}`} >
+              <img
+                src={logo}
+                alt="logo"
+                className={`${styles.img}`}
+              />
+              <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
+            </div>
+          </Link>
 
           {/* TOGGLE GAMBLING / LIVE */}
           <ToggleRounded
@@ -50,13 +54,13 @@ const Header = (props) => {
           <div className={`${styles.balances}`} >
             <span className={`${styles.coin}`}>
               <img
-                src={'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fgold_coin_icon.png?alt=media&token=210e9686-d192-4973-9a0a-8662a7beea9a' }
+                src={'https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fgold_coin_icon.png?alt=media&token=210e9686-d192-4973-9a0a-8662a7beea9a'}
                 alt="coin"
                 className={`${styles.coinImage} w-6 h-6 object-contain`}
               />
               {
                 user?.Balance === null || user?.Balance === undefined ?
-                <p className={`${styles.coinText} animate-pulse bg-blue-primary w-12 h-4 rounded-sm opacity-10`}></p>
+                  <p className={`${styles.coinText} animate-pulse bg-blue-primary w-12 h-4 rounded-sm opacity-10`}></p>
                   :
                   <p className={`${styles.coinText}`}>
                     {parseFloat(`${activeUser?.Balance}`).toLocaleString('en-US', {

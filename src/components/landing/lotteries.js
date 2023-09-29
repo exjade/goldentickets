@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './css/lotteries.module.css';
 import TicketNumber from './ticket/ticket-number';
 import LuckyNumbers from './lucky-numbers';
 import useLastWinner from '../../hooks/draw/use-lastWinner';
 import useUserTickets from '../../hooks/draw/use-userTickets';
 import LotteriesLoader from './loader/lotteries-loader';
+import * as ROUTES from '../../constants/routes'
 
 const Lotteries = () => {
 
@@ -77,67 +79,70 @@ const Lotteries = () => {
               {
                 loterry[0]?.numeroGanador !== undefined ?
                   (
-                    <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulator}` : `${styles.lotteryHistory}`}  `}  >
-                      <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulatorWrapper}` : `${styles.lotteryHistoryWrapper}`}  `} >
+                    <Link to={ROUTES.BUY_TICKETS}>
+                      <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulator}` : `${styles.lotteryHistory}`}  `}  >
 
-                        {/* NOMBRE DE LOTERIA */}
-                        <span className={`${styles.lotteryHistoryName}`}>
-                          {
-                            loterry[0]?.numeroGanador === 0 && loterry[0]?.numeroNoGanador > 0 ?
-                              (
-                                <p>Accumulator</p>
-                              )
-                              :
-                              (
+                        <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulatorWrapper}` : `${styles.lotteryHistoryWrapper}`}  `} >
 
-                                <p>Classic</p>
-                              )
-                          }
-                        </span>
-                        {/* NUMBERS */}
-                        <TicketNumber />
-                        {/* TIME */}
-                        <span className={`${styles.lotteryHistoryName}`}>
-                          {
-                            isNaN(date.hours) || isNaN(date.minutes) ?
-                              (
-                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
-                              ) :
-                              (
-                                <p>{date.hours}:{date.minutes} {date.period}</p>
-                              )
-                          }
-                        </span>
-                        {/* AMOUNT PLAYERS */}
-                        <span className={`${styles.lotteryHistoryName}`}>
-                          {
-                            tickets?.length === undefined || tickets?.length === null ?
-                              (
-                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
-                              ) :
-                              (
-                                <p>{tickets?.length}/100</p>
-                              )
-                          }
-                        </span>
-                        {/* PRIZE */}
-                        <span className={`${styles.lotteryHistoryPrize}`}>
+                          {/* NOMBRE DE LOTERIA */}
+                          <span className={`${styles.lotteryHistoryName}`}>
+                            {
+                              loterry[0]?.numeroGanador === 0 && loterry[0]?.numeroNoGanador > 0 ?
+                                (
+                                  <p>Accumulator</p>
+                                )
+                                :
+                                (
 
-                          {
-                            loterry[0]?.premioAcumulado === undefined ?
-                              (
-                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
-                              ) :
-                              (
-                                <p>
-                                  {`$${loterry[0]?.premioAcumulado}`}
-                                </p>
-                              )
-                          }
-                        </span>
+                                  <p>Classic</p>
+                                )
+                            }
+                          </span>
+                          {/* NUMBERS */}
+                          <TicketNumber />
+                          {/* TIME */}
+                          <span className={`${styles.lotteryHistoryName}`}>
+                            {
+                              isNaN(date.hours) || isNaN(date.minutes) ?
+                                (
+                                  <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                                ) :
+                                (
+                                  <p>{date.hours}:{date.minutes} {date.period}</p>
+                                )
+                            }
+                          </span>
+                          {/* AMOUNT PLAYERS */}
+                          <span className={`${styles.lotteryHistoryName}`}>
+                            {
+                              tickets?.length === undefined || tickets?.length === null ?
+                                (
+                                  <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                                ) :
+                                (
+                                  <p>{tickets?.length}/100</p>
+                                )
+                            }
+                          </span>
+                          {/* PRIZE */}
+                          <span className={`${styles.lotteryHistoryPrize}`}>
 
+                            {
+                              loterry[0]?.premioAcumulado === undefined ?
+                                (
+                                  <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                                ) :
+                                (
+                                  <p>
+                                    {`$${loterry[0]?.premioAcumulado}`}
+                                  </p>
+                                )
+                            }
+                          </span>
+
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   ) : <LotteriesLoader />
               }
 
