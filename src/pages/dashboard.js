@@ -4,6 +4,7 @@ import Error from '../error/error';
 import Header from '../components/Header/dashboard';
 import Timeline from '../components/timeline';
 import useModal from '../hooks/use-modal';
+import LotteriesTimeline from '../components/landing';
 
 const Dashboard = () => {
 
@@ -19,16 +20,20 @@ const Dashboard = () => {
         >
 
           <Error>
-            <Header 
-            openModal={openModal}
+            <Header
+              openModal={openModal}
             />
           </Error>
 
           <Error>
-            <Timeline 
-            open={open}
-            closeModal={closeModal}
+            <Timeline
+              open={open}
+              closeModal={closeModal}
             />
+          </Error>
+
+          <Error>
+            <LotteriesTimeline />
           </Error>
 
         </motion.div>

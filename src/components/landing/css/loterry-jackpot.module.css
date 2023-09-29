@@ -1,0 +1,578 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 95%;
+}
+
+.lotteryJackpotBackground {
+    background: #3996f6;
+    width: 100%;
+    height: 20rem;
+    background-image: url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+    object-fit: contain;
+    background-size: cover;
+    border-radius: 15px;
+    opacity: 0.9;
+}
+
+.lotteryJackpot {
+    background: #2691ff;
+    width: 100%;
+    height: 20rem;
+    border-radius: 15px;
+    opacity: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+/*  ======================= LOTTERY JACKPOT LEFT  =========================   */
+/*  ======================= TITLE, SUBTITLE, PRIZE  =======================   */
+.lotteryJackpotLeft {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    height: 100%;
+}
+
+.lotteryJackpotLeftWrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.lotteryJackpotLeftTitle {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.lotteryJackpotLeftTitle>h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    filter: brightness(1.75);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.lotteryJackpotLeftTitle>p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    filter: brightness(1.75);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.lotteryJackpotLeftPrize {
+    width: 15rem;
+    height: 3.5rem;
+    border: 1px solid #bfaa15;
+    background: #FDB722;
+    transform: skew(149deg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.lotteryJackpotLeftPrize>p {
+    font-size: 2rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    filter: brightness(1.75);
+    transform: skew(28deg);
+}
+
+/*  ======================= LOTTERY JACKPOT MIDDLE  =========================   */
+.lotteryJackpotMiddle {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    height: 100%;
+}
+
+.lotteryJackpotMiddleWrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.lotteryJackpotMiddleCard {
+    background: #2782e1;
+    height: 90%;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+}
+
+.lotteryJackpotMiddleCard>h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    filter: brightness(1.75);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+    text-align: center;
+}
+
+.lotteryJackpotMiddleCard>h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    filter: brightness(1.75);
+}
+
+.lotteryJackpotMiddleCard>button {
+    font-size: 1rem;
+    font-weight: 900;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    filter: brightness(1.75);
+    background: #407493;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 10rem;
+}
+
+.lotteryJackpotMiddleCard>p {
+    font-size: 12px;
+    font-weight: 300;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    filter: brightness(1.75);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+    text-align: center;
+}
+
+
+
+/*  ======================= TITLE, COUNTDOWN, BUTTON, PRICING  ===============   */
+.lotteryJackpotRight {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    height: 100%;
+}
+
+.lotteryJackpotRightWrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-end;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+svg path, svg rect {
+    fill: #5b3000;
+}
+
+@media (max-width: 1280px) {
+
+    /*  ======================= LOTTERY JACKPOT LEFT  =========================   */
+    /*  ======================= TITLE, SUBTITLE, PRIZE  =======================   */
+    .lotteryJackpotLeftTitle>h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+    }
+
+    .lotteryJackpotLeftTitle>p {
+        font-size: 1rem;
+        font-weight: 300;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+    }
+
+    .lotteryJackpotLeftPrize {
+        width: 9rem;
+        height: 2.5rem;
+        border: 1px solid #bfaa15;
+        background: #FDB722;
+        transform: skew(149deg);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+    }
+
+    .lotteryJackpotLeftPrize>p {
+        font-size: 1.6rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        transform: skew(28deg);
+    }
+
+    /*  ======================= LOTTERY JACKPOT MIDDLE  =========================   */
+    .lotteryJackpotMiddle {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 33%;
+        height: 100%;
+    }
+
+    .lotteryJackpotMiddleWrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .lotteryJackpotMiddleCard {
+        background: #2782e1;
+        height: 90%;
+        width: 100%;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 10px;
+    }
+
+    .lotteryJackpotMiddleCard>h3 {
+        font-size: 1rem;
+        font-weight: 300;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+        text-align: center;
+    }
+
+    .lotteryJackpotMiddleCard>h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        filter: brightness(1.75);
+    }
+
+    .lotteryJackpotMiddleCard>button {
+        font-size: 1rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        filter: brightness(1.75);
+        background: #407493;
+        border-radius: 10px;
+        padding: 1rem;
+        width: 10rem;
+    }
+
+    .lotteryJackpotMiddleCard>p {
+        font-size: 12px;
+        font-weight: 300;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+        text-align: center;
+    }
+
+
+}
+
+
+@media (max-width: 960px) {}
+
+@media (max-width: 860px) {
+    .lotteryJackpotRight {
+        display: none;
+    }
+
+    .lotteryJackpotMiddle {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+    }
+
+    .lotteryJackpotLeft {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .lotteryJackpotBackground {
+        background: #3996f6;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+        object-fit: contain;
+        background-size: cover;
+        border-radius: 15px;
+        opacity: 0.9;
+    }
+
+    .lotteryJackpot {
+        background: #2691ff;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        opacity: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+    }
+
+    .lotteryJackpotLeft {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .lotteryJackpotLeftWrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        width: 80%;
+        height: 100%;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .lotteryJackpotLeftTitle >h2 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+    }
+
+
+
+    .lotteryJackpotMiddleCard {
+        background: #2782e1;
+        height: 14rem;
+        width: 21rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 10px;
+    }
+    .lotteryJackpotMiddleWrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .lotteryJackpotMiddle {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+    }
+ 
+    
+}
+
+@media (max-width: 480px) {
+    .lotteryJackpotMiddleCard {
+        background: #2782e1;
+        height: 11rem;
+        width: 16rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 10px;
+    }
+    .lotteryJackpotMiddleCard >h3 {
+        font-size: 12px;
+        font-weight: 300;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        filter: brightness(1.75);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+        text-align: center;
+    }
+    .lotteryJackpotMiddleCard >h2 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        filter: brightness(1.75);
+    }
+    .lotteryJackpotMiddleCard >button {
+        font-size: 1rem;
+        font-weight: 900;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        filter: brightness(1.75);
+        background: #407493;
+        border-radius: 10px;
+        padding: 0.5rem;
+        width: 9rem;
+    }
+    .lotteryJackpotMiddleCard >p {
+       display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .lotteryJackpotMiddleCard {
+        background: #2782e1;
+        height: 11rem;
+        width: 12rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 10px;
+    } 
+}
