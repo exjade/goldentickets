@@ -75,7 +75,7 @@ const Lotteries = () => {
 
 
               {
-                loterry[0]?.numeroGanador === undefined ?
+                loterry[0]?.numeroGanador !== undefined ?
                   (
                     <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulator}` : `${styles.lotteryHistory}`}  `}  >
                       <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulatorWrapper}` : `${styles.lotteryHistoryWrapper}`}  `} >
@@ -116,9 +116,7 @@ const Lotteries = () => {
                                 <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
                               ) :
                               (
-                                <p>
-                                  <p>{tickets?.length}/100</p>
-                                </p>
+                                <p>{tickets?.length}/100</p>
                               )
                           }
                         </span>

@@ -1827,6 +1827,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(171 46 88 / var(--tw-bg-opacity));
 }
+.bg-gray-loader {
+  background-color: #242934d3;
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -2419,6 +2422,9 @@ video {
 .text-green-secondary {
   --tw-text-opacity: 1;
   color: rgb(37 150 130 / var(--tw-text-opacity));
+}
+.text-gray-loader {
+  color: #242934d3;
 }
 .underline {
   text-decoration-line: underline;
