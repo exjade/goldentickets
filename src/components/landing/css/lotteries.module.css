@@ -115,6 +115,7 @@
     border-radius: 7px;
     width: 5rem;
 }
+
 .lotteryCardBreadcrumbHistory>p {
     font-size: 12px;
     font-weight: 700;
@@ -156,6 +157,7 @@
     color: #ffffff;
     font-family: 'Nunito Sans', sans-serif;
 }
+
 .lotteryHistoryPrize>p {
     font-size: 16px;
     font-weight: 900;
@@ -166,6 +168,26 @@
 }
 
 
+.luckyNumbers {
+    position: sticky;
+    z-index: 99;
+    margin-top: -1.8rem;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .luckyNumbers {
+        position: sticky;
+        z-index: 99;
+        margin-top: -2.8rem;
+    }
+
+}
 
 @media (max-width: 600px) {
     .lotteryCardBreadcrumb {
@@ -177,6 +199,7 @@
         gap: 2rem;
         padding: 0rem 0rem 0rem 0rem;
     }
+
     .lotteryCardBreadcrumbTitle {
         display: flex;
         flex-direction: row;
@@ -186,11 +209,42 @@
         gap: 2rem;
         padding: 0rem 0rem 0rem 0rem;
     }
-    
+
+    .luckyNumbers {
+        position: sticky;
+        z-index: 99;
+        margin-top: -2.8rem;
+    }
+    .lotteryHistoryName>p {
+        font-size: 10px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+    .lotteryCardHeaderTitle>p {
+        font-size: 10px;
+        font-weight: 700;
+        word-break: break-word;
+        color: #E9EAEB;
+        font-family: 'Nunito Sans', sans-serif;
+    }
 }
 
-.luckyNumbers {
-    position: sticky;
-    z-index: 99;
-    margin-top: -1.8rem;
-}   
+
+@media (max-width: 360px) { 
+    .lotteryHistoryName>p {
+        font-size: 10px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+    .lotteryCardHeaderTitle>p {
+        font-size: 10px;
+        font-weight: 700;
+        word-break: break-word;
+        color: #E9EAEB;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+}

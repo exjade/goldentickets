@@ -29,19 +29,19 @@ const TicketNumber = (props) => {
 
                 <div className={`${styles.middle}`}>
                   <span className={`${styles.middleLeft}`}></span>
-                  <span className={`${styles.ticketBall}`}>
+                  <span className={`${styles.ticketBall} ${styles.ticketBallHidde2} `}>
                     <p>56</p>
                   </span>
-                  <span className={`${styles.ticketBall}`}>
+                  <span className={`${styles.ticketBall} ${styles.ticketBallHidde5}`}>
                     <p>56</p>
                   </span>
-                  <span className={`${styles.ticketBall}`}>
+                  <span className={`${styles.ticketBall} ${styles.ticketBallHidde3}`}>
                     <p>56</p>
                   </span>
-                  <span className={`${styles.ticketBall}`}>
+                  <span className={`${styles.ticketBall} ${styles.ticketBallHidde4}`}>
                     <p>56</p>
                   </span>
-                  <span className={`${styles.ticketBall}`}>
+                  <span className={`${styles.ticketBall} ${styles.ticketBallHidde1}`}>
                     <p>56</p>
                   </span>
 
