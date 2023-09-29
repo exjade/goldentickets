@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    width: 95%;
+    width: 80%;
 }
 
 .lotteryJackpotBackground {
@@ -385,10 +385,7 @@ svg path, svg rect {
 
 }
 
-
-@media (max-width: 960px) {}
-
-@media (max-width: 860px) {
+@media (max-width: 960px) {
     .lotteryJackpotRight {
         display: none;
     }
