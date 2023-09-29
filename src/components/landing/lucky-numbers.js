@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import styles from './css/lucky-numbers.module.css';
 
-const LuckyNumbers = (props) => {
+const LuckyNumbers = () => {
 
 
   return (
@@ -12,6 +12,10 @@ const LuckyNumbers = (props) => {
 
         <div className={`${styles.ticketsContainer}`}>
 
+          <span className={`${styles.middleLeftLuckyNumberMobile}`}>
+            <p>lucky</p>
+            <p>numbers</p>
+          </span>
 
           <div
             className={`${styles.tickets}`}

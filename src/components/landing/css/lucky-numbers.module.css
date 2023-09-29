@@ -240,6 +240,71 @@
     text-align: left;
 }
 
+
+
+@media (min-width: 960px) { 
+    .middleLeftLuckyNumberMobile {
+        display: none;
+     }
+}
+@media (max-width: 960px) { 
+    .top{
+        border-top-color: #2977EC;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        background: #0F2038;
+        border-top-right-radius: 2px;
+        width: 20rem;
+        height: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+    }
+    .bottom {
+        border-bottom-color: #2977EC;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 20rem;
+        height: 2rem;
+        background: #0F2038;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #0F2038;
+        width: 20rem;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile {
+       display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .titleContainer {
         display: flex;
@@ -249,5 +314,403 @@
         align-content: center;
         gap: 1rem;
         width: 100%;
+    }
+    .top{
+        border-top-color: #2977EC;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        background: #0F2038;
+        border-top-right-radius: 2px;
+        width: 15rem;
+        height: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+    }
+    .bottom {
+        border-bottom-color: #2977EC;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 15rem;
+        height: 1.5rem;
+        background: #0F2038;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #0F2038;
+        width: 15rem;
+        align-content: center;
+    }
+    .middleLeftLuckyNumber {
+        display: none;
+    }
+    .middleLeftLuckyNumberMobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile>p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) { 
+    .top{
+        border-top-color: #2977EC;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        background: #0F2038;
+        border-top-right-radius: 2px;
+        width: 15rem;
+        height: 1.2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+    }
+    .bottom {
+        border-bottom-color: #2977EC;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 15rem;
+        height: 1.2rem;
+        background: #0F2038;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #0F2038;
+        width: 15rem;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile>p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+@media (max-width: 480px) { 
+    .top{
+        border-top-color: #2977EC;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        background: #0F2038;
+        border-top-right-radius: 2px;
+        width: 12rem;
+        height: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+    }
+    .bottom {
+        border-bottom-color: #2977EC;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 12rem;
+        height: 1.1rem;
+        background: #0F2038;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #0F2038;
+        width: 12rem;
+        align-content: center;
+    }
+    .ticketBall {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        background: #ffffff;
+        border-radius: 30px;
+    }
+    .ticketBall >p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #222732;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketOwned {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        background: #99392C;
+        border-radius: 30px;
+    }
+    .ticketOwned >p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .middleLeftLuckyNumberMobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile>p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+@media (max-width: 360px) { 
+    .top{
+        border-top-color: #2977EC;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        background: #0F2038;
+        border-top-right-radius: 2px;
+        width: 11rem;
+        height: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+    }
+    .bottom {
+        border-bottom-color: #2977EC;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left-color: #2977EC;
+        border-left-width: 3px;
+        border-left-style: solid;
+        border-right-color: #2977EC;
+        border-right-width: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 11rem;
+        height: 1.1rem;
+        background: #0F2038;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #0F2038;
+        width: 11rem;
+        align-content: center;
+    }
+    .ticketBall {
+        width: 1.2rem;
+        height: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        background: #ffffff;
+        border-radius: 30px;
+    }
+    .ticketBall >p {
+        font-size: 12px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #222732;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketOwned {
+        width: 1.2rem;
+        height: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        background: #99392C;
+        border-radius: 30px;
+    }
+    .ticketOwned >p {
+        font-size: 12px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .middleLeftLuckyNumberMobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    .middleLeftLuckyNumberMobile>p {
+        font-size: 14px;
+        font-weight: 800;
+        word-break: break-word;
+        color: #ffffff;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .ticketsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 }
