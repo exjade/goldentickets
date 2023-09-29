@@ -3,11 +3,13 @@ import styles from './css/lotteries.module.css';
 import TicketNumber from './ticket/ticket-number';
 import LuckyNumbers from './lucky-numbers';
 import useLastWinner from '../../hooks/draw/use-lastWinner';
-import { sub } from 'date-fns'
+import useUserTickets from '../../hooks/draw/use-userTickets';
+import LotteriesLoader from './loader/lotteries-loader';
 
 const Lotteries = () => {
 
   const { loterry } = useLastWinner()
+  const { tickets } = useUserTickets()
 
   const [date, setDate] = useState({
     hours: null,
@@ -71,52 +73,77 @@ const Lotteries = () => {
                 </span>
               </div>
 
-              <div className={`${styles.lotteryHistory}`} >
-                <div className={`${styles.lotteryHistoryWrapper}`} >
 
-                  {/* NOMBRE DE LOTERIA */}
-                  <span className={`${styles.lotteryHistoryName}`}>
-                    <p>Classic</p>
-                  </span>
-                  {/* NUMBERS */}
-                  <TicketNumber />
-                  {/* TIME */}
-                  <span className={`${styles.lotteryHistoryName}`}>
-                    {
-                      isNaN(date.hours) || isNaN(date.minutes) ?
-                        (
-                          <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
-                        ) :
-                        (
-                          <p>{date.hours}:{date.minutes} {date.period}</p>
-                        )
-                    }
-                  </span>
-                  {/* AMOUNT PLAYERS */}
-                  <span className={`${styles.lotteryHistoryName}`}>
-                    <p>3/100</p>
-                  </span>
-                  {/* PRIZE */}
-                  <span className={`${styles.lotteryHistoryPrize}`}>
+              {
+                loterry[0]?.numeroGanador === undefined ?
+                  (
+                    <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulator}` : `${styles.lotteryHistory}`}  `}  >
+                      <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulatorWrapper}` : `${styles.lotteryHistoryWrapper}`}  `} >
 
-                    {
-                      loterry[0]?.premioAcumulado === undefined ?
-                        (
-                          <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
-                        ) :
-                        (
-                          <p>
-                            {`${parseFloat(loterry[0]?.premioAcumulado).toLocaleString('en-US', {
-                              style: 'currency',
-                              currency: 'USD',
-                            })}`}
-                          </p>
-                        )
-                    }
-                  </span>
+                        {/* NOMBRE DE LOTERIA */}
+                        <span className={`${styles.lotteryHistoryName}`}>
+                          {
+                            loterry[0]?.numeroGanador === 0 && loterry[0]?.numeroNoGanador > 0 ?
+                              (
+                                <p>Accumulator</p>
+                              )
+                              :
+                              (
 
-                </div>
-              </div>
+                                <p>Classic</p>
+                              )
+                          }
+                        </span>
+                        {/* NUMBERS */}
+                        <TicketNumber />
+                        {/* TIME */}
+                        <span className={`${styles.lotteryHistoryName}`}>
+                          {
+                            isNaN(date.hours) || isNaN(date.minutes) ?
+                              (
+                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                              ) :
+                              (
+                                <p>{date.hours}:{date.minutes} {date.period}</p>
+                              )
+                          }
+                        </span>
+                        {/* AMOUNT PLAYERS */}
+                        <span className={`${styles.lotteryHistoryName}`}>
+                          {
+                            tickets?.length === undefined || tickets?.length === null ?
+                              (
+                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                              ) :
+                              (
+                                <p>
+                                  <p>{tickets?.length}/100</p>
+                                </p>
+                              )
+                          }
+                        </span>
+                        {/* PRIZE */}
+                        <span className={`${styles.lotteryHistoryPrize}`}>
+
+                          {
+                            loterry[0]?.premioAcumulado === undefined ?
+                              (
+                                <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
+                              ) :
+                              (
+                                <p>
+                                  {`$${loterry[0]?.premioAcumulado}`}
+                                </p>
+                              )
+                          }
+                        </span>
+
+                      </div>
+                    </div>
+                  ) : <LotteriesLoader />
+              }
+
+
 
 
 

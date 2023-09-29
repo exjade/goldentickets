@@ -135,9 +135,21 @@
     align-content: center;
     justify-content: center;
     align-items: flex-start;
-    border-width: 2px;
-    border-color: #323846;
-    border-style: solid;
+    background: #227FDF;
+}
+.lotteryAccumulator {
+    background: #242934;
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    background: #227FDF;
+    background-image: url('https://cutewallpaper.org/21/fire-background-gif/Fire-Animation-Background-HD-Animated-Fire-Background-GIF.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .lotteryHistoryWrapper {
@@ -148,6 +160,16 @@
     justify-items: center;
     align-items: center;
     width: 100%;
+}
+.lotteryAccumulatorWrapper {
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 4rem;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    background: #242934ab;
 }
 
 .lotteryHistoryName>p {

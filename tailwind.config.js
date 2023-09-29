@@ -32,13 +32,14 @@ module.exports = {
         button: '#0A58B9',
         h4: '#408BFC',
         terms: '#2977EC',
-        numbers: '#2977EC'
+        numbers: '#2977EC',
       },
       gray: {
         primary: '#959DA6',
         secondary: '#99A0AA',
         text: '#6B7B95',
         text2: '#93A0B4',
+        loader: '#242934d3',
 
       },
       green: {
