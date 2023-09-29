@@ -21,7 +21,7 @@
 .lotteryCard {
     background: #262A35;
     width: 100%;
-    height: 20rem;
+    height: 30rem;
     background-image: url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
@@ -38,8 +38,156 @@
     border-radius: 15px;
     opacity: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     align-content: center;
+}
+
+
+/* =================== HEADER ===================  */
+
+.lotteryCardHeader {
+    background: #242833;
+    width: 100%;
+    height: 9rem;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.lotteryCardHeaderTitle {
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 4rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.lotteryCardHeaderTitle>p {
+    font-size: 12px;
+    font-weight: 700;
+    word-break: break-word;
+    color: #E9EAEB;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* =================== BREADCRUMBS ===================  */
+.lotteryCardBreadcrumb {
+    background: #1E222E;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.lotteryCardBreadcrumbTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0rem 0rem 0rem 2rem;
+}
+
+.lotteryCardBreadcrumbTitle>p {
+    font-size: 12px;
+    font-weight: 700;
+    word-break: break-word;
+    color: #656979;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.lotteryCardBreadcrumbHistory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    background: #3B4252;
+    padding: 10px;
+    border-radius: 7px;
+    width: 5rem;
+}
+.lotteryCardBreadcrumbHistory>p {
+    font-size: 12px;
+    font-weight: 700;
+    word-break: break-word;
+    color: #E9EAEB;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* =================== LOTTERIES ===================  */
+
+.lotteryHistory {
+    background: #242934;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    border-width: 2px;
+    border-color: #323846;
+    border-style: solid;
+}
+
+.lotteryHistoryWrapper {
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 4rem;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+.lotteryHistoryName>p {
+    font-size: 15px;
+    font-weight: 800;
+    word-break: break-word;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.lotteryHistoryPrize>p {
+    font-size: 16px;
+    font-weight: 900;
+    word-break: break-word;
+    color: #FDB722;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width: 600px) {
+    .lotteryCardBreadcrumb {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 0rem 0rem 0rem 0rem;
+    }
+    .lotteryCardBreadcrumbTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 0rem 0rem 0rem 0rem;
+    }
+    
 }
