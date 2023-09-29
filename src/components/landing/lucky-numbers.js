@@ -1,9 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styles from './css/lucky-numbers.module.css';
+import useLuckyNumbers from '../../hooks/draw/use-luckyNumbers';
 
 const LuckyNumbers = () => {
 
+  const { luckyNumbers } = useLuckyNumbers()
+
+  const orderByDate = luckyNumbers?.sort((a, b) => {
+    return new Date(a.date) - new Date(b.date)
+  })
+
+  const getLuckynumbers = orderByDate?.map(number => number.numeroGanador)
+
+  const LastLuckyNumber = getLuckynumbers?.slice(0, -1);
+  const getLastNumber = getLuckynumbers?.pop()
 
   return (
 
@@ -35,25 +46,50 @@ const LuckyNumbers = () => {
                 <p>numbers</p>
               </span>
 
-              <span className={`${styles.ticketBall}`}>
-                <p>56</p>
-              </span>
-              <span className={`${styles.ticketBall}`}>
-                <p>56</p>
-              </span>
-              <span className={`${styles.ticketBall}`}>
-                <p>56</p>
-              </span>
-              <span className={`${styles.ticketBall}`}>
-                <p>56</p>
-              </span>
-              <span className={`${styles.ticketBall}`}>
-                <p>56</p>
-              </span>
 
-              < span className={`${styles.ticketOwned}`}>
-                <p>33</p>
-              </span>
+              {
+                getLuckynumbers?.length > 0 ?
+                  (
+                    <>
+                      {
+                        LastLuckyNumber?.map((number, i) => (
+                          <span key={i}
+                            className={`${styles.ticketBall}`}>
+                            <p>{number}</p>
+                          </span>
+                        ))
+                      }
+                      < span className={`${styles.ticketOwned}`}>
+                      <p>{getLastNumber}</p>
+                      </span>
+                    </>
+                  )
+                  :
+                  <>
+                    <span
+                      className={`${styles.ticketBall}`}>
+                      <p></p>
+                    </span>
+                    <span
+                      className={`${styles.ticketBall}`}>
+                      <p></p>
+                    </span>
+                    <span
+                      className={`${styles.ticketBall}`}>
+                      <p></p>
+                    </span>
+                    <span
+                      className={`${styles.ticketBall}`}>
+                      <p></p>
+                    </span>
+                    < span className={`${styles.ticketOwned}`}>
+                      <p></p>
+                    </span>
+                  </>
+              }
+
+
+
 
               <span className={`${styles.middleRight}`}></span>
             </div>
