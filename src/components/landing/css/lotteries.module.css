@@ -159,6 +159,7 @@
     grid-auto-rows: 4rem;
     justify-items: center;
     align-items: center;
+    background: #00000047;
     width: 100%;
 }
 .lotteryAccumulatorWrapper {
