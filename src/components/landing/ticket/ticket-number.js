@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'
 import styles from './css/ticket-number.module.css';
 
-const TicketNumber = (props) => {
+const TicketNumber = () => {
 
 
   return (
