@@ -3,9 +3,16 @@ import styles from './css/buytickets.module.css';
 import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
 import shortid from 'shortid';
+import {
+    getFirestore,
+    doc,
+    runTransaction,
+    serverTimestamp
+} from 'firebase/firestore';
 import { functions, firebase } from '../../../lib/firebase';
 import DrawCountDown from '../../countdown';
 const db = firebase.firestore();
+const firestore = getFirestore(firebase);
 
 const Tickets = () => {
 
@@ -17,7 +24,6 @@ const Tickets = () => {
     const [unavailableNumbers, setUnavailableNumbers] = useState([]);
     const [mensaje, setMensaje] = useState('');
     const [messageUnavailableNumbers, setMessageUnavailableNumbers] = useState('');
-
 
 
     const comprarTickets = async () => {
@@ -76,47 +82,136 @@ const Tickets = () => {
                     setMessageUnavailableNumbers('')
                 }, 2000);
             }
+
         } catch (error) {
             console.error('Error al comprar tickets:', error);
         }
     };
 
+    const checkNumeroDisponible = async (numero) => {
+        try {
+            const estadoLoteriaRef = db.collection('loteria').doc('estado');
+            const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+
+            if (querySnapshot.docs.length > 0) {
+                const firstDoc = querySnapshot.docs[0];
+                const data = firstDoc.data();
+                const disponible = data.disponible;
+                return disponible
+            } else {
+                return true
+            }
+        } catch (error) {
+            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
+            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
+        }
+
+    };
+    // // Función para verificar si un número de ticket está comprado
+    // const checkNumeroComprado = async (numero) => {
+    //     const estadoLoteriaRef = db.collection('loteria').doc('estado');
+    //     const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+    //     return !querySnapshot.empty;
+    // };
+
+    // const handleNumberClick = async (number) => {
+    //     if (selectedNumbers.includes(number)) {
+    //         // Si el número ya está seleccionado, lo deseleccionamos
+    //         setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
+    //         // Restamos $1 al costo cuando se deselecciona un número
+    //         setPrice(price - 1);
+
+    //         handleRemoveFee()
+    //     } else {
+
+    //         // Si el número no está seleccionado, verificamos si está comprado
+    //         const estaComprado = await checkNumeroComprado(number);
+
+    //         if (!estaComprado) {
+    //             // Si el número no está seleccionado, lo agregamos a la lista
+    //             setSelectedNumbers([...selectedNumbers, number]);
+    //             // Sumamos $1 al costo cuando se selecciona un número
+    //             setPrice(price + 1);
+
+    //             handleAddFee()
+    //         } else {
+    //             // Si está comprado, agregamos el número a los no disponibles
+    //             setUnavailableNumbers([...unavailableNumbers, number]);
+    //             setMessageUnavailableNumbers('Ticket no disponible')
+    //             setTimeout(() => {
+    //                 setMessageUnavailableNumbers('')
+    //             }, 2500);
+    //         }
+    //     }
+    // };
 
     // Función para verificar si un número de ticket está comprado
     const checkNumeroComprado = async (numero) => {
-        const estadoLoteriaRef = db.collection('loteria').doc('estado');
-        const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
-        return !querySnapshot.empty;
+        try {
+            const estadoLoteriaRef = db.collection('loteria').doc('estado');
+            const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+            return !querySnapshot.empty;
+        } catch (error) {
+            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
+            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
+        }
+
     };
 
     const handleNumberClick = async (number) => {
-        if (selectedNumbers.includes(number)) {
-            // Si el número ya está seleccionado, lo deseleccionamos
-            setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
-            // Restamos $1 al costo cuando se deselecciona un número
-            setPrice(price - 1);
+        try {
+            // const number = 71
+            // Usa una transacción para asegurar operaciones atómicas
+            await runTransaction(firestore, async (transaction) => {
+                const estadoLoteriaRef = db.collection('loteria').doc('estado');
+                const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', number).get();
+                const firstDoc = querySnapshot.docs[0];
 
-            handleRemoveFee()
-        } else {
+                if (querySnapshot.docs.length > 0) {
+                    const transactionDoc = doc(firestore, 'loteria', 'estado', 'compras', firstDoc.id);
+                    const doeshaveAvailableValue = checkNumeroDisponible(number)
+                    if (!doeshaveAvailableValue) {
+                        transaction.update(transactionDoc, { disponible: false, timestamp: serverTimestamp() });
+                    }
+                } else {
+                    console.log('')
+                }
 
-            // Si el número no está seleccionado, verificamos si está comprado
-            const estaComprado = await checkNumeroComprado(number);
+                if (selectedNumbers.includes(number)) {
+                    // Si el número ya está seleccionado, lo deseleccionamos
+                    setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
+                    // Restamos $1 al costo cuando se deselecciona un número
+                    setPrice(price - 1);
 
-            if (!estaComprado) {
-                // Si el número no está seleccionado, lo agregamos a la lista
-                setSelectedNumbers([...selectedNumbers, number]);
-                // Sumamos $1 al costo cuando se selecciona un número
-                setPrice(price + 1);
+                    handleRemoveFee()
+                } else {
 
-                handleAddFee()
-            } else {
-                // Si está comprado, agregamos el número a los no disponibles
-                setUnavailableNumbers([...unavailableNumbers, number]);
-                setMessageUnavailableNumbers('Ticket no disponible')
-                setTimeout(() => {
-                    setMessageUnavailableNumbers('')
-                }, 2500);
-            }
+                    // Si el número no está seleccionado, verificamos si está comprado
+                    const estaComprado = await checkNumeroComprado(number);
+
+                    if (!estaComprado) {
+                        // Si el número no está seleccionado, lo agregamos a la lista
+                        setSelectedNumbers([...selectedNumbers, number]);
+                        // Sumamos $1 al costo cuando se selecciona un número
+                        setPrice(price + 1);
+
+                        handleAddFee()
+                    } else {
+                        // Si está comprado, agregamos el número a los no disponibles
+                        setUnavailableNumbers([...unavailableNumbers, number]);
+                        setMessageUnavailableNumbers('Ticket no disponible')
+                        setTimeout(() => {
+                            setMessageUnavailableNumbers('')
+                        }, 2500);
+                    }
+                }
+            });
+        } catch (error) {
+            // Maneja el error de la transacción
+            console.error('Error durante la transacción:', error.message);
+
+            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
+            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
         }
     };
 
