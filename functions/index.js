@@ -9,7 +9,9 @@ admin.initializeApp({
 
 const {
     BuyTicketsV3,
+    BuyTicketsBETAV14,
 } = require('./utils/http-functions.js');
+
 const {
     sorteoAutomaticoDolarHoraV3,
 } = require('./utils/scheduled-functions/Sorteo-dolar/sorteoAutomatico');
@@ -17,7 +19,8 @@ const {
 const db = admin.firestore();
 
 
-exports.BuyTicketsV3 = BuyTicketsV3; 
-exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3; 
+exports.BuyTicketsV3 = BuyTicketsV3;
+exports.BuyTicketsBETAV14 = BuyTicketsBETAV14;
+exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3;
 
 
