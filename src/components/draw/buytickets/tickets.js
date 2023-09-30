@@ -3,20 +3,15 @@ import styles from './css/buytickets.module.css';
 import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
 import shortid from 'shortid';
-import {
-    getFirestore,
-    doc,
-    runTransaction,
-    serverTimestamp
-} from 'firebase/firestore';
 import { functions, firebase } from '../../../lib/firebase';
 import DrawCountDown from '../../countdown';
+import useBookingTickets from '../../../hooks/draw/use-bookingTickets';
 const db = firebase.firestore();
-const firestore = getFirestore(firebase);
 
 const Tickets = () => {
 
     const { user } = useUser()
+    const { bookingTickets } = useBookingTickets()
 
     const [selectedNumbers, setSelectedNumbers] = useState([]);
     const [price, setPrice] = useState(0);
@@ -24,6 +19,8 @@ const Tickets = () => {
     const [unavailableNumbers, setUnavailableNumbers] = useState([]);
     const [mensaje, setMensaje] = useState('');
     const [messageUnavailableNumbers, setMessageUnavailableNumbers] = useState('');
+    const [reservaMensaje, setReservaMensaje] = useState('');
+
 
 
     const comprarTickets = async () => {
@@ -37,32 +34,47 @@ const Tickets = () => {
             const totalPrice = price + fee; // Costo total del ticket
 
             const doesUserHaveSufficientBalance = user?.Balance >= totalPrice && totalPrice <= user?.Balance;
+            const isReservedByMe = await isTicketReservedByUser(selectedNumbers, bookingTickets, username, userId);
 
-            if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
-                // Llama a la función comprarTickets en el backend
-                const ComprarTickets = functions.httpsCallable('BuyTicketsV3'); // Ajusta el nombre de la función
-                const response = await ComprarTickets({
-                    selectedNumbers,
-                    userId,
-                    costoTicket,
-                    totalPrice,
-                    purchaseDate,
-                    id,
-                    username,
-                    drawType,
-                });
+            // Recorrer cada número seleccionado y realizar la transacción
 
-                if (response.data && response.data.message) {
-                    setMensaje('Compra exitosa');
-                    setTimeout(() => {
-                        setSelectedNumbers([])
-                        setPrice(0)
-                        setFee(0)
-                        setMensaje('')
-                        setMessageUnavailableNumbers('')
-                    }, 2000);
-                } else if (response.data && response.data.error) {
-                    setMensaje(response.data.error);
+            if (isReservedByMe) {
+                if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
+                    // Llama a la función comprarTickets en el backend
+                    const ComprarTickets = functions.httpsCallable('BuyTicketsBETAV14'); // Ajusta el nombre de la función
+                    const response = await ComprarTickets({
+                        selectedNumbers,
+                        userId,
+                        costoTicket,
+                        totalPrice,
+                        purchaseDate,
+                        id,
+                        username,
+                        drawType,
+                    });
+
+                    if (response.data && response.data.message) {
+                        setMensaje(response.data.message);
+                        setTimeout(() => {
+                            setSelectedNumbers([])
+                            setPrice(0)
+                            setFee(0)
+                            setMensaje('')
+                            setMessageUnavailableNumbers('')
+                        }, 2000);
+                    } else if (response.data && response.data.error) {
+                        setMensaje(response.data.error);
+                        setTimeout(() => {
+                            setSelectedNumbers([])
+                            setPrice(0)
+                            setFee(0)
+                            setMensaje('')
+                            setMessageUnavailableNumbers('')
+                        }, 2000);
+                    }
+
+                } else {
+                    setMensaje('Insufficient balance');
                     setTimeout(() => {
                         setSelectedNumbers([])
                         setPrice(0)
@@ -71,16 +83,8 @@ const Tickets = () => {
                         setMessageUnavailableNumbers('')
                     }, 2000);
                 }
-
             } else {
-                setMensaje('Insufficient balance');
-                setTimeout(() => {
-                    setSelectedNumbers([])
-                    setPrice(0)
-                    setFee(0)
-                    setMensaje('')
-                    setMessageUnavailableNumbers('')
-                }, 2000);
+                setReservaMensaje('Error durante la transacción: Ticket vendido');
             }
 
         } catch (error) {
@@ -88,25 +92,122 @@ const Tickets = () => {
         }
     };
 
-    const checkNumeroDisponible = async (numero) => {
+ 
+
+    const addBookingTicket = async (numeroTicket) => {
         try {
-            const estadoLoteriaRef = db.collection('loteria').doc('estado');
-            const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+            const userId = user?.userId; // Reemplaza con el ID del usuario autenticado
+            const username = user?.username; // Nombre de usuario
+            const purchaseDate = Date.now(); // fecha de compra
+            const id = shortid.generate().trim(); // ID de ticket
+            const drawType = 'Lotería de $1 USD'; // Nombre de la loteria
+            const costoTicket = 1; // Reemplaza con el costo del ticket
+            // Llama a la función comprarTickets en el backend
+            try {
+                // Verifica que el usuario esté autenticado
 
-            if (querySnapshot.docs.length > 0) {
-                const firstDoc = querySnapshot.docs[0];
-                const data = firstDoc.data();
-                const disponible = data.disponible;
-                return disponible
-            } else {
-                return true
+                const isBooked = await checkTicket(numeroTicket)
+                const enProceso = await checkReserva(numeroTicket)
+
+                await db.runTransaction(async (transaction) => {
+
+                    const userRef = db.collection('users').doc(userId);
+                    const userData = await transaction.get(userRef);
+                    if (userData.exists) {
+                        if (isBooked === undefined && !isBooked) {
+                            if (!enProceso && enProceso === undefined ) {
+                                // Marcar el documento como en proceso
+
+                                const bookingCollectionRef = db.collection('booking-tickets');
+                                const newBookingDocRef = bookingCollectionRef.doc()
+                                transaction.set(newBookingDocRef, {
+                                    numeroTicket: Number(numeroTicket),
+                                    userId: userId,
+                                    costoTicket: costoTicket,
+                                    purchaseDate: purchaseDate,
+                                    id: id,
+                                    username: username,
+                                    drawType: drawType,
+                                    disponible: true,
+                                    fechaReserva: Date.now(),
+                                    enProceso: true,
+                                });
+
+
+
+                                setMensaje('Reserva exitosa');
+                                setTimeout(() => {
+                                    setMensaje('')
+                                    setMessageUnavailableNumbers('')
+                                    setReservaMensaje('')
+                                }, 2000);
+                            } else {
+                                setReservaMensaje('Otro usuario reservo este ticket');
+                                setTimeout(() => {
+                                    setMensaje('')
+                                    setMessageUnavailableNumbers('')
+                                    setReservaMensaje('')
+                                }, 2000);
+                            }
+
+                        } else {
+                            setReservaMensaje('Ticket Reservado');
+                            setTimeout(() => {
+                                setMensaje('')
+                                setMessageUnavailableNumbers('')
+                                setReservaMensaje('')
+                            }, 2000);
+                        }
+                    } else {
+                        console.log('No such document!');
+                    }
+                }) // END Atomic Operation
+            } catch (error) {
+                console.error(error);
+                setReservaMensaje('Vuelve a intentarlo en unos segundos');
+                setTimeout(() => {
+                    setSelectedNumbers([])
+                    setPrice(0)
+                    setFee(0)
+                    setMensaje('')
+                    setMessageUnavailableNumbers('')
+                    setReservaMensaje('')
+                }, 2000);
             }
-        } catch (error) {
-            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
-            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
-        }
 
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const checkTicket = async (number) => {
+        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
+        return findBookedTicket?.disponible
+    }
+    const checkReserva = async (number) => {
+        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
+        return findBookedTicket?.enProceso
+    }
+
+    const findTicket = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
+        return bookingTickets.some(ticket =>
+            selectedNumbers.includes(ticket.numeroTicket) &&
+            ticket.username === reservedBy &&
+            ticket.userId === uid
+        );
     };
+
+    const isTicketReservedByUser = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
+        const doesTicketExistInDatabase = await findTicket(selectedNumbers, bookingTickets, reservedBy, uid);
+        return doesTicketExistInDatabase;
+    }
+
+
+    // Función para ordenar los tickets por fecha de reserva y número de ticket
+    // Función para filtrar y ordenar los tickets
+  
+
     // // Función para verificar si un número de ticket está comprado
     // const checkNumeroComprado = async (numero) => {
     //     const estadoLoteriaRef = db.collection('loteria').doc('estado');
@@ -160,52 +261,51 @@ const Tickets = () => {
 
     const handleNumberClick = async (number) => {
         try {
-            // const number = 71
-            // Usa una transacción para asegurar operaciones atómicas
-            await runTransaction(firestore, async (transaction) => {
-                const estadoLoteriaRef = db.collection('loteria').doc('estado');
-                const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', number).get();
-                const firstDoc = querySnapshot.docs[0];
+            // REVISAR SI EL NÚMERO SE ENCUENTRA EN LA DB, SINO LO RESERVA
+            const isBooked = await checkTicket(number)
 
-                if (querySnapshot.docs.length > 0) {
-                    const transactionDoc = doc(firestore, 'loteria', 'estado', 'compras', firstDoc.id);
-                    const doeshaveAvailableValue = checkNumeroDisponible(number)
-                    if (!doeshaveAvailableValue) {
-                        transaction.update(transactionDoc, { disponible: false, timestamp: serverTimestamp() });
-                    }
+            if (isBooked === undefined && !isBooked) {
+                await addBookingTicket(number)
+            } else {
+                setTimeout(() => {
+                    setReservaMensaje('')
+                }, 2500);
+            }
+
+            if (selectedNumbers.includes(number)) {
+                // Si el número ya está seleccionado, lo deseleccionamos
+                setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
+
+                // Restamos $1 al costo cuando se deselecciona un número
+                setPrice(price - 1);
+
+                handleRemoveFee()
+            } else {
+
+                // Si el número no está seleccionado, verificamos si está comprado
+                const estaComprado = await checkNumeroComprado(number);
+
+
+                if (!estaComprado) {
+                    // Si el número no está seleccionado, lo agregamos a la lista
+                    setSelectedNumbers([...selectedNumbers, number]);
+
+                    // Sumamos $1 al costo cuando se selecciona un número
+                    setPrice(price + 1);
+                    handleAddFee()
+
+                    setTimeout(() => {
+                        setReservaMensaje('')
+                    }, 2500);
                 } else {
-                    console.log('')
+                    // Si está comprado, agregamos el número a los no disponibles
+                    setUnavailableNumbers([...unavailableNumbers, number]);
+                    setMessageUnavailableNumbers('Ticket no disponible')
+                    setTimeout(() => {
+                        setMessageUnavailableNumbers('')
+                    }, 2500);
                 }
-
-                if (selectedNumbers.includes(number)) {
-                    // Si el número ya está seleccionado, lo deseleccionamos
-                    setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
-                    // Restamos $1 al costo cuando se deselecciona un número
-                    setPrice(price - 1);
-
-                    handleRemoveFee()
-                } else {
-
-                    // Si el número no está seleccionado, verificamos si está comprado
-                    const estaComprado = await checkNumeroComprado(number);
-
-                    if (!estaComprado) {
-                        // Si el número no está seleccionado, lo agregamos a la lista
-                        setSelectedNumbers([...selectedNumbers, number]);
-                        // Sumamos $1 al costo cuando se selecciona un número
-                        setPrice(price + 1);
-
-                        handleAddFee()
-                    } else {
-                        // Si está comprado, agregamos el número a los no disponibles
-                        setUnavailableNumbers([...unavailableNumbers, number]);
-                        setMessageUnavailableNumbers('Ticket no disponible')
-                        setTimeout(() => {
-                            setMessageUnavailableNumbers('')
-                        }, 2500);
-                    }
-                }
-            });
+            }
         } catch (error) {
             // Maneja el error de la transacción
             console.error('Error durante la transacción:', error.message);
@@ -322,6 +422,10 @@ const Tickets = () => {
                         {
                             mensaje !== '' &&
                             <p className='text-lg font-semibold font-Nunito text-green-secondary text-center'>{mensaje}</p>
+                        }
+                        {
+                            reservaMensaje !== '' &&
+                            <p className='text-lg font-semibold font-Nunito text-pink-primary text-center'>{reservaMensaje}</p>
                         }
                         {
                             messageUnavailableNumbers !== '' &&
