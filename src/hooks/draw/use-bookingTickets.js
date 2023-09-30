@@ -4,26 +4,26 @@ import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 
 const firestore = getFirestore(firebase);
 
-export default function useLuckyNumbers() {
-    const [luckyNumbers, setLuckyNumbers] = useState([]);
+export default function useBookingTickets() {
+    const [bookingTickets, setBookingTickets] = useState([]);
 
     useEffect(() => {
         // Crea una referencia a la colección 'lottery-winners'
-        const luckyNumbersRef = collection(firestore, 'lottery-winners');
+        const bookingTicketsRef = collection(firestore, 'booking-tickets');
 
         // Crea la función de callback que se ejecutará cuando cambie la colección
         const handleSnapshot = (snapshot) => {
             const numbers = snapshot.docs.map(doc => doc.data());
             // Actualiza el estado con los datos de la colección
-            setLuckyNumbers(numbers);
+            setBookingTickets(numbers);
         };
 
         // Agrega un oyente para la colección
-        const unsub = onSnapshot(luckyNumbersRef, handleSnapshot);
+        const unsub = onSnapshot(bookingTicketsRef, handleSnapshot);
 
         // Devuelve la función para desuscribirse cuando el componente se desmonte
         return () => unsub();
-    }, []); 
+    }, []);
 
-    return { luckyNumbers };
+    return { bookingTickets };
 }
