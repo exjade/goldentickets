@@ -15,6 +15,9 @@ const {
 const {
     sorteoAutomaticoDolarHoraV3,
 } = require('./utils/scheduled-functions/Sorteo-dolar/sorteoAutomatico');
+const {
+    DeleteReservedTickets,
+} = require('./utils/scheduled-functions/delete/delete-bookingtickets');
 
 const db = admin.firestore();
 
@@ -22,5 +25,6 @@ const db = admin.firestore();
 exports.BuyTicketsV3 = BuyTicketsV3;
 exports.BuyTicketsBETAV14 = BuyTicketsBETAV14;
 exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3;
+exports.DeleteReservedTickets = DeleteReservedTickets;
 
 
