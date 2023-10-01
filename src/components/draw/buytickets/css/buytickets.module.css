@@ -245,13 +245,6 @@
 }
 
 
-path {
-    fill: rgb(1 255 9) !important;
-    stroke: rgb(255 255 255) !important;
-    stroke-width: 15px !important;
-}
-
-
 @media (max-width: 1600px) {
     .wrapper {
         display: flex;

@@ -10,7 +10,6 @@ import DrawCountDown from '../../countdown';
 import useBookingTickets from '../../../hooks/draw/use-bookingTickets';
 import Lottie from 'lottie-react';
 import AnimationLoader from './lottie/animation_loader.json'
-import AnimationSuccess from './lottie/animation_success.json'
 import { motion } from 'framer-motion'
 import { functions, firebase } from '../../../lib/firebase';
 import { getDoc, doc } from 'firebase/firestore';
@@ -462,10 +461,10 @@ const Tickets = (props) => {
                         }
                         {
                             processingSuccesfull &&
-                            <Lottie
-                                animationData={AnimationSuccess}
-                                style={{ width: '100px', height: '100px', }}
-                            />
+                            <iframe 
+                            src="https://lottie.host/?file=477ecf19-6466-4253-a19d-6e0b91a389d2/3NHY2yiZDt.json"
+                            style={{width: '90px'}}
+                            ></iframe>
                         }
 
                         {
