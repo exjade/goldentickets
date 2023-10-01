@@ -7,8 +7,9 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    position: fixed;
+    position: sticky;
     z-index: 50;
+    top: 0;
 }
 
 .wrapper {

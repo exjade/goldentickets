@@ -44,9 +44,9 @@ function App() {
           <Switch>
 
             {/* Not Logged In  */}
-            <IsUserLoggedIn user={user} loggedInPath={ROUTES.LOGIN} path={ROUTES.LANDING} exact>
+            {/* <IsUserLoggedIn user={user} loggedInPath={ROUTES.LOGIN} path={ROUTES.LANDING} exact>
               <Landing />
-            </IsUserLoggedIn>
+            </IsUserLoggedIn> */}
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
               <Login />
             </IsUserLoggedIn>
@@ -61,9 +61,9 @@ function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
-            <ProtectedRoute user={user} path={ROUTES.BUY_TICKETS} exact>
+            {/* <ProtectedRoute user={user} path={ROUTES.BUY_TICKETS} exact>
               <BuyTickets />
-            </ProtectedRoute>
+            </ProtectedRoute> */}
             <ProtectedRoute user={user} path={ROUTES.DRAW} exact>
               <Draw />
             </ProtectedRoute>
@@ -79,6 +79,8 @@ function App() {
             </ProtectedRoutes>
 
             {/* ALL USERS */}
+            <Route path={ROUTES.LANDING} component={Landing} exact />
+            <Route path={ROUTES.BUY_TICKETS} component={BuyTickets} exact />
             <Route path="*" component={NotFound} />
 
           </Switch>
