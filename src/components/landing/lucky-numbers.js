@@ -52,7 +52,7 @@ const LuckyNumbers = () => {
                   (
                     <>
                       {
-                        LastLuckyNumber?.map((number, i) => (
+                        LastLuckyNumber?.splice(0,5)?.map((number, i) => (
                           <span key={i}
                             className={`${styles.ticketBall}`}>
                             <p>{number}</p>
