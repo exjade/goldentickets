@@ -26,14 +26,16 @@ const Header = () => {
             </span>
           </button>
 
-          <div className={`${styles.brand}`} >
-            <img
-              src={logo}
-              alt="logo"
-              className={`${styles.img}`}
-            />
-            <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
-          </div>
+          <Link to={ROUTES.LANDING}>
+            <div className={`${styles.brand}`} >
+              <img
+                src={logo}
+                alt="logo"
+                className={`${styles.img}`}
+              />
+              <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
+            </div>
+          </Link>
 
           {/* TOGGLE GAMBLING / LIVE */}
           <ToggleRounded

@@ -23,21 +23,23 @@ const Header = () => {
             </span>
           </button>
 
-          <div className={`${styles.brand}`} >
-            <img
-              src={logo}
-              alt="logo"
-              className={`${styles.img}`}
-            />
-            <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
-          </div>
+          <Link to={ROUTES.LANDING}>
+            <div className={`${styles.brand}`} >
+              <img
+                src={logo}
+                alt="logo"
+                className={`${styles.img}`}
+              />
+              <p className={`${styles.font} text-white-normal uppercase hidden sm:inline`}>GoldenTickets</p>
+            </div>
+          </Link>
         </div>
 
         {/* BALANCE & WALLET */}
         <div className={`${styles.auth}`} >
-            <span className={`${styles.signup}`}>
-              Dont have an account?
-            </span>
+          <span className={`${styles.signup}`}>
+            Dont have an account?
+          </span>
           <Link to={ROUTES.SIGNUP}>
             <div className={`${styles.login} text-blue-createAccount`}>
               Create account
