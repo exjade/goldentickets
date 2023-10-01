@@ -252,6 +252,54 @@
         color: #E9EAEB;
         font-family: 'Nunito Sans', sans-serif;
     }
+
+
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+    }
+    .lotteryCard {
+        background: #262A35;
+        width: 100%;
+        height: 30rem;
+        border-radius: 0px;
+        opacity: 0.9;
+    }
+    .lotteryCardWrapper {
+        background: #262A35;
+        /* border-color: #276ED9; */
+        border-width: 0px;
+        width: 100%;
+        height: 30rem;
+        border-radius: 0px;
+        opacity: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+    }
+    .lotteryAccumulator {
+        background: #242934;
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        background: #227FDF;
+        background-image: url('https://cutewallpaper.org/21/fire-background-gif/Fire-Animation-Background-HD-Animated-Fire-Background-GIF.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+    } 
+    .containerLink {
+        width: 100%;
+    }
 }
 
 

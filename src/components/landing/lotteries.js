@@ -79,7 +79,10 @@ const Lotteries = () => {
               {
                 loterry[0]?.numeroGanador !== undefined ?
                   (
-                    <Link to={ROUTES.BUY_TICKETS}>
+                    <Link 
+                    to={ROUTES.BUY_TICKETS}
+                    className={styles.containerLink}
+                    >
                       <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulator}` : `${styles.lotteryHistory}`}  `}  >
 
                         <div className={`${loterry[0]?.numeroGanador === 0 ? `${styles.lotteryAccumulatorWrapper}` : `${styles.lotteryHistoryWrapper}`}  `} >

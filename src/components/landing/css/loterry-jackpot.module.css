@@ -412,31 +412,48 @@ svg path, svg rect {
 }
 
 @media (max-width: 600px) {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+    }
     .lotteryJackpotBackground {
         background: #3996f6;
         width: 100%;
         height: 100%;
-        background-image: url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
+        background-image:
+        url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
         background-repeat: no-repeat;
         background-blend-mode: luminosity;
         object-fit: contain;
         background-size: cover;
-        border-radius: 15px;
+        border-radius: 0px;
         opacity: 0.9;
-    }
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+}
 
     .lotteryJackpot {
         background: #2691ff;
         width: 100%;
         height: 100%;
-        border-radius: 15px;
-        opacity: 95%;
+        border-radius: 0px;
+        opacity: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         align-content: center;
-    }
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+}
 
     .lotteryJackpotLeft {
         display: flex;
@@ -505,8 +522,7 @@ svg path, svg rect {
         width: 50%;
         height: 100%;
     }
- 
-    
+
 }
 
 @media (max-width: 480px) {
