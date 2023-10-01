@@ -119,7 +119,7 @@ exports.sorteoAutomaticoDolarHoraV3 = functions.pubsub.schedule('0 * * * *').tim
     }
 });
 
-exports.sorteoAutomaticoDolarHoraV4 = functions.pubsub.schedule('0 * * * *').timeZone('America/Mexico_City').onRun(async (context) => {
+exports.sorteoAutomaticoDolarHoraV6 = functions.pubsub.schedule('0 * * * *').timeZone('America/Mexico_City').onRun(async (context) => {
     try {
         // 1. Genera un número aleatorio como el número ganador
         const nuevoNumeroGanador = Math.floor(Math.random() * 100) + 1;
@@ -175,6 +175,7 @@ exports.sorteoAutomaticoDolarHoraV4 = functions.pubsub.schedule('0 * * * *').tim
                 numeroGanador: nuevoNumeroGanador,
                 numeroNoGanador: 0,
                 premioAcumulado: 0,
+                premioEntregado: premioData?.data()?.premioAcumulado,
                 date: Date.now(),
                 ultimoGanador: {
                     userId: userData?.data()?.userId,
@@ -204,6 +205,7 @@ exports.sorteoAutomaticoDolarHoraV4 = functions.pubsub.schedule('0 * * * *').tim
                 numeroGanador: 0,
                 numeroNoGanador: nuevoNumeroGanador,
                 premioAcumulado: premioData?.data()?.premioAcumulado,
+                premioEntregado: 0,
                 date: Date.now(),
             });
 
