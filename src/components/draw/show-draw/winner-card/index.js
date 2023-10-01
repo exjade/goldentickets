@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styles from '../css/draw.module.css';
-import Lottie from 'lottie-react';
-import animationPrize from '../lottie/animation-prize.json'
-import animationWinner from '../lottie/animation_winner.json'
-
 
 const WinnerCard = (props) => {
   return (
@@ -23,13 +19,18 @@ const WinnerCard = (props) => {
               {
                 props?.loterry[0]?.numeroGanador !== 0 ?
                   (
-                    <Lottie
-                      animationData={animationWinner}
-                    />
-                  ) : (
-                    <Lottie
-                      animationData={animationPrize}
-                    />
+                    <iframe
+                      src="https://lottie.host/?file=b367e77d-8d4e-443b-811f-57ffd8f7cc27/em65HEB7qR.json"
+                      style={{ width: '200px', height: '200px' }}
+                    >
+
+                    </iframe>
+                  ) :
+                  (
+                    <iframe
+                      src="https://lottie.host/?file=ae082f6b-67b8-4e7f-a1f2-28c568af3486/1g4fPIhtci.json"
+                      style={{ width: '200px', height: '200px' }}
+                    ></iframe>
                   )
               }
 
@@ -51,7 +52,8 @@ const WinnerCard = (props) => {
 
             </h2>
             {
-              props?.loterry[0]?.numeroNoGanador > 0 &&
+              props?.loterry[0]?.premioAcumulado > 0 &&
+              props?.loterry[0]?.premioEntregado === 0 &&
               <h4>
                 The prize will be accumulated and awarded to the winner of the next lottery!
               </h4>
@@ -84,12 +86,51 @@ const WinnerCard = (props) => {
             <div className={`${styles.WinnerWrapper}`}>
 
               <span className={`${styles.WinnerPrize}`}>
-                <p>
-                  {parseFloat(props?.loterry[0]?.premioAcumulado).toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD'
-                  })}
-                </p>
+
+
+                {/*If the CumulativePrize equals 0, it means that there was a winner. 
+                  It must show the prizeDelivered to avoid showing a prize equal to $00.00.
+                  If it is not equal to 0, it will show the accumulated so far because when no one wins the prize is added up. */}
+                {
+                  props?.loterry[0]?.premioAcumulado === 0 ? (<>
+                    {
+                      isNaN(props?.loterry[0]?.premioEntregado) ?
+                        (
+                          <p className=' bg-gray-loader w-24 h-10 animate-pulse my-4'>
+                          </p>
+                        )
+                        :
+                        (
+                          <p>
+                            {parseFloat(props?.loterry[0]?.premioEntregado).toLocaleString('en-US', {
+                              style: 'currency',
+                              currency: 'USD'
+                            })}
+                          </p>
+                        )
+                    }
+
+                  </>) : (<>
+
+                    {
+                      isNaN(props?.loterry[0]?.premioAcumulado) ?
+                        (
+                          <p className=' bg-gray-loader w-24 h-10 animate-pulse my-4'>
+                          </p>
+                        )
+                        :
+                        (
+                          <p>
+                            {parseFloat(props?.loterry[0]?.premioAcumulado).toLocaleString('en-US', {
+                              style: 'currency',
+                              currency: 'USD'
+                            })}
+                          </p>
+                        )
+                    }
+                  </>)
+                }
+
                 <h4 className='test-xl font-semibold text-white-normal'>USDT</h4>
               </span>
               {
@@ -99,8 +140,8 @@ const WinnerCard = (props) => {
                       Prize
                     </p>
                   ) : (
-                    <p>
-                      Accumulator
+                    <p className='text-pink-primary text-2xl font-extrabold'>
+                      Accumulator!
                     </p>
                   )
 
