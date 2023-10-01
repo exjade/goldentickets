@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../../constants/routes'
 import styles from './css/buytickets.module.css';
 import NumberSelector from './number-selector';
 import useUser from '../../../hooks/use-user';
 import shortid from 'shortid';
-import { functions, firebase } from '../../../lib/firebase';
 import DrawCountDown from '../../countdown';
 import useBookingTickets from '../../../hooks/draw/use-bookingTickets';
+import Lottie from 'lottie-react';
+import AnimationLoader from './lottie/animation_loader.json'
+import AnimationSuccess from './lottie/animation_success.json'
+import { motion } from 'framer-motion'
+import { functions, firebase } from '../../../lib/firebase';
+import { getDoc, doc } from 'firebase/firestore';
 const db = firebase.firestore();
 
-const Tickets = () => {
+const Tickets = (props) => {
+
 
     const { user } = useUser()
     const { bookingTickets } = useBookingTickets()
@@ -20,6 +29,8 @@ const Tickets = () => {
     const [mensaje, setMensaje] = useState('');
     const [messageUnavailableNumbers, setMessageUnavailableNumbers] = useState('');
     const [reservaMensaje, setReservaMensaje] = useState('');
+    const [processingPayment, setProcessingPayment] = useState(false);
+    const [processingSuccesfull, setProcessingSuccesfull] = useState(false);
 
 
 
@@ -35,8 +46,8 @@ const Tickets = () => {
 
             const doesUserHaveSufficientBalance = user?.Balance >= totalPrice && totalPrice <= user?.Balance;
             const isReservedByMe = await isTicketReservedByUser(selectedNumbers, bookingTickets, username, userId);
-
             // Recorrer cada número seleccionado y realizar la transacción
+
 
             if (isReservedByMe) {
                 if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
@@ -53,24 +64,40 @@ const Tickets = () => {
                         drawType,
                     });
 
+                    setProcessingPayment(true)
                     if (response.data && response.data.message) {
-                        setMensaje(response.data.message);
                         setTimeout(() => {
                             setSelectedNumbers([])
                             setPrice(0)
                             setFee(0)
-                            setMensaje('')
                             setMessageUnavailableNumbers('')
+                            setProcessingPayment(false)
+
+                            // successfull payment message & loader
+                            setMensaje(response.data.message);
+                            setProcessingSuccesfull(true);
+                            // CLEAR PAYMENT SUCCESSFULL
+                            setTimeout(() => {
+                                setMensaje('')
+                                setProcessingSuccesfull(false)
+                            }, [2500])
                         }, 2000);
+
                     } else if (response.data && response.data.error) {
                         setMensaje(response.data.error);
                         setTimeout(() => {
                             setSelectedNumbers([])
                             setPrice(0)
                             setFee(0)
-                            setMensaje('')
                             setMessageUnavailableNumbers('')
+                            setProcessingPayment(false)
+                            // CLEAR PAYMENT SUCCESSFULL
+                            setTimeout(() => {
+                                setMensaje('')
+                                setProcessingSuccesfull(false)
+                            }, [2500])
                         }, 2000);
+
                     }
 
                 } else {
@@ -84,15 +111,22 @@ const Tickets = () => {
                     }, 2000);
                 }
             } else {
-                setReservaMensaje('Error durante la transacción: Ticket vendido');
+                const userRef = doc(db, 'users', userId);
+                const userData = await getDoc(userRef);
+                if (!userData?.exists) {
+                    setReservaMensaje('Error durante la transacción: Registrate');
+
+                } else {
+                    setReservaMensaje('Error durante la transacción: Ticket reservado');
+                }
             }
 
         } catch (error) {
-            console.error('Error al comprar tickets:', error);
+            console.log('Error al comprar tickets:', error);
         }
     };
 
- 
+
 
     const addBookingTicket = async (numeroTicket) => {
         try {
@@ -115,7 +149,7 @@ const Tickets = () => {
                     const userData = await transaction.get(userRef);
                     if (userData.exists) {
                         if (isBooked === undefined && !isBooked) {
-                            if (!enProceso && enProceso === undefined ) {
+                            if (!enProceso && enProceso === undefined) {
                                 // Marcar el documento como en proceso
 
                                 const bookingCollectionRef = db.collection('booking-tickets');
@@ -206,7 +240,7 @@ const Tickets = () => {
 
     // Función para ordenar los tickets por fecha de reserva y número de ticket
     // Función para filtrar y ordenar los tickets
-  
+
 
     // // Función para verificar si un número de ticket está comprado
     // const checkNumeroComprado = async (numero) => {
@@ -420,9 +454,25 @@ const Tickets = () => {
                         </div>
 
                         {
-                            mensaje !== '' &&
-                            <p className='text-lg font-semibold font-Nunito text-green-secondary text-center'>{mensaje}</p>
+                            processingPayment &&
+                            <Lottie
+                                animationData={AnimationLoader}
+                                style={{ width: '100px', height: '100px' }}
+                            />
                         }
+                        {
+                            processingSuccesfull &&
+                            <Lottie
+                                animationData={AnimationSuccess}
+                                style={{ width: '100px', height: '100px', }}
+                            />
+                        }
+
+                        {
+                            mensaje !== '' &&
+                            <p className='text-lg font-extrabold font-Nunito text-green-secondary text-center uppercase'>{mensaje}</p>
+                        }
+
                         {
                             reservaMensaje !== '' &&
                             <p className='text-lg font-semibold font-Nunito text-pink-primary text-center'>{reservaMensaje}</p>
@@ -432,14 +482,42 @@ const Tickets = () => {
                             <p className='text-lg font-semibold font-Nunito text-pink-primary text-center'>{messageUnavailableNumbers}</p>
                         }
 
-                        {/* BUTÓN DE COMPRAR */}
-                        <button
-                            type='button'
-                            className={`${styles.rightButton}`}
-                            onClick={comprarTickets}
-                        >
-                            Comprar
-                        </button>
+                        {
+                            !props?.authUser?.uid &&
+                            <span>
+                                <p className='text-sm font-normal font-Nunito text-white-normal text-center'>
+                                    Participation requires an active account
+                                </p>
+                            </span>
+                        }
+
+
+                        {
+                            !props?.authUser?.uid ?
+                                (
+                                    <Link to={ROUTES.SIGNUP}>
+                                        <motion.button
+                                            type='button'
+                                            className={`${styles.rightButton}  ${props?.authUser?.uid ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                                            whileTap={{ scale: 0.9 }}
+                                        >
+                                            Register
+                                        </motion.button>
+                                    </Link>
+                                ) :
+                                (
+                                    <motion.button
+                                        type='button'
+                                        className={`${styles.rightButton}  ${!props?.authUser?.uid ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                                        onClick={comprarTickets}
+                                        disabled={!props?.authUser?.uid}
+                                        whileTap={{ scale: 0.9 }}
+                                    >
+                                        Comprar
+                                    </motion.button>
+                                )
+                        }
+
                     </div>
                 </section>
 
@@ -450,3 +528,7 @@ const Tickets = () => {
 }
 
 export default Tickets
+
+Tickets.propTypes = {
+    authUser: PropTypes.object,
+}
