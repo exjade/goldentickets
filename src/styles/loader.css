@@ -12,7 +12,9 @@
 @light-grey-2: #dbdfe1;
 @white: #f3f4f5;
 
+
 .fallbackloader {
+  background: mix(#3f3251, #002025, 70%);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: "proxima-nova-soft", sans-serif;
@@ -20,9 +22,7 @@
   overflow: hidden;
 }
 
-.fallbackloader {
-  background: mix(#3f3251, #002025, 70%);
-}
+
 
 .content {
   box-sizing: border-box;
