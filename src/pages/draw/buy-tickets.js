@@ -2,6 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import Error from '../../error/error';
 import Header from '../../components/Header/dashboard';
+import LandingHeader from '../../components/Header/landing'
 import useModal from '../../hooks/use-modal';
 import DrawTimeline from '../../components/draw';
 import UserDrawTickets from '../../components/draw/draw-tickets';
@@ -15,8 +16,8 @@ const BuyTickets = () => {
     openModal,
     closeModal
   } = useModal()
-  const { user } = useAuthListener()
   const { tickets } = useUserTickets()
+  const { user } = useAuthListener()
 
 
   const filterTickets = tickets?.filter(ticket => ticket.userId === user?.uid)
@@ -30,16 +31,28 @@ const BuyTickets = () => {
           exit={{ opacity: 0 }}
         >
 
-          <Error>
-            <Header
-              openModal={openModal}
-            />
-          </Error>
+          {
+            user?.uid === undefined || user?.uid === null ? (
+              <Error>
+                <LandingHeader />
+              </Error>
+            ) :
+              (
+                <Error>
+                  <Header
+                    openModal={openModal}
+                  />
+                </Error>
+              )
+          }
+
+
 
           <Error>
             <DrawTimeline
               open={open}
               closeModal={closeModal}
+              user={user}
             />
           </Error>
 

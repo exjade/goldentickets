@@ -107,6 +107,7 @@
     align-content: center;
     flex-direction: row;
 }
+
 .middleCircleUnavailable {
     width: 3rem;
     display: flex;
@@ -227,6 +228,29 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
+.rightButton {
+    background: #3983F6;
+    width: 9rem;
+    height: 3rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #E9EAEB;
+    font-family: 'Nunito Sans', sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+
+path {
+    fill: rgb(1 255 9) !important;
+    stroke: rgb(255 255 255) !important;
+    stroke-width: 15px !important;
+}
+
 
 @media (max-width: 1600px) {
     .wrapper {
@@ -282,6 +306,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleSelected {
         width: 3rem;
         display: flex;
@@ -298,6 +323,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleUnavailable {
         width: 3rem;
         display: flex;
@@ -334,6 +360,7 @@
         margin: 2em 0rem 2em 0rem;
         text-align: center;
     }
+
     .rightContainer {
         display: flex;
         flex-direction: column;
@@ -395,6 +422,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleSelected {
         width: 3rem;
         display: flex;
@@ -411,6 +439,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleUnavailable {
         width: 3rem;
         display: flex;
@@ -447,6 +476,7 @@
         margin: 2em 0rem 2em 0rem;
         text-align: center;
     }
+
     .rightContainer {
         display: flex;
         flex-direction: column;
@@ -498,6 +528,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleSelected {
         width: 1.8rem;
         display: flex;
@@ -514,6 +545,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleUnavailable {
         width: 1.8rem;
         display: flex;
@@ -566,8 +598,8 @@
         font-family: 'Nunito Sans', sans-serif;
     }
 
-   
-   
+
+
 
 }
 
@@ -609,6 +641,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleSelected {
         width: 1.8rem;
         display: flex;
@@ -625,6 +658,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleUnavailable {
         width: 1.8rem;
         display: flex;
@@ -676,6 +710,7 @@
         color: #2977EC;
         font-family: 'Nunito Sans', sans-serif;
     }
+
     .rightSummary {
         display: flex;
         flex-direction: column;
@@ -723,6 +758,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleSelected {
         width: 1.8rem;
         display: flex;
@@ -739,6 +775,7 @@
         align-content: center;
         flex-direction: row;
     }
+
     .middleCircleUnavailable {
         width: 1.8rem;
         display: flex;

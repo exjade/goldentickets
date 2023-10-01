@@ -21,7 +21,9 @@ const DrawTimeline = (props) => {
       }
 
       {/* <DisplayDraw /> */}
-      <Tickets />
+      <Tickets 
+       authUser={props.user}
+      />
     </>
   )
 }
@@ -31,4 +33,5 @@ export default DrawTimeline
 DrawTimeline.propTypes = {
   open: PropTypes.bool,
   closeModal: PropTypes.func,
+  user: PropTypes.object,
 }
