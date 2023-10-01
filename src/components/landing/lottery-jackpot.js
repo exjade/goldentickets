@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './css/loterry-jackpot.module.css';
-import Lottie from 'lottie-react';
-import AnimationCoinRain from './lottie/animation_chest.json'
 
 const LotteryJackpot = () => {
   return (
@@ -51,10 +49,10 @@ const LotteryJackpot = () => {
             <div className={`${styles.lotteryJackpotRight}`} >
               <div className={`${styles.lotteryJackpotRightWrapper}`} >
 
-                <Lottie
-                  animationData={AnimationCoinRain}
-                  style={{ width: '100%', height: '100%' }}
-                />
+              <iframe 
+              src="https://lottie.host/?file=564ebfd7-d72e-4eba-b9dc-7b24c2859fa7/4poemJrepc.json"
+              style={{ width: '100%', height: '100%' }}
+              ></iframe>
 
               </div>
             </div>
