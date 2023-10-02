@@ -546,13 +546,13 @@ video {
 .-m-16 {
   margin: -4rem;
 }
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 .my-20 {
   margin-top: 5rem;
@@ -879,6 +879,9 @@ video {
 .hidden {
   display: none;
 }
+.h-full {
+  height: 100%;
+}
 .h-screen {
   height: 100vh;
 }
@@ -890,9 +893,6 @@ video {
 }
 .h-16 {
   height: 4rem;
-}
-.h-full {
-  height: 100%;
 }
 .h-auto {
   height: auto;
@@ -1236,14 +1236,6 @@ video {
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-25%);
@@ -1256,6 +1248,14 @@ video {
 }
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 @keyframes pulse {
   50% {
@@ -2230,9 +2230,9 @@ video {
 .font-Nunito {
   font-family: Nunito Sans, sans-serif;
 }
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -2241,6 +2241,10 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .text-4xl {
   font-size: 2.25rem;
@@ -2253,10 +2257,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 .text-3xl {
   font-size: 1.875rem;
