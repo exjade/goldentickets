@@ -197,9 +197,9 @@
     margin-top: -1.8rem;
 }
 
-
-
-
+.containerLink {
+    width: 100%;
+}
 
 
 @media (max-width: 768px) {
