@@ -4,11 +4,13 @@ import Error from '../error/error';
 import Header from '../components/Header/dashboard';
 import Timeline from '../components/timeline';
 import useModal from '../hooks/use-modal';
+import useDropDown from '../hooks/use-dropdown';
 import LotteriesTimeline from '../components/landing';
 
 const Dashboard = () => {
 
   const { open, openModal, closeModal } = useModal()
+  const { dropdown, setDropdown } = useDropDown()
 
   return (
     <>
@@ -22,6 +24,8 @@ const Dashboard = () => {
           <Error>
             <Header
               openModal={openModal}
+              dropdown={dropdown}
+              setDropdown={setDropdown}
             />
           </Error>
 
@@ -29,6 +33,8 @@ const Dashboard = () => {
             <Timeline
               open={open}
               closeModal={closeModal}
+              setDropdown={setDropdown}
+              dropdown={dropdown}
             />
           </Error>
 

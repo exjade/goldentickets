@@ -85,20 +85,38 @@ const Header = (props) => {
           </div>
 
 
-
           {/* USER PROFILE & Chat */}
           <div className={`${styles.profile}`} >
-            <button
-              type='button'
-              className={`${styles.circles}`}
-              onClick={() => console.log('Open Profile Dropdown')}
-            >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
-                alt="shiba avatar"
-                className='object-contain w-6 h-6 sm:w-8 sm:h-8'
-              />
-            </button>
+
+            {
+              !props.dropdown ? (
+                <button
+                  type='button'
+                  className={`${styles.circles}`}
+                  onClick={() => props.setDropdown(true)}
+                >
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
+                    alt="shiba avatar"
+                    className='object-contain w-6 h-6 sm:w-8 sm:h-8'
+                  />
+                </button>
+              ) :
+                (
+                  <button
+                    type='button'
+                    className={`${styles.circles}`}
+                    onClick={() => props.setDropdown(false)}
+                  >
+                    <img
+                      src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
+                      alt="shiba avatar"
+                      className='object-contain w-6 h-6 sm:w-8 sm:h-8'
+                    />
+                  </button>
+                )
+            }
+
             <button
               type='button'
               className={`${styles.circleChat}`}
@@ -122,4 +140,6 @@ export default Header
 
 Header.propTypes = {
   openModal: PropTypes.func,
+  setDropdown: PropTypes.func,
+  dropdown: PropTypes.bool,
 }

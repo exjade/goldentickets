@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types'
 import styles from './css/dropdown.module.css';
 import FirebaseContext from '../../../context/firebase';
 
-const DropDownUserHeader = () => {
+const DropDownUserHeader = (props) => {
 
   const { firebase } = useContext(FirebaseContext);
 
@@ -16,7 +17,7 @@ const DropDownUserHeader = () => {
           <button
             type='button'
             className={`${styles.circles}`}
-            onClick={() => console.log('Open Profile Dropdown')}
+            onClick={() => props.setDropdown(false)}
           >
             <img
               src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
@@ -28,6 +29,7 @@ const DropDownUserHeader = () => {
         </div>
 
         <div className={`${styles.divider}`}></div>
+    
 
         <button
           type="button"
@@ -56,3 +58,7 @@ const DropDownUserHeader = () => {
 }
 
 export default DropDownUserHeader
+
+DropDownUserHeader.propTypes = {
+  setDropdown: PropTypes.func,
+}

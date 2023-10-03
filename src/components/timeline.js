@@ -17,8 +17,19 @@ const Timeline = (props) => {
                     </>
                 )
             }
-            
-            <DropDownUserHeader />
+
+            {
+                props.dropdown && (
+                    <>
+                        <DropDownUserHeader
+                            dropdown={props.dropdown}
+                            setDropdown={props.setDropdown}
+                        />
+                    </>
+                )
+            }
+
+
 
         </>
     )
@@ -31,4 +42,6 @@ Timeline.whyDidYouRender = true
 Timeline.propTypes = {
     open: PropTypes.bool,
     closeModal: PropTypes.func,
+    dropdown: PropTypes.bool,
+    setDropdown: PropTypes.bool,
 }
