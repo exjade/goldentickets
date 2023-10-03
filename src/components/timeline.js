@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Wallet from './modal';
+import DropDownUserHeader from './dropdown/user-header';
 
 const Timeline = (props) => {
 
@@ -17,6 +18,7 @@ const Timeline = (props) => {
                 )
             }
             
+            <DropDownUserHeader />
 
         </>
     )

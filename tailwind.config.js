@@ -40,6 +40,7 @@ module.exports = {
         text: '#6B7B95',
         text2: '#93A0B4',
         loader: '#242934d3',
+        logout: '#9d9e98',
 
       },
       green: {

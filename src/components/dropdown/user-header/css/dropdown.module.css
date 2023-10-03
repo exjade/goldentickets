@@ -1,0 +1,106 @@
+.container {
+        /* width: 100%; */
+    /* height: 100%; */
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+}
+
+.wrapper {
+    width: 14rem;
+    height: 13rem;
+    position: fixed;
+    right: 44px;
+    background: #171E29;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    gap: 0.8rem;
+}
+
+.profile>p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.circles {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 30px;
+    background: #28374D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.circles:active {
+    background-color: #364863;
+    color: #fff;
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+
+.circleChat {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 30px;
+    background: #28374D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.circleChat:active {
+    background-color: #364863;
+    color: #fff;
+    transform: scale(1.1);
+    transition: all 0.10s ease-in-out;
+    -webkit-transition: all 0.10s ease-in-out;
+    -moz-transition: all 0.10s ease-in-out;
+    -ms-transition: all 0.10s ease-in-out;
+    -o-transition: all 0.10s ease-in-out;
+}
+.divider {
+    width: 100%;
+    height: 1px;
+    background: #364863;
+}
+
+.logOutButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+.logOutButton>p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    color: #9d9e98;
+}

@@ -2410,6 +2410,10 @@ video {
 .text-gray-loader {
   color: #242934d3;
 }
+.text-gray-logout {
+  --tw-text-opacity: 1;
+  color: rgb(157 158 152 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
