@@ -31,7 +31,7 @@ const LastWinners = () => {
                                 (
                                     <>
                                         {winners?.map((winner, index) => (
-                                            <Link to={ROUTES.DRAW}  key={index}>
+                                            <Link to={ROUTES.DRAW}  key={index}  className={`${styles.cardsWinners}`}>
                                                 <div
                                                     className={`${styles.cardsWinners}`}
                                                    >
