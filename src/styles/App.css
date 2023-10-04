@@ -1826,6 +1826,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(171 46 88 / var(--tw-bg-opacity));
 }
+.bg-blue-tertiary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 20 29 / var(--tw-bg-opacity));
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }

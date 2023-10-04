@@ -1,0 +1,194 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 4rem;
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    background: #2561BC;
+}
+
+/* ================================== LEFT SECTION ==================================== */
+
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    align-content: center;
+    text-align: center;
+    gap: 2.5rem;
+}
+
+.middleContainer>h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.middleContainer>p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #BABEC0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.middleBold {
+    font-size: 3rem;
+    font-weight: 800;
+    word-break: break-word;
+    color: #2977EC;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* ================================== LEFT SECTION ==================================== */
+
+.RightContainer {
+    border-width: 2px;
+    border-radius: 30px;
+    width: 80%;
+    height: 26rem;
+    border-color: #2561BC;
+    box-shadow: 1px 4px 32px 6px rgb(13 54 147 / 75%);
+    -webkit-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
+    -moz-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
+}
+
+.RightWrapper {
+    padding: 1rem;
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 10px;
+    height: 100%;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardsWinners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background: #192737;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 30px;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.cardsWinners > h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.cardsWinners > h4 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.cardsWinners > p {
+    font-size: 16px;
+    font-weight: 700;
+    word-break: break-word;
+    color: #2266EC;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.image {
+    width: 90px;
+    height: 90px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) { 
+    .RightWrapper {
+        padding: 1rem;
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 10px;
+        height: 100%;
+        width: 100%;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .cardsWinners {
+        width: 60%;
+    }
+}
+
+
+/* ================================== MEDIA QUERIES SECTION ==================================== */
+@media (max-width: 600px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+    }
+    .RightContainer {
+        border-width:0px;
+        border-radius: 0px;
+        width: 100%;
+        height: 26rem;
+        border-color: #2561BC;
+        box-shadow: 1px 4px 32px 6px rgb(13 54 147 / 75%);
+        -webkit-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
+        -moz-box-shadow: 1px 4px 32px 6px rgba(89,128,63,0.75);
+    }
+    .divider {
+        display: none;
+    }
+
+    .cardsWinners {
+        width: 100%;
+    }
+    .RightWrapper {
+        padding: 1rem;
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 10px;
+        height: 100%;
+        width: 100%;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
