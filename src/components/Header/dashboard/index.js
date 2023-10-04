@@ -93,7 +93,7 @@ const Header = (props) => {
                 <button
                   type='button'
                   className={`${styles.circles}`}
-                  onClick={() => props.setDropdown(true)}
+                  onClick={() => props?.openDropdown()}
                 >
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
@@ -106,7 +106,7 @@ const Header = (props) => {
                   <button
                     type='button'
                     className={`${styles.circles}`}
-                    onClick={() => props.setDropdown(false)}
+                    onClick={() => props?.closeDropdown()}
                   >
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/goldentickets-da603.appspot.com/o/img%2Fassets%2Fcasino%2Fprofile_shiba_inu.png?alt=media&token=8d8b1520-cc7b-4c00-a775-b3843fec2161"
@@ -142,4 +142,6 @@ Header.propTypes = {
   openModal: PropTypes.func,
   setDropdown: PropTypes.func,
   dropdown: PropTypes.bool,
+  openDropdown: PropTypes.func,
+  closeDropdown: PropTypes.func,
 }

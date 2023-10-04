@@ -7,10 +7,18 @@ import LotteriesTimeline from '../components/landing';
 import Timeline from '../components/timeline';
 import useModal from '../hooks/use-modal';
 import useAuthListener from '../hooks/use-auth-listener';
+import useDropDown from '../hooks/use-dropdown';
 
 const Landing = () => {
+
   const { open, openModal, closeModal } = useModal()
   const { user } = useAuthListener()
+  const {
+    dropdown,
+    setDropdown,
+    closeDropdown,
+    openDropdown,
+  } = useDropDown()
 
   return (
     <AnimatePresence>
@@ -29,7 +37,10 @@ const Landing = () => {
             (
               <Error>
                 <Header
-                  openModal={openModal}
+                 openModal={openModal}
+                 dropdown={dropdown}
+                 closeDropdown={closeDropdown}
+                 openDropdown={openDropdown}
                 />
               </Error>
             )
@@ -39,6 +50,8 @@ const Landing = () => {
           <Timeline
             open={open}
             closeModal={closeModal}
+            setDropdown={setDropdown}
+            dropdown={dropdown}
           />
         </Error>
 
