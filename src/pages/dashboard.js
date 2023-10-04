@@ -3,14 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Error from '../error/error';
 import Header from '../components/Header/dashboard';
 import Timeline from '../components/timeline';
+import LotteriesTimeline from '../components/landing';
 import useModal from '../hooks/use-modal';
 import useDropDown from '../hooks/use-dropdown';
-import LotteriesTimeline from '../components/landing';
 
 const Dashboard = () => {
 
   const { open, openModal, closeModal } = useModal()
-  const { dropdown, setDropdown } = useDropDown()
+  const {
+    dropdown,
+    setDropdown,
+    closeDropdown,
+    openDropdown,
+  } = useDropDown()
 
   return (
     <>
@@ -25,7 +30,8 @@ const Dashboard = () => {
             <Header
               openModal={openModal}
               dropdown={dropdown}
-              setDropdown={setDropdown}
+              closeDropdown={closeDropdown}
+              openDropdown={openDropdown}
             />
           </Error>
 

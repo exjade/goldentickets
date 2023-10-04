@@ -43,5 +43,5 @@ Timeline.propTypes = {
     open: PropTypes.bool,
     closeModal: PropTypes.func,
     dropdown: PropTypes.bool,
-    setDropdown: PropTypes.bool,
+    setDropdown: PropTypes.func,
 }
