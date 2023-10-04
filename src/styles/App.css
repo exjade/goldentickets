@@ -1265,6 +1265,15 @@ video {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 .cursor-not-allowed {
   cursor: not-allowed;
 }
@@ -1790,6 +1799,22 @@ video {
 .border-blue-button {
   --tw-border-opacity: 1;
   border-color: rgb(10 88 185 / var(--tw-border-opacity));
+}
+.border-yellow-pending {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 222 93 / var(--tw-border-opacity));
+}
+.border-gray-plata {
+  --tw-border-opacity: 1;
+  border-color: rgb(201 201 200 / var(--tw-border-opacity));
+}
+.border-brown-bronze {
+  --tw-border-opacity: 1;
+  border-color: rgb(80 54 12 / var(--tw-border-opacity));
+}
+.border-yellow-gold {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 178 31 / var(--tw-border-opacity));
 }
 .border-b-white-normal {
   --tw-border-opacity: 1;
@@ -2710,6 +2735,9 @@ video {
   }
 }
   @media (min-width: 640px) {
+  .sm\:z-50 {
+    z-index: 50;
+  }
   .sm\:-mx-6 {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
@@ -2728,6 +2756,9 @@ video {
   }
   .sm\:flex {
     display: flex;
+  }
+  .sm\:hidden {
+    display: none;
   }
   .sm\:h-8 {
     height: 2rem;
@@ -2759,6 +2790,36 @@ video {
   .sm\:flex-1 {
     flex: 1 1 0%;
   }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+  }
+  .sm\:animate-bounce {
+    animation: bounce 1s infinite;
+  }
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  .sm\:animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: .5;
+    }
+  }
+  .sm\:animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
   .sm\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -2782,6 +2843,9 @@ video {
   }
   .sm\:justify-between {
     justify-content: space-between;
+  }
+  .sm\:border-0 {
+    border-width: 0px;
   }
   .sm\:p-5 {
     padding: 1.25rem;

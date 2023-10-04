@@ -9,6 +9,15 @@ const LastWinners = () => {
 
     const { luckyNumbers: winners } = useLuckyNumbers()
 
+    const orderByDate = winners?.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date)
+    })
+
+    const lastWinner = orderByDate?.at(-1)
+    const previousWinner = orderByDate?.at(-2)
+    const bronzeWinner = orderByDate?.at(-3)
+
+
     return (
         <div className={`${styles.container}`}>
             <div className={`${styles.wrapper}`}>
@@ -20,6 +29,14 @@ const LastWinners = () => {
                 <section className={`${styles.middleContainer}`}>
                     <h2>Last draw <b className={`${styles.middleBold}`}>winners</b> </h2>
                     <p>The lucky ones who won lotteries in GoldenTickets!</p>
+                    <Link to={ROUTES.DRAW}>
+                        <p
+                            type='button'
+                            className='bg-blue-button text-white-normal w-44 h-4 flex justify-center items-center p-6 rounded-md'
+                        >
+                            View last winner
+                        </p>
+                    </Link>
                 </section>
 
                 {/* ==========================  WINNERS CARD  ========================== */}
@@ -27,26 +44,49 @@ const LastWinners = () => {
                     <div className={`${styles.RightWrapper}`}
                     >
                         {
-                            winners?.length > 0 ?
+                            orderByDate?.length > 0 ?
                                 (
                                     <>
-                                        {winners?.map((winner, index) => (
-                                            <Link to={ROUTES.DRAW}  key={index}  className={`${styles.cardsWinners}`}>
-                                                <div
-                                                    className={`${styles.cardsWinners}`}
-                                                   >
-                                                    {/* AVATAR #1 */}
-                                                    <img
-                                                        src="https://media.istockphoto.com/id/1344327532/photo/studio-portrait-of-attractive-19-year-old-woman-with-brown-hair.jpg?s=170667a&w=0&k=20&c=vMm9k7T5KOGiy0lGrXOOp2UWUR4sIplBQw-Dubd2lWA="
-                                                        alt="image"
-                                                        className={styles.image}
-                                                    />
-                                                    <h4>{`#${index + 1}`}</h4>
-                                                    <h3>{winner.username}</h3>
-                                                    <p>{`Number ${winner.numeroGanador}`}</p>
-                                                </div>
-                                            </Link>
-                                        ))}
+
+                                        <div
+                                            className={`${styles.cardsWinners} border-gray-plata border-2 ${styles.platinum}`}
+                                        >
+                                            {/* AVATAR #1 */}
+
+                                            <img
+                                                src="https://www.pngmart.com/files/9/Award-Badge-PNG-Photos.png"
+                                                alt="image"
+                                                className={styles.image}
+                                            />
+                                            <h3 >{bronzeWinner?.username}</h3>
+                                            <p>Number {bronzeWinner?.numeroGanador}</p>
+                                        </div>
+                                        <div
+                                            className={`${styles.cardsWinners} border-yellow-gold border-2 ${styles.gold} `}
+                                        >
+                                            {/* AVATAR #1 */}
+                                            <img
+                                                src="https://www.pngmart.com/files/9/Award-Badge-PNG-Photos.png"
+                                                alt="image"
+                                                className={styles.image}
+                                            />
+                                            <h4>Last winner</h4>
+                                            <h3 className='uppercase'>{lastWinner?.username}</h3>
+                                            <p>Number {lastWinner?.numeroGanador}</p>
+                                        </div>
+                                        <div
+                                            className={`${styles.cardsWinners} border-brown-bronze border-2  ${styles.bronze}`}
+                                        >
+                                            {/* AVATAR #1 */}
+                                            <img
+                                                src="https://www.pngmart.com/files/9/Award-Badge-PNG-Photos.png"
+                                                alt="image"
+                                                className={styles.image}
+                                            />
+                                            <h3 >{previousWinner?.username}</h3>
+                                            <p>Number {previousWinner?.numeroGanador}</p>
+                                        </div>
+
                                     </>
                                 )
                                 :
@@ -66,6 +106,9 @@ const LastWinners = () => {
                         }
 
                     </div>
+
+
+
                 </section>
 
             </div>

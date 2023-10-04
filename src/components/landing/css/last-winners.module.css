@@ -71,7 +71,7 @@
     border-radius: 30px;
     width: 80%;
     height: 26rem;
-    border-color: #2561BC;
+    border-color: #ffffff08;
     box-shadow: 1px 4px 32px 6px rgb(13 54 147 / 75%);
     -webkit-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
     -moz-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
@@ -88,6 +88,9 @@
     justify-items: center;
     justify-content: center;
     align-items: center;
+    background-image: url('https://i.pinimg.com/originals/1e/bd/62/1ebd62592ece9c36f32347098a8ddb21.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .cardsWinners {
@@ -102,6 +105,9 @@
     border-radius: 30px;
     gap: 1rem;
     padding: 1rem;
+    background-image: url('https://i.pinimg.com/originals/1e/bd/62/1ebd62592ece9c36f32347098a8ddb21.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .cardsWinners > h3 {
@@ -133,6 +139,34 @@
     object-fit: cover;
 }
 
+
+@media (max-width: 1440px) {  
+    .RightWrapper {
+        padding: 1rem;
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 10px;
+        height: 100%;
+        width: 100%;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .gold {
+        position: sticky;
+        z-index: 3;
+    }
+    .platinum {
+        position: sticky;
+        z-index: 2;
+    }
+    .bronze {
+        position: sticky;
+        z-index: 1;
+    }
+}
+
 @media (max-width: 1024px) { 
     .RightWrapper {
         padding: 1rem;
@@ -148,6 +182,18 @@
     }
     .cardsWinners {
         width: 60%;
+    }
+    .gold {
+        position: sticky;
+        z-index: 3;
+    }
+    .platinum {
+        position: sticky;
+        z-index: 2;
+    }
+    .bronze {
+        position: sticky;
+        z-index: 1;
     }
 }
 
@@ -167,10 +213,10 @@
         border-radius: 0px;
         width: 100%;
         height: 26rem;
-        border-color: #2561BC;
+        border-color: #ffffff08;
         box-shadow: 1px 4px 32px 6px rgb(13 54 147 / 75%);
         -webkit-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
-        -moz-box-shadow: 1px 4px 32px 6px rgba(89,128,63,0.75);
+        -moz-box-shadow: 1px 4px 32px 6px rgb(11 55 179 / 75%);
     }
     .divider {
         display: none;
@@ -191,4 +237,16 @@
         justify-content: center;
         align-items: center;
     }
+    .gold {
+        position: sticky;
+        z-index: 3;
+    }
+    .platinum {
+        display:none
+    }
+    .bronze {
+        display:none
+    }
+  
+    
 }

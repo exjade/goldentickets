@@ -41,6 +41,7 @@ module.exports = {
         text2: '#93A0B4',
         loader: '#242934d3',
         logout: '#9d9e98',
+        plata: '#C9C9C8'
 
       },
       green: {
@@ -51,7 +52,11 @@ module.exports = {
         primary: '#AB2E58'
       },
       yellow: {
-        pending: '#FFDE5D'
+        pending: '#FFDE5D',
+        gold: '#FEB21F'
+      },
+      brown: {
+        bronze: '#50360C'
       }
 
     },
