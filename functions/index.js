@@ -10,14 +10,17 @@ admin.initializeApp({
 const {
     BuyTicketsV3,
     BuyTicketsBETAV14,
+    WeeklyBuyTicketsBETAV1
 } = require('./utils/http-functions.js');
 
 const {
     sorteoAutomaticoDolarHoraV3,
     sorteoAutomaticoDolarHoraV6,
+    WeeklySorteoAutomaticoDolarHoraV2
 } = require('./utils/scheduled-functions/Sorteo-dolar/sorteoAutomatico');
 const {
     DeleteReservedTickets,
+    WeeklyDeleteReservedTickets,
 } = require('./utils/scheduled-functions/delete/delete-bookingtickets');
 
 const db = admin.firestore();
@@ -28,5 +31,9 @@ exports.BuyTicketsBETAV14 = BuyTicketsBETAV14;
 exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3;
 exports.sorteoAutomaticoDolarHoraV6 = sorteoAutomaticoDolarHoraV6;
 exports.DeleteReservedTickets = DeleteReservedTickets;
+// Weekly lotto
+exports.WeeklyBuyTicketsBETAV1 = WeeklyBuyTicketsBETAV1;
+exports.WeeklyDeleteReservedTickets = WeeklyDeleteReservedTickets;
+exports.WeeklySorteoAutomaticoDolarHoraV2 = WeeklySorteoAutomaticoDolarHoraV2;
 
 
