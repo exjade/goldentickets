@@ -18,8 +18,13 @@ const ForgotPassword = lazy(() => import('./pages/auth/reset-password'));
 
 // - Members Routes
 const Dashboard = lazy(() => import('./pages/dashboard'))
+
+// Lotteries - PRIZE $100
 const BuyTickets = lazy(() => import('./pages/draw/buy-tickets'))
-const Draw = lazy(() => import('./pages/draw/draw'))
+const Draw = lazy(() => import('./pages/draw/weekly-prize/draw'))
+// Lotteries - PRIZE $1000
+const BuyTickets1000 = lazy(() => import('./pages/draw/weekly-prize/buy-tickets'))
+const Draw1000 = lazy(() => import('./pages/draw/weekly-prize/draw'))
 
 // - Error: Not Found
 const NotFound = lazy(() => import('./pages/not-found'))
@@ -67,6 +72,9 @@ function App() {
             <ProtectedRoute user={user} path={ROUTES.DRAW} exact>
               <Draw />
             </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.DRAW_1000} exact>
+              <Draw1000 />
+            </ProtectedRoute>
 
             {/* administration */}
             <ProtectedRoutes
@@ -80,7 +88,10 @@ function App() {
 
             {/* ALL USERS */}
             <Route path={ROUTES.LANDING} component={Landing} exact />
+
             <Route path={ROUTES.BUY_TICKETS} component={BuyTickets} exact />
+            <Route path={ROUTES.BUY_TICKETS_1000} component={BuyTickets1000} exact />
+            
             <Route path="*" component={NotFound} />
 
           </Switch>

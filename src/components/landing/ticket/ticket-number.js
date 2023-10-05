@@ -30,23 +30,23 @@ const TicketNumber = () => {
                 <div className={`${styles.middle}`}>
                   <span className={`${styles.middleLeft}`}></span>
                   <span className={`${styles.ticketBall} ${styles.ticketBallHidde2} `}>
-                    <p>56</p>
+                    <p>70</p>
                   </span>
                   <span className={`${styles.ticketBall} ${styles.ticketBallHidde5}`}>
-                    <p>56</p>
+                    <p>33</p>
                   </span>
                   <span className={`${styles.ticketBall} ${styles.ticketBallHidde3}`}>
-                    <p>56</p>
+                    <p>3</p>
                   </span>
                   <span className={`${styles.ticketBall} ${styles.ticketBallHidde4}`}>
-                    <p>56</p>
+                    <p>98</p>
                   </span>
                   <span className={`${styles.ticketBall} ${styles.ticketBallHidde1}`}>
                     <p>56</p>
                   </span>
 
                   < span className={`${styles.ticketOwned}`}>
-                    <p>33</p>
+                    <p>49</p>
                   </span>
 
                   <span className={`${styles.middleRight}`}></span>

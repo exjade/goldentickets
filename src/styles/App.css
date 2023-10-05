@@ -2735,9 +2735,6 @@ video {
   }
 }
   @media (min-width: 640px) {
-  .sm\:z-50 {
-    z-index: 50;
-  }
   .sm\:-mx-6 {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
@@ -2756,9 +2753,6 @@ video {
   }
   .sm\:flex {
     display: flex;
-  }
-  .sm\:hidden {
-    display: none;
   }
   .sm\:h-8 {
     height: 2rem;
@@ -2790,36 +2784,6 @@ video {
   .sm\:flex-1 {
     flex: 1 1 0%;
   }
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(-25%);
-      animation-timing-function: cubic-bezier(0.8,0,1,1);
-    }
-    50% {
-      transform: none;
-      animation-timing-function: cubic-bezier(0,0,0.2,1);
-    }
-  }
-  .sm\:animate-bounce {
-    animation: bounce 1s infinite;
-  }
-  @keyframes ping {
-    75%, 100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-  .sm\:animate-ping {
-    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-  @keyframes pulse {
-    50% {
-      opacity: .5;
-    }
-  }
-  .sm\:animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
   .sm\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -2843,9 +2807,6 @@ video {
   }
   .sm\:justify-between {
     justify-content: space-between;
-  }
-  .sm\:border-0 {
-    border-width: 0px;
   }
   .sm\:p-5 {
     padding: 1.25rem;
@@ -2888,6 +2849,10 @@ video {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
   @media (min-width: 768px) {

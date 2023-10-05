@@ -1,0 +1,338 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #11141D;
+}
+
+
+.container {}
+
+.wrapper {}
+
+.numberPickerContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.m-btn {
+  position: absolute;
+  width: 180px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s all;
+  box-sizing: border-box;
+  color: #fff;
+  margin-right: 160px;
+  margin-bottom: 20px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.gbtnstart {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.gbtnstart:hover {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.gbtnstart::after {
+  position: absolute;
+  content: "";
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  transition: 0.5s outline-color, 0.5s outline, 0.5s transform;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.25, 0.8);
+  transform: scale3d(1.1, 1.3, 0);
+  outline: 0px solid;
+  outline-color: rgba(255, 255, 255, 0.05);
+  outline-offset: -10px;
+}
+
+.gbtnstart:hover::after {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  transform: scale(1);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.6);
+  outline-offset: 10px;
+  transition: 0.5s outline-offset cubic-bezier(0.2, 0.8, 0.25, 0.8), 0.5s outline-color cubic-bezier(0.2, 0.8, 0.25, 0.8), 0.5s outline cubic-bezier(0.2, 0.8, 0.25, 0.8);
+}
+
+.gbtnstart:active {
+  mix-blend-mode: overlay;
+}
+
+.s-move {
+  top: 80%;
+}
+
+.gname {
+  display: none;
+  position: absolute;
+  font-size: 128px;
+  transition: 0.2s all;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  transition: 0.1s all;
+}
+
+
+/* ============================== WINNER CARD SECTION ============================== */
+
+
+.card {
+  width: 100%;
+  display: flex;
+  height: 101%;
+  background: #001020bf;
+  /* border-radius: 43px; */
+  /* border-color: #2977EC; */
+  /* border-width: 3px; */
+  /* box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75);
+  -webkit-box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75);
+  -moz-box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75); */
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.cardWrapper {
+  width: 100%;
+  display: flex;
+  height: 101%;
+  background: #001020bf;
+  /* border-radius: 43px; */
+  /* border-color: #2977EC; */
+  /* border-width: 3px; */
+  /* box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75);
+  -webkit-box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75);
+  -moz-box-shadow: -2px -2px 32px 9px rgba(68, 136, 237, 0.75); */
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.winnerImage {}
+
+/* HEXAGONO */
+.hexagon {
+  position: relative;
+  width: 200px;
+  height: 220px;
+  background-color: #3498db00;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border-radius: 20px 20px 20px 20px / 60px 60px 60px 60px;
+  /* Ajusta los valores para redondear los picos */
+  overflow: hidden;
+}
+
+
+.hexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border-radius: 30px;
+  overflow: hidden;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.userCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.userCard>h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  word-break: break-word;
+  color: #F3F3F3;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.userCard>h4 {
+  width: 20rem;
+  font-size: 1rem;
+  font-weight: 700;
+  word-break: break-word;
+  color: #F3F3F3;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.LotteryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+  align-content: center;
+}
+
+.LotteryWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  width: 12rem;
+  border-radius: 13px;
+  height: 9rem;
+  background: #192737;
+  flex-wrap: wrap;
+}
+
+.LotteryWrapper> p {
+  font-size: 1rem;
+  font-weight: 700;
+  word-break: break-word;
+  color: #d7d8d8;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.WinnerNumber {
+  width: 4rem;
+  height: 4rem;
+  background: #C5FC5E;
+  display: flex;
+  border-radius: 99px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.WinnerNumber >p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  word-break: break-word;
+  color: #1F372A;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
+.WinnerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  width: 12rem;
+  border-radius: 13px;
+  height: 10rem;
+  background: #192737;
+  flex-wrap: wrap;
+}
+
+.WinnerWrapper> p {
+  font-size: 1rem;
+  font-weight: 700;
+  word-break: break-word;
+  color: #d7d8d8;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.WinnerPrize {
+  width: 10rem;
+  height: 6rem;
+  background: #2633421f;
+  display: flex;
+  border-radius: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.WinnerPrize >p {
+  font-size: 2rem;
+  font-weight: 900;
+  word-break: break-word;
+  color: #F3F3F3;
+  font-family: 'Nunito Sans', sans-serif;
+}
