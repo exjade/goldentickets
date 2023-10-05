@@ -21,7 +21,7 @@ const Dashboard = lazy(() => import('./pages/dashboard'))
 
 // Lotteries - PRIZE $100
 const BuyTickets = lazy(() => import('./pages/draw/buy-tickets'))
-const Draw = lazy(() => import('./pages/draw/weekly-prize/draw'))
+const Draw = lazy(() => import('./pages/draw/draw'))
 // Lotteries - PRIZE $1000
 const BuyTickets1000 = lazy(() => import('./pages/draw/weekly-prize/buy-tickets'))
 const Draw1000 = lazy(() => import('./pages/draw/weekly-prize/draw'))

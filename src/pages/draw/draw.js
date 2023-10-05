@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useHistory } from 'react-router-dom';
-import Error from '../../../error/error';
-import DisplayDraw from '../../../components/draw/show-draw/draw';
-import * as ROUTES from '../../../constants/routes'
-import useWeeklyLottery from '../../../hooks/draw/weekly-prize/use-weeklyPrize';
+import Error from '../../error/error';
+import DisplayDraw from '../../components/draw/show-draw/draw';
+import * as ROUTES from '../../constants/routes'
+import useLastWinner from '../../hooks/draw/use-lastWinner';
 
 
 const Draw = () => {
@@ -18,7 +18,7 @@ const Draw = () => {
     },100)
   }
 
-  const { loterry } = useWeeklyLottery()
+  const { loterry } = useLastWinner()
 
 
   return (

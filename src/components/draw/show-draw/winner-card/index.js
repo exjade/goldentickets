@@ -55,7 +55,7 @@ const WinnerCard = (props) => {
               props?.loterry[0]?.premioAcumulado > 0 &&
               props?.loterry[0]?.premioEntregado === 0 &&
               <h4>
-                The prize will be accumulated and awarded to the winner of the next lottery!
+                El premio se acumulará y se entregará al ganador del próximo sorteo.
               </h4>
             }
 
