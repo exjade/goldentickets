@@ -310,7 +310,7 @@ const Tickets = (props) => {
                 setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
 
                 // Restamos $1 al costo cuando se deselecciona un número
-                setPrice(price - 1);
+                setPrice(price - 15);
 
                 handleRemoveFee()
             } else {
@@ -324,7 +324,7 @@ const Tickets = (props) => {
                     setSelectedNumbers([...selectedNumbers, number]);
 
                     // Sumamos $1 al costo cuando se selecciona un número
-                    setPrice(price + 1);
+                    setPrice(price + 15);
                     handleAddFee()
 
                     setTimeout(() => {
