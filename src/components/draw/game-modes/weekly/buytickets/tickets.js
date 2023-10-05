@@ -376,7 +376,14 @@ const Tickets = (props) => {
                 {/*================ Sección izquierda ================*/}
                 <section className={`${styles.leftContainer}`} >
                     <h2>Pick your <b className={`${styles.leftBold}`}>lucky</b> number</h2>
-
+                    <Link to={ROUTES.DRAW_1000}>
+                        <p
+                            type='button'
+                            className='bg-blue-button text-white-normal w-48 h-4 flex justify-center items-center p-6 rounded-md font-semibold'
+                        >
+                            Last lottery winner
+                        </p>
+                    </Link>
                     <DrawCountDown />
                 </section>
 
@@ -406,6 +413,7 @@ const Tickets = (props) => {
                         <span className={`${styles.rightTitle}`}>
                             Lotto ticket's
                         </span>
+                        
 
                         {/* TICKET SELECCIONADO */}
                         <div className={`${styles.rightTicket}`} >

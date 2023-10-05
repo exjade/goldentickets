@@ -29,14 +29,7 @@ const LastWinners = () => {
                 <section className={`${styles.middleContainer}`}>
                     <h2>Last draw <b className={`${styles.middleBold}`}>winners</b> </h2>
                     <p>The lucky ones who won lotteries in GoldenTickets!</p>
-                    <Link to={ROUTES.DRAW}>
-                        <p
-                            type='button'
-                            className='bg-blue-button text-white-normal w-44 h-4 flex justify-center items-center p-6 rounded-md'
-                        >
-                            View last winner
-                        </p>
-                    </Link>
+                    
                 </section>
 
                 {/* ==========================  WINNERS CARD  ========================== */}

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Error from '../../../error/error';
 import DisplayDraw from '../../../components/draw/show-draw/draw';
 import * as ROUTES from '../../../constants/routes'
-import useLastWinner from '../../../hooks/draw/use-lastWinner';
+import useWeeklyLottery from '../../../hooks/draw/weekly-prize/use-weeklyPrize';
 
 
 const Draw = () => {
@@ -15,7 +15,7 @@ const Draw = () => {
     history.push(ROUTES.DASHBOARD)
   }
 
-  const { loterry } = useLastWinner()
+  const { loterry } = useWeeklyLottery()
 
 
   return (
