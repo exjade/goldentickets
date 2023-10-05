@@ -14,30 +14,31 @@ export default function useHourlyCountdown() {
 
 
   useEffect(() => {
-    function countdownAndRestart(timestamp) {
+    function countdownAndRestart() {
+      const now = new Date();
+      const nextFriday = new Date(now);
+
+      // Avanzar al próximo viernes
+      nextFriday.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7));
+      nextFriday.setHours(20, 0, 0, 0); // Establecer a las 8 PM
+
       const interval = 1000; // Actualizar cada segundo
 
       const countdownInterval = setInterval(() => {
         const currentTime = new Date().getTime();
-        const timeDiff = timestamp - currentTime;
+        const timeDiff = nextFriday - currentTime;
 
-        if (timeDiff <= 0) { // Verificar si el contador ha terminado
-          clearInterval(countdownInterval); // Detener la cuenta atrás
-          console.log('Reiniciando para la próxima hora.');
-          const nextTimestamp = timestamp + 60 * 60 * 24000; // Sumar 1 hora
-
-          countdownAndRestart(nextTimestamp); // Reiniciar para la próxima hora
+        if (timeDiff <= 0) {
+          clearInterval(countdownInterval);
+          console.log('Reiniciando para el próximo viernes a las 8 PM.');
+          countdownAndRestart();
         } else {
           setTimeRemaining(timeDiff);
         }
       }, interval);
     }
 
-    // Timestamp inicial (ejemplo)
-    const initialTimestamp = loterry[0]?.date;
-
-    // Función para calcular la cuenta atrás y reiniciar cada hora
-    countdownAndRestart(initialTimestamp);
+    countdownAndRestart();
 
     return () => clearInterval(countdownAndRestart);
   }, [loterry]);
