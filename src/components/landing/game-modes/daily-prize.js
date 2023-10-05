@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-import styles from '../css/lotteries.module.css';
+import styles from './css/lotteries.module.css';
 import * as ROUTES from '../../../constants/routes'
 import TicketNumber from '../ticket/ticket-number';
 import useWeeklyLottery from '../../../hooks/draw/weekly-prize/use-weeklyPrize';
