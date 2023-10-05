@@ -7,7 +7,7 @@ import TicketNumber from '../ticket/ticket-number';
 import useWeeklyLottery from '../../../hooks/draw/weekly-prize/use-weeklyPrize';
 import useWeeklyTickets from '../../../hooks/draw/weekly-prize/use-weeklyTickets';
 
-const DailyPrize = () => {
+const WeeklyPrize = () => {
 
     const { loterry } = useWeeklyLottery()
     const { tickets } = useWeeklyTickets()
@@ -54,17 +54,7 @@ const DailyPrize = () => {
 
                     {/* NOMBRE DE LOTERIA */}
                     <span className={`${styles.lotteryHistoryName}`}>
-                        {
-                            loterry[0]?.numeroGanador === 0 && loterry[0]?.numeroNoGanador > 0 ?
-                                (
-                                    <p>Accumulator</p>
-                                )
-                                :
-                                (
-
-                                    <p>Classic</p>
-                                )
-                        }
+                        <p>Classic</p>
                     </span>
                     {/* NUMBERS */}
                     <TicketNumber />
@@ -77,7 +67,7 @@ const DailyPrize = () => {
                                 ) :
                                 (
                                     <span className='flex flex-col text-white-normal font-semibold'>
-                                        <p className='sm:text-xs'>Friday at</p> 
+                                        <p className='sm:text-xs'>Friday at</p>
                                         <p className='sm:text-xs'>{date.hours}:{date.minutes} {date.period}</p>
                                     </span>
                                 )
@@ -105,7 +95,7 @@ const DailyPrize = () => {
                                 ) :
                                 (
                                     <p>
-                                        {`$${loterry[0]?.premioAcumulado}`}
+                                        $1,000
                                     </p>
                                 )
                         }
@@ -117,9 +107,9 @@ const DailyPrize = () => {
     )
 }
 
-export default DailyPrize
+export default WeeklyPrize
 
-DailyPrize.propTypes = {
+WeeklyPrize.propTypes = {
     loterry: PropTypes.array,
     date: PropTypes.object,
     tickets: PropTypes.array,

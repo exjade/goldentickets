@@ -314,6 +314,14 @@
         color: #ffffff;
         font-family: 'Nunito Sans', sans-serif;
     }
+    .lotteryHistoryPrize>p {
+        font-size: 12px;
+        font-weight: 900;
+        word-break: break-word;
+        color: #FDB722;
+        font-family: 'Nunito Sans', sans-serif;
+        text-transform: uppercase;
+    }
 }
 
 
