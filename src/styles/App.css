@@ -2838,6 +2838,10 @@ video {
   .sm\:text-\[2em\] {
     font-size: 2em;
   }
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -2849,10 +2853,6 @@ video {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-  .sm\:text-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
   }
 }
   @media (min-width: 768px) {
