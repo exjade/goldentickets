@@ -4,11 +4,16 @@ import useUser from '../../hooks/use-user'
 import { getDailySellerCode } from '../../services/firebase'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { motion } from 'framer-motion'
+import useWeeklyTickets from '../../hooks/draw/weekly-prize/use-weeklyTickets';
+import { formatRelative } from 'date-fns'
 
 const MyReferrals = () => {
 
     const { user } = useUser()
+    const { tickets: weeklyTickets } = useWeeklyTickets()
     const [code, setCode] = useState('')
+
+
 
     useEffect(() => {
         const sellerId = user?.userId
@@ -21,6 +26,8 @@ const MyReferrals = () => {
             });
         return () => result
     }, [user])
+
+    const filterTicketsWithSellerCode = weeklyTickets?.filter(ticket => ticket.sellerCode === code)
 
     return (
         <div className={`${styles.container}`} >
@@ -38,7 +45,7 @@ const MyReferrals = () => {
                             ) :
                             (
                                 <>
-                                <p>Tú código de venta:</p>
+                                    <p>Tú código de venta:</p>
                                     < CopyToClipboard text={code}>
                                         <motion.button
                                             type='button'
@@ -52,6 +59,26 @@ const MyReferrals = () => {
                     }
                 </div>
 
+                <div className={`${styles.WrapperTickets}`} >
+                    <div className={`${styles.ticket}`} >
+                        <p>Tickets vendidos de $15 USD</p>
+
+                        {
+                            filterTicketsWithSellerCode?.map((ticket, index) => (
+                                <div
+                                    key={index}
+                                    className={`${styles.table}`}
+                                >
+                                    <p>code: {ticket.sellerCode}</p>
+                                    <p>costo: {ticket.costoTicket} USD</p>
+                                    <p>numero: {ticket.numeroTicket}</p>
+                                    <p>Loteria: {ticket.drawType}</p>
+                                    <p>Fecha:  {formatRelative(ticket.purchaseDate, new Date(), { addSuffix: true })}</p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
 
             </div>
         </div >

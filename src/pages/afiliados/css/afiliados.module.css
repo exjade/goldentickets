@@ -61,5 +61,55 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-   
+
+}
+
+.WrapperTickets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    align-content: center;
+}
+
+.ticket>p {
+    font-size: 1rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.table {
+    display: grid;
+    align-content: center;
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-rows: 4rem;
+    justify-items: center;
+    align-items: center;
+    background: darkslategrey;
+    border-bottom-width: 8px;
+    border-bottom-color: snow;
+    justify-content: start;
+    padding: 0.5rem;
+}
+
+.table>p {
+    font-size: 1rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+    width: 100%;
 }
