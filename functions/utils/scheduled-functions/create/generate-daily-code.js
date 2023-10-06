@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const cors = require('cors')({ origin: true });
 
-exports.generateDailyCodeV4 = functions.https.onRequest(async (req, res) => {
+exports.generateDailyCodeV5 = functions.https.onRequest(async (req, res) => {
     cors(req, res, async () => {
         // Generar código único diario
         const dailyCode = generateUniqueCode();
@@ -33,7 +33,8 @@ exports.generateDailyCodeV4 = functions.https.onRequest(async (req, res) => {
                 await admin.firestore().collection('dailyCodesAssociations').add({
                     sellerId,
                     dailyCodeId: dailyCodeRef.id,
-                    userData
+                    userData,
+                    dailyCode
                 });
             });
 

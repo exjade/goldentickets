@@ -28,7 +28,7 @@ const {
 } = require('./utils/scheduled-functions/update/track-referrals');
 
 const {
-    generateDailyCodeV4
+    generateDailyCodeV5
 } = require('./utils/scheduled-functions/create/generate-daily-code');
 
 
@@ -48,7 +48,7 @@ exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
 exports.trackReferrals = trackReferrals;
 exports.trackReferralsV7 = trackReferralsV7;
 // Generate seller code
-exports.generateDailyCodeV4 = generateDailyCodeV4;
+exports.generateDailyCodeV5 = generateDailyCodeV5;
 
 
 
