@@ -22,6 +22,11 @@ const {
     DeleteReservedTickets,
     WeeklyDeleteReservedTickets,
 } = require('./utils/scheduled-functions/delete/delete-bookingtickets');
+const {
+    trackReferrals,
+    trackReferralsV7
+} = require('./utils/scheduled-functions/update/track-referrals');
+
 
 const db = admin.firestore();
 
@@ -35,5 +40,9 @@ exports.DeleteReservedTickets = DeleteReservedTickets;
 exports.WeeklyBuyTicketsBETAV1 = WeeklyBuyTicketsBETAV1;
 exports.WeeklyDeleteReservedTickets = WeeklyDeleteReservedTickets;
 exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
+// Track referral users
+exports.trackReferrals = trackReferrals;
+exports.trackReferralsV7 = trackReferralsV7;
+
 
 
