@@ -3,7 +3,7 @@ import styles from './css/lotteries.module.css';
 import LuckyNumbers from './lucky-numbers';
 import LotteriesLoader from './loader/lotteries-loader';
 import Accumulator from './game-modes/accumulator';
-import DailyPrize from './game-modes/daily-prize';
+import WeeklyPrize from './game-modes/weekly-prize';
 import useLastWinner from '../../hooks/draw/use-lastWinner';
 
 
@@ -58,7 +58,7 @@ const Lotteries = () => {
               {
                 loterry[0]?.numeroGanador !== undefined ?
                   (
-                    <DailyPrize
+                    <WeeklyPrize
                     />
                   ) : <LotteriesLoader />
               }

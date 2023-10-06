@@ -244,10 +244,10 @@ exports.sorteoAutomaticoDolarHoraV6 = functions.pubsub.schedule('0 * * * *').tim
 
 
 
-exports.WeeklySorteoAutomaticoDolarHoraV2 = functions.pubsub.schedule('0 20 * * FRI').timeZone('America/Mexico_City').onRun(async (context) => {
+exports.WeeklySorteoAutomaticoDolarHoraV3 = functions.pubsub.schedule('0 20 * * FRI').timeZone('America/Mexico_City').onRun(async (context) => {
     try {
         // 1. Genera un número aleatorio como el número ganador
-        const nuevoNumeroGanador = Math.floor(Math.random() * 100) + 1;
+        const nuevoNumeroGanador = Math.floor(Math.random() * 300) + 1;
 
         // 2. Consulta todas las compras que coinciden con el número ganador
         const comprasSnapshot = await db.collection('loteria').doc('weekly-prize').collection('compras')

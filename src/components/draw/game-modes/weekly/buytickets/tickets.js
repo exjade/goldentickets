@@ -208,7 +208,6 @@ const Tickets = (props) => {
                 }, 2000);
             }
 
-
         } catch (error) {
             console.log(error)
         }
@@ -237,47 +236,6 @@ const Tickets = (props) => {
     }
 
 
-    // Función para ordenar los tickets por fecha de reserva y número de ticket
-    // Función para filtrar y ordenar los tickets
-
-
-    // // Función para verificar si un número de ticket está comprado
-    // const checkNumeroComprado = async (numero) => {
-    //     const estadoLoteriaRef = db.collection('loteria').doc('estado');
-    //     const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
-    //     return !querySnapshot.empty;
-    // };
-
-    // const handleNumberClick = async (number) => {
-    //     if (selectedNumbers.includes(number)) {
-    //         // Si el número ya está seleccionado, lo deseleccionamos
-    //         setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
-    //         // Restamos $1 al costo cuando se deselecciona un número
-    //         setPrice(price - 1);
-
-    //         handleRemoveFee()
-    //     } else {
-
-    //         // Si el número no está seleccionado, verificamos si está comprado
-    //         const estaComprado = await checkNumeroComprado(number);
-
-    //         if (!estaComprado) {
-    //             // Si el número no está seleccionado, lo agregamos a la lista
-    //             setSelectedNumbers([...selectedNumbers, number]);
-    //             // Sumamos $1 al costo cuando se selecciona un número
-    //             setPrice(price + 1);
-
-    //             handleAddFee()
-    //         } else {
-    //             // Si está comprado, agregamos el número a los no disponibles
-    //             setUnavailableNumbers([...unavailableNumbers, number]);
-    //             setMessageUnavailableNumbers('Ticket no disponible')
-    //             setTimeout(() => {
-    //                 setMessageUnavailableNumbers('')
-    //             }, 2500);
-    //         }
-    //     }
-    // };
 
     // Función para verificar si un número de ticket está comprado
     const checkNumeroComprado = async (numero) => {
@@ -310,7 +268,7 @@ const Tickets = (props) => {
                 setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
 
                 // Restamos $1 al costo cuando se deselecciona un número
-                setPrice(price - 1);
+                setPrice(price - 15);
 
                 handleRemoveFee()
             } else {
@@ -324,7 +282,7 @@ const Tickets = (props) => {
                     setSelectedNumbers([...selectedNumbers, number]);
 
                     // Sumamos $1 al costo cuando se selecciona un número
-                    setPrice(price + 1);
+                    setPrice(price + 15);
                     handleAddFee()
 
                     setTimeout(() => {
