@@ -71,7 +71,7 @@ const Footer = () => {
               <li><a href="#">Terms</a></li>
               <li><a href="#">Sport Rules</a></li>
               <li><a href="https://www.begambleaware.org/">Gamble Aware</a></li>
-              <li> <a href="#">Faq</a> </li>
+              <li> <a href="#">Policy</a> </li>
             </ul>
           </div>
 

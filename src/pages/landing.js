@@ -8,6 +8,7 @@ import Timeline from '../components/timeline';
 import useModal from '../hooks/use-modal';
 import useAuthListener from '../hooks/use-auth-listener';
 import useDropDown from '../hooks/use-dropdown';
+import Footer from '../components/footer/footer';
 
 const Landing = () => {
 
@@ -37,10 +38,10 @@ const Landing = () => {
             (
               <Error>
                 <Header
-                 openModal={openModal}
-                 dropdown={dropdown}
-                 closeDropdown={closeDropdown}
-                 openDropdown={openDropdown}
+                  openModal={openModal}
+                  dropdown={dropdown}
+                  closeDropdown={closeDropdown}
+                  openDropdown={openDropdown}
                 />
               </Error>
             )
@@ -57,6 +58,10 @@ const Landing = () => {
 
         <Error>
           <LotteriesTimeline />
+        </Error>
+
+        <Error>
+          <Footer />
         </Error>
 
       </motion.div>
