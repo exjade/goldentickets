@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://artificialtech4u.com//login</loc>
+    <loc>https://goldentickets.club/login</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
   <url>
-    <loc>https://artificialtech4u.com//signup</loc>
+    <loc>https://goldentickets.club/signup</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
   <url>
-    <loc>https://artificialtech4u.com//</loc>
+    <loc>https://goldentickets.club/terms</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
   <url>
-    <loc>https://artificialtech4u.com//privacy</loc>
+    <loc>https://goldentickets.club/privacy</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
   <url>
-    <loc>https://artificialtech4u.com//</loc>
+    <loc>https://goldentickets.club/</loc>
+    <lastmod>2018-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://goldentickets.club/draw/prize-1000/buy-tickets</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
 </urlset>
