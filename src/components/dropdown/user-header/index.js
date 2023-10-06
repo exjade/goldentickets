@@ -2,10 +2,15 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types'
 import styles from './css/dropdown.module.css';
 import FirebaseContext from '../../../context/firebase';
+import { motion } from 'framer-motion'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import useUser from '../../../hooks/use-user';
 
 const DropDownUserHeader = (props) => {
 
   const { firebase } = useContext(FirebaseContext);
+  const { user } = useUser();
+
 
   return (
     <div className={`${styles.container}`} >
@@ -28,8 +33,18 @@ const DropDownUserHeader = (props) => {
           <p>exjade</p>
         </div>
 
+        {/* Referral code*/}
+        <CopyToClipboard text={user?.referral?.referralCode}>
+          <motion.button
+            type='button'
+            className={`${styles.referralCode} lowercase font-semibold`}
+            whileTap={{ scale: 0.9 }}>
+            {user?.referral?.referralCode}
+          </motion.button>
+        </CopyToClipboard>
+
         <div className={`${styles.divider}`}></div>
-    
+
 
         <button
           type="button"
