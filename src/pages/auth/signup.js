@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { doesUsernameExist } from '../../services/firebase';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { generarCodigoReferido } from './generate-id'
 import Header from '../../components/Header/auth/register';
 import Error from '../../error/error';
 import FirebaseContext from '../../context/firebase';
-import { generarCodigoReferido } from './generate-id'
+import axios from 'axios';
 
 
 const SignUp = () => {
@@ -32,6 +33,9 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const isInvalid = password === '' && password?.length < 5 || emailAddress === '' || username === '' && username?.length < 3;
 
+    const referralCode = `${username.toLowerCase().trim()}_${generarCodigoReferido()?.trim()}`;
+
+    const url = `${process.env.REACT_APP_TRACKINGREFERRAL}`;
 
     const handleSignup = async (e) => {
         e.preventDefault()
@@ -42,9 +46,30 @@ const SignUp = () => {
                 const createdUserResult = await firebase
                     .auth()
                     .createUserWithEmailAndPassword(emailAddress, password);
+
                 await createdUserResult.user.updateProfile({
                     displayName: username.toLowerCase(),
                 })
+
+                if (referrerBy !== '') {
+                    const data = {
+                        uid: createdUserResult.user.uid,
+                        customClaims: {
+                            referralCode: referrerBy,
+                        },
+                    };
+
+                    // Ahora, llama a tu función de Firebase utilizando axios
+                    const functionURL = url; // Reemplaza esto con la URL de tu función
+                    await axios.post(functionURL, data)
+                        .then(response => {
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+
                 await firebase.firestore().collection('users').doc(createdUserResult.user.uid).set({
                     userId: createdUserResult.user.uid,
                     username: username.toLowerCase().trim(),
@@ -68,7 +93,7 @@ const SignUp = () => {
                     referral: {
                         email: emailAddress.toLowerCase().trim(),
                         referrerBy: referrerBy.toLowerCase().trim() || '',
-                        referralCode: `${username.toLowerCase().trim()}_${generarCodigoReferido()?.trim()}`,
+                        referralCode: referralCode,
                         userReferrals: [],
                         joinDate: Date.now(),
                     },
@@ -173,7 +198,7 @@ const SignUp = () => {
                                                 onChange={({ target }) => setEmailAddress(target.value)}
                                             />
                                         </div>
-                                       
+
                                         {/*  ========================= PASSWORD INPUT =========================  */}
                                         <div className={`${styles.inputContainer}`}>
                                             <label
@@ -190,8 +215,8 @@ const SignUp = () => {
                                             />
                                             <p className={`${styles.limited}`}>min. 6, only letters with numbers or symbols</p>
                                         </div>
-                                         {/* ========================= REFERRALS INPUT ========================= */}
-                                         <div className={`${styles.inputContainer}`} >
+                                        {/* ========================= REFERRALS INPUT ========================= */}
+                                        <div className={`${styles.inputContainer}`} >
                                             <label
                                                 htmlFor='Enter your referral code'
                                                 className={`${styles.label}`}
