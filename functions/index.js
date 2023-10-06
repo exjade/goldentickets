@@ -16,7 +16,7 @@ const {
 const {
     sorteoAutomaticoDolarHoraV3,
     sorteoAutomaticoDolarHoraV6,
-    WeeklySorteoAutomaticoDolarHoraV2
+    WeeklySorteoAutomaticoDolarHoraV3
 } = require('./utils/scheduled-functions/Sorteo-dolar/sorteoAutomatico');
 const {
     DeleteReservedTickets,
@@ -34,6 +34,6 @@ exports.DeleteReservedTickets = DeleteReservedTickets;
 // Weekly lotto
 exports.WeeklyBuyTicketsBETAV1 = WeeklyBuyTicketsBETAV1;
 exports.WeeklyDeleteReservedTickets = WeeklyDeleteReservedTickets;
-exports.WeeklySorteoAutomaticoDolarHoraV2 = WeeklySorteoAutomaticoDolarHoraV2;
+exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
 
 

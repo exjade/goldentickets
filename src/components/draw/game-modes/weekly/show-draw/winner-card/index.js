@@ -37,14 +37,14 @@ const WinnerCard = (props) => {
             </div>
             <h2>
               {
-                props?.loterry[0]?.numeroGanador !== 0 ?
+                props?.loterry[0]?.numeroGanador > 0 ?
                   (
                     <p>
                       {props?.loterry[0]?.ultimoGanador?.username}
                     </p>
                   ) : (
                     <p>
-                      No Winner!
+                      Waiting for the next winner!
                     </p>
                   )
 
@@ -52,8 +52,8 @@ const WinnerCard = (props) => {
 
             </h2>
             {
-              props?.loterry[0]?.premioAcumulado > 0 &&
-              props?.loterry[0]?.premioEntregado === 0 &&
+              props?.loterry[0]?.numeroNoGanador > 0 &&
+              props?.loterry[0]?.numeroGanador === 0 &&
               <h4>
                 The prize will be accumulated and awarded to the winner of the next lottery!
               </h4>
@@ -94,20 +94,7 @@ const WinnerCard = (props) => {
                 {
                   props?.loterry[0]?.premioAcumulado === 0 ? (<>
                     {
-                      isNaN(props?.loterry[0]?.premioEntregado) ?
-                        (
-                          <p className=' bg-gray-loader w-24 h-10 animate-pulse my-4'>
-                          </p>
-                        )
-                        :
-                        (
-                          <p>
-                            {parseFloat(props?.loterry[0]?.premioEntregado).toLocaleString('en-US', {
-                              style: 'currency',
-                              currency: 'USD'
-                            })}
-                          </p>
-                        )
+                      <p>$0.00</p>
                     }
 
                   </>) : (<>
@@ -120,12 +107,7 @@ const WinnerCard = (props) => {
                         )
                         :
                         (
-                          <p>
-                            {parseFloat(props?.loterry[0]?.premioAcumulado).toLocaleString('en-US', {
-                              style: 'currency',
-                              currency: 'USD'
-                            })}
-                          </p>
+                          <p>$1,000</p>
                         )
                     }
                   </>)
@@ -141,7 +123,7 @@ const WinnerCard = (props) => {
                     </p>
                   ) : (
                     <p className='text-pink-primary text-2xl font-extrabold'>
-                      Accumulator!
+                      No winner!
                     </p>
                   )
 
