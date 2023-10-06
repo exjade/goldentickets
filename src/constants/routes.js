@@ -1,11 +1,13 @@
 export const LANDING = '/';
 export const LOGIN = '/login';
 export const SIGNUP = '/register';
-export const PATNERS = '/afiliado//register';
+export const PATNERS = '/afiliado/register';
 export const RECOVER_PASSWORD = '/reset-password';
 
 // Dashboard
 export const DASHBOARD = '/home';
+// Dashboard Afiliados
+export const AFILIATE = '/backoffice/seller/';
 
 // Room 1 - Lottery Prize: $100 USD
 export const BUY_TICKETS = '/draw/prize-1/buy-tickets';
