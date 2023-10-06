@@ -224,7 +224,7 @@ const SignUp = () => {
                                             whileTap={{ scale: 0.9 }}
                                             disabled={isInvalid}
                                         >
-                                            Login
+                                            Register
                                         </motion.button>
                                     </form>
 
