@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    justify-content: center;
+    align-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+}
+
+.welcomeMessage {
+    width: 100%;
+}
+
+.welcomeMessage>p {
+    font-size: 1rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.sellerCode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    align-content: center;
+    gap: 1rem;
+}
+
+.sellerCode>p {
+    font-size: 1rem;
+    font-weight: 700;
+    word-break: break-word;
+    color: #F3F3F3;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.referralCode {
+    color: white;
+    background: #28374D;
+    height: 4rem;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+   
+}

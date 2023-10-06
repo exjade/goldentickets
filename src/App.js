@@ -31,6 +31,9 @@ const Draw1000 = lazy(() => import('./pages/draw/weekly-prize/draw'))
 const NotFound = lazy(() => import('./pages/not-found'))
 
 // - Admin Routes
+const DashboardAfiliados = lazy(() => import('./pages/afiliados'))
+
+// - Admin Routes
 const AdminDashboard = lazy(() => import('./pages/dashboard-admin'))
 
 function App() {
@@ -78,6 +81,12 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute user={user} path={ROUTES.DRAW_1000} exact>
               <Draw1000 />
+            </ProtectedRoute>
+
+
+            {/* AFILIADOS */}
+            <ProtectedRoute user={user} path={ROUTES.AFILIATE} exact>
+              <DashboardAfiliados />
             </ProtectedRoute>
 
             {/* administration */}
