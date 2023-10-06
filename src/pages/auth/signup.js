@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
+import styles from './css/auth.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import { doesUsernameExist } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/auth/register';
 import Error from '../../error/error';
-import styles from './css/auth.module.css';
-import * as ROUTES from '../../constants/routes';
-// import shortid from 'shortid';
 import FirebaseContext from '../../context/firebase';
-import { doesUsernameExist } from '../../services/firebase';
+import { generarCodigoReferido } from './generate-id'
 
 
 const SignUp = () => {
@@ -30,7 +30,6 @@ const SignUp = () => {
     // Error Handlers
     const [error, setError] = useState('');
     const isInvalid = password === '' && password?.length < 5 || emailAddress === '' || username === '' && username?.length < 3;
-
 
 
     const handleSignup = async (e) => {
@@ -65,6 +64,14 @@ const SignUp = () => {
                     WithdrawalDate: null,
                     AppliedDate: null,
                     pin: '',
+                    referral: {
+                        email: emailAddress.toLowerCase().trim(),
+                        referrerBy: '',
+                        referralCode: `${username.toLowerCase().trim()}_${generarCodigoReferido()?.trim()}`,
+                        userReferrals: [],
+                        joinDate: Date.now(),
+                    },
+
                 })
                 history.push(ROUTES.DASHBOARD);
                 setTimeout(() => {
@@ -124,9 +131,9 @@ const SignUp = () => {
                                         method="POST"
                                         className={`${styles.form}`}>
 
-                                        <span className={`${styles.title}`} >
+                                        {/* <span className={`${styles.title}`} >
                                             Register
-                                        </span>
+                                        </span> */}
 
                                         {/* Auth Error message */}
                                         {
@@ -165,6 +172,7 @@ const SignUp = () => {
                                                 onChange={({ target }) => setEmailAddress(target.value)}
                                             />
                                         </div>
+                                       
                                         {/*  ========================= PASSWORD INPUT =========================  */}
                                         <div className={`${styles.inputContainer}`}>
                                             <label
