@@ -14,6 +14,7 @@ import useAuth from './hooks/use-auth';
 const Landing = lazy(() => import('./pages/landing'));
 const Login = lazy(() => import('./pages/auth/login'));
 const Signup = lazy(() => import('./pages/auth/signup'));
+const Patner = lazy(() => import('./pages/auth/afiliate'));
 const ForgotPassword = lazy(() => import('./pages/auth/reset-password'));
 
 // - Members Routes
@@ -57,6 +58,9 @@ function App() {
             </IsUserLoggedIn>
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGNUP}>
               <Signup />
+            </IsUserLoggedIn>
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.PATNERS}>
+              <Patner />
             </IsUserLoggedIn>
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.RECOVER_PASSWORD} exact>
               <ForgotPassword />

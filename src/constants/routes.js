@@ -1,6 +1,7 @@
 export const LANDING = '/';
 export const LOGIN = '/login';
 export const SIGNUP = '/register';
+export const PATNERS = '/afiliado//register';
 export const RECOVER_PASSWORD = '/reset-password';
 
 // Dashboard
