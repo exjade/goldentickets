@@ -205,7 +205,7 @@ exports.BuyTicketsBETAV14 = functions.https.onCall(async (data, context) => {
 // ========================== LOTERIA DE $1000 PREMIO, COSTO DE $15 DOLARES ========================= //
 // ========================== ============================================= ========================= //
 
-exports.WeeklyBuyTicketsBETAV1 = functions.https.onCall(async (data, context) => {
+exports.WeeklyBuyTicketsBETAV3 = functions.https.onCall(async (data, context) => {
 
   const {
     selectedNumbers,
@@ -216,6 +216,7 @@ exports.WeeklyBuyTicketsBETAV1 = functions.https.onCall(async (data, context) =>
     id,
     username,
     drawType,
+    sellerCode
   } = data;
 
   try {
@@ -271,6 +272,7 @@ exports.WeeklyBuyTicketsBETAV1 = functions.https.onCall(async (data, context) =>
               id: id,
               username: username,
               drawType: drawType,
+              sellerCode: sellerCode?.trim(),
             };
 
             // Agrega la compra del ticket como un documento en la subcolección "compras"

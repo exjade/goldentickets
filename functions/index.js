@@ -10,7 +10,7 @@ admin.initializeApp({
 const {
     BuyTicketsV3,
     BuyTicketsBETAV14,
-    WeeklyBuyTicketsBETAV1
+    WeeklyBuyTicketsBETAV3
 } = require('./utils/http-functions.js');
 
 const {
@@ -41,7 +41,7 @@ exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3;
 exports.sorteoAutomaticoDolarHoraV6 = sorteoAutomaticoDolarHoraV6;
 exports.DeleteReservedTickets = DeleteReservedTickets;
 // Weekly lotto
-exports.WeeklyBuyTicketsBETAV1 = WeeklyBuyTicketsBETAV1;
+exports.WeeklyBuyTicketsBETAV3 = WeeklyBuyTicketsBETAV3;
 exports.WeeklyDeleteReservedTickets = WeeklyDeleteReservedTickets;
 exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
 // Track referral users

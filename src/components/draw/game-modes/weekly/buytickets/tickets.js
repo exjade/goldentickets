@@ -21,6 +21,7 @@ const Tickets = (props) => {
     const { user } = useUser()
     const { bookingTickets } = useWeeeklyBookingTickets()
 
+    const [sellerCode, setSellerCode] = useState('');
     const [selectedNumbers, setSelectedNumbers] = useState([]);
     const [price, setPrice] = useState(0);
     const [fee, setFee] = useState(0);
@@ -51,7 +52,7 @@ const Tickets = (props) => {
             if (isReservedByMe) {
                 if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
                     // Llama a la función comprarTickets en el backend
-                    const ComprarTickets = functions.httpsCallable('WeeklyBuyTicketsBETAV1'); // Ajusta el nombre de la función
+                    const ComprarTickets = functions.httpsCallable('WeeklyBuyTicketsBETAV3'); // Ajusta el nombre de la función
                     const response = await ComprarTickets({
                         selectedNumbers,
                         userId,
@@ -61,6 +62,7 @@ const Tickets = (props) => {
                         id,
                         username,
                         drawType,
+                        sellerCode
                     });
 
                     setProcessingPayment(true)
@@ -371,7 +373,7 @@ const Tickets = (props) => {
                         <span className={`${styles.rightTitle}`}>
                             Lotto ticket's
                         </span>
-                        
+
 
                         {/* TICKET SELECCIONADO */}
                         <div className={`${styles.rightTicket}`} >
@@ -416,6 +418,15 @@ const Tickets = (props) => {
                                     })} USD
                                 </p>
                             </span>
+                            <div className={`${styles.rightDetails} flex justify-center items-center w-full my-4 outline-none `}>
+                                <input
+                                    type="text"
+                                    placeholder='Ingresa tu código'
+                                    value={sellerCode}
+                                    onChange={(e) => setSellerCode(e.target.value)}
+                                    className='bg-blue-primary px-5 py-2 rounded-sm outline-none text-white-normal'
+                                />
+                            </div>
                         </div>
 
                         {
