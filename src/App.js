@@ -30,11 +30,15 @@ const Draw1000 = lazy(() => import('./pages/draw/weekly-prize/draw'))
 // - Error: Not Found
 const NotFound = lazy(() => import('./pages/not-found'))
 
-// - Admin Routes
+// - Afiliados Routes
 const DashboardAfiliados = lazy(() => import('./pages/afiliados'))
 
 // - Admin Routes
 const AdminDashboard = lazy(() => import('./pages/dashboard-admin'))
+
+// - Policy
+const Policy = lazy(() => import('./pages/policy/policy'))
+const Terms = lazy(() => import('./pages/policy/terms'))
 
 function App() {
   const { user } = useAuthListener()
@@ -104,7 +108,9 @@ function App() {
 
             <Route path={ROUTES.BUY_TICKETS} component={BuyTickets} exact />
             <Route path={ROUTES.BUY_TICKETS_1000} component={BuyTickets1000} exact />
-            
+            <Route path={ROUTES.POLICY} component={Policy} exact />
+            <Route path={ROUTES.TERMS} component={Terms} exact />
+
             <Route path="*" component={NotFound} />
 
           </Switch>

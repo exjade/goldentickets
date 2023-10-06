@@ -19,3 +19,7 @@ export const DRAW_1000 = '/draw/prize-1000/winner-draw';
 
 
 export const ADMIN_DASHBOARD = '/panel/admin-dashboard';
+
+// Policy
+export const POLICY = '/policy';
+export const TERMS = '/terms';

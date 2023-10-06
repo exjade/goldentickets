@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './css/footer.module.css';
 import Logo from '../logo';
+import * as ROUTES from '../../constants/routes'
 
 const Footer = () => {
   return (
@@ -67,11 +68,11 @@ const Footer = () => {
             <h4>policy</h4>
 
             <ul className={`${styles.middleFooterText}`}>
-              <li><a href="https://medium.com/@goldenticketsenterprise">blog</a></li>
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Sport Rules</a></li>
+              <li><a href="https://medium.com/@goldenticketsenterprise" target='_blank' rel="noreferrer">blog</a></li>
+              <li><a href={ROUTES.TERMS}>Terms</a></li>
+              <li><a href="https://www.gamingcontrolcuracao.org/regulation/numbers-lottery">Sport Rules</a></li>
               <li><a href="https://www.begambleaware.org/">Gamble Aware</a></li>
-              <li> <a href="#">Policy</a> </li>
+              <li> <a href={ROUTES.POLICY}>Policy</a> </li>
             </ul>
           </div>
 
