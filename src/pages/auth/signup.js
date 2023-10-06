@@ -27,6 +27,7 @@ const SignUp = () => {
     const [wallet, setWallet] = useState(''); //eslint-disable-line
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
+    const [referrerBy, setReferrerBy] = useState('');
     // Error Handlers
     const [error, setError] = useState('');
     const isInvalid = password === '' && password?.length < 5 || emailAddress === '' || username === '' && username?.length < 3;
@@ -66,7 +67,7 @@ const SignUp = () => {
                     pin: '',
                     referral: {
                         email: emailAddress.toLowerCase().trim(),
-                        referrerBy: '',
+                        referrerBy: referrerBy.toLowerCase().trim() || '',
                         referralCode: `${username.toLowerCase().trim()}_${generarCodigoReferido()?.trim()}`,
                         userReferrals: [],
                         joinDate: Date.now(),
@@ -189,6 +190,20 @@ const SignUp = () => {
                                             />
                                             <p className={`${styles.limited}`}>min. 6, only letters with numbers or symbols</p>
                                         </div>
+                                         {/* ========================= REFERRALS INPUT ========================= */}
+                                         <div className={`${styles.inputContainer}`} >
+                                            <label
+                                                htmlFor='Enter your referral code'
+                                                className={`${styles.label}`}
+                                            > Code  </label>
+                                            <input
+                                                type="text"
+                                                aria-label="Enter your referral code"
+                                                placeholder="Type your referral code (Optional)"
+                                                className={`${styles.input}`}
+                                                onChange={({ target }) => setReferrerBy(target.value)}
+                                            />
+                                        </div>
                                         {/*  ========================= TERMS & +18 CHECKBOX =========================  */}
                                         <div className={`${styles.inputTerms}`}>
                                             <input
@@ -209,7 +224,7 @@ const SignUp = () => {
                                             whileTap={{ scale: 0.9 }}
                                             disabled={isInvalid}
                                         >
-                                            Register
+                                            Login
                                         </motion.button>
                                     </form>
 
