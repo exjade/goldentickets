@@ -6,7 +6,6 @@ const ButtonLarge = (props) => {
     return (
         <button
             type='button'
-            onClick={() => props?.handleFunction()}
             className={`${styles.buttonLarge}`}
         >
             {props?.text}
