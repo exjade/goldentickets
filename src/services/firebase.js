@@ -69,14 +69,25 @@ export async function getWithdrawals(userId) {
 
 export async function getUserByUsername(username) {
     const result = await firebase
-      .firestore()
-      .collection('users')
-      .where('username', '==', username.toLowerCase())
-      .get();
-  
-      return result.docs.map((item) => ({
+        .firestore()
+        .collection('users')
+        .where('username', '==', username.toLowerCase())
+        .get();
+
+    return result.docs.map((item) => ({
         ...item.data(),
         docId: item.id,
-      }))
-    }
-  
+    }))
+}
+
+
+export async function getDailySellerCode(sellerId) {
+    const querySnapshot = await firebase
+        .firestore().collection('dailyCodesAssociations')
+        .where('sellerId', '==', sellerId)
+        .orderBy('timestamp', 'desc')
+        .limit(1)
+        .get();
+
+    return querySnapshot;
+}

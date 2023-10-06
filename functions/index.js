@@ -27,6 +27,10 @@ const {
     trackReferralsV7
 } = require('./utils/scheduled-functions/update/track-referrals');
 
+const {
+    generateDailyCodeV4
+} = require('./utils/scheduled-functions/create/generate-daily-code');
+
 
 const db = admin.firestore();
 
@@ -43,6 +47,8 @@ exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
 // Track referral users
 exports.trackReferrals = trackReferrals;
 exports.trackReferralsV7 = trackReferralsV7;
+// Generate seller code
+exports.generateDailyCodeV4 = generateDailyCodeV4;
 
 
 
