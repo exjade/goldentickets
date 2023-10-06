@@ -82,12 +82,20 @@ export async function getUserByUsername(username) {
 
 
 export async function getDailySellerCode(sellerId) {
-    const querySnapshot = await firebase
-        .firestore().collection('dailyCodesAssociations')
-        .where('sellerId', '==', sellerId)
-        .orderBy('timestamp', 'desc')
-        .limit(1)
-        .get();
 
-    return querySnapshot;
+    if (sellerId) {
+        const querySnapshot = await firebase
+            .firestore()
+            .collection('dailyCodesAssociations')
+            .where('sellerId', '==', sellerId)
+            .orderBy('userData.date', 'desc')
+            .limit(1)
+            .get();
+        const codes = querySnapshot.docs.map((item) => ({
+            ...item.data(),
+            docId: item.id
+        }))
+
+        return codes;
+    }
 }
