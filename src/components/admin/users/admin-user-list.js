@@ -43,6 +43,7 @@ const AdminUserListEarnings = ({
         search.fullName?.toLowerCase().includes(referralSearch.toLowerCase()) ||
         search.wallet?.toLowerCase().includes(referralSearch.toLowerCase()) ||
         search.emailAddress?.toLowerCase().includes(referralSearch.toLowerCase()) ||
+        search.referral.referrerBy?.toLowerCase().includes(referralSearch.toLowerCase()) ||
         search.rol?.toLowerCase().includes(referralSearch.toLowerCase())
     )
 
@@ -170,7 +171,10 @@ const AdminUserListEarnings = ({
                                             Username
                                         </th>
                                         <th className={`${styles.mobileHidden} border p-4 dark:border-gray-primary whitespace-nowrap font-semibold text-white-normal bg- uppercase`}>
-                                            Total
+                                            CODE
+                                        </th>
+                                        <th className={` border p-4 dark:border-gray-primary whitespace-nowrap font-semibold text-white-normal bg- uppercase`}>
+                                            Withdrawal
                                         </th>
                                         <th className={`border p-4 dark:border-gray-primary whitespace-nowrap font-semibold text-white-normal bg- uppercase`}>
                                             Balance
@@ -194,14 +198,17 @@ const AdminUserListEarnings = ({
                                             <td className={`border p-4 dark:border-gray-primary ${user.rol === 'sponsored' ? 'text-red-logo' : 'text-white-normal'}`} >
                                                 {user.username.toLowerCase()}
                                             </td>
-                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
-                                                {`$${parseInt(user.Applied).toFixed(2)}`}
+                                            <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary ${user.rol === 'sponsored' ? 'text-red-logo' : 'text-white-normal'}`} >
+                                                {user.referral.referralCode}
+                                            </td>
+                                            <td className={` border p-4 dark:border-gray-primary capitalize text-white-normal`}>
+                                                {`$${parseFloat(user.Withdrawal)}`}
                                             </td>
                                             <td className={`} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
-                                                {`$${parseInt(user.Balance).toFixed(2)}`}
+                                                {`$${parseFloat(user.Balance)}`}
                                             </td>
                                             <td className={`${styles.mobileHidden} border p-4 dark:border-gray-primary capitalize text-white-normal`}>
-                                                {`$${parseInt(user.Profit).toFixed(2)}`}
+                                                {`$${parseFloat(user.Profit)}`}
                                             </td>
                                            
                                         </tr>

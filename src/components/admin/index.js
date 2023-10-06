@@ -21,6 +21,7 @@ const AdminDashboard = () => {
         withdrawals: false,
         earnings: false,
         sponsored: false,
+        ventas: false,
     })
 
     const goDashboard = () => {
@@ -44,7 +45,8 @@ const AdminDashboard = () => {
                                         users: false,
                                         withdrawals: false,
                                         earnings: false,
-                                        sponsored: false
+                                        sponsored: false,
+                                         ventas: false,
                                     })}
                                 >Transactions</button>
                             </li>
@@ -55,7 +57,8 @@ const AdminDashboard = () => {
                                         users: false,
                                         withdrawals: true,
                                         earnings: false,
-                                        sponsored: false
+                                        sponsored: false,
+                                         ventas: false,
                                     })}
                                 >Withdrawals</button>
                             </li>
@@ -74,9 +77,24 @@ const AdminDashboard = () => {
                                         users: true,
                                         withdrawals: false,
                                         earnings: false,
-                                        sponsored: false
+                                        sponsored: false,
+                                         ventas: false,
                                     })}
                                 >Users</button>
+                            </li>
+                        </ul>
+                        <ul className="space-x-3 md:flex flex justify-center items-center">
+                            <li className="flex">
+                                <button className="flex items-center px-4 -mb-1 border-b-2 border-transparent font-bold"
+                                    onClick={() => setPage({
+                                        transactions: false,
+                                        users: false,
+                                        withdrawals: false,
+                                        earnings: false,
+                                        sponsored: false,
+                                        ventas: true,
+                                    })}
+                                >Ventas</button>
                             </li>
                         </ul>
                     </div>
