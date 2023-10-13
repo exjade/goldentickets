@@ -17,6 +17,10 @@ export const DRAW = '/draw/prize-1/winner-draw';
 export const BUY_TICKETS_1000 = '/draw/prize-1000/buy-tickets';
 export const DRAW_1000 = '/draw/prize-1000/winner-draw';
 
+// Lottery 3 - Lottery Prize: $100,000 USD
+export const BUY_TICKETS_MELATE = '/draw/prize-melatee/buy-tickets';
+export const DRAW_MELATE = '/draw/prize-melatee/winner-draw';
+
 
 export const ADMIN_DASHBOARD = '/panel/admin-dashboard';
 
