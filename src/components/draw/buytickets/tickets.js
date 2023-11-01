@@ -22,6 +22,7 @@ const Tickets = (props) => {
     const { user } = useUser()
     const { bookingTickets } = useBookingTickets()
     const { tickets } = useUnavailableTicketNumbers();
+
     const [selectedNumbers, setSelectedNumbers] = useState([]);
     const [price, setPrice] = useState(0);
     const [fee, setFee] = useState(0);
@@ -31,6 +32,7 @@ const Tickets = (props) => {
     const [reservaMensaje, setReservaMensaje] = useState('');
     const [processingPayment, setProcessingPayment] = useState(false);
     const [processingSuccesfull, setProcessingSuccesfull] = useState(false);
+    const [sellerCode, setSellerCode] = useState('');
 
 
     useEffect(() => {
@@ -53,8 +55,8 @@ const Tickets = (props) => {
             const username = user?.username; // Nombre de usuario
             const purchaseDate = Date.now(); // fecha de compra
             const id = shortid.generate().trim(); // ID de ticket
-            const drawType = 'Lotería de $1 USD'; // Nombre de la loteria
-            const costoTicket = 1; // Reemplaza con el costo del ticket
+            const drawType = 'Lotería de $3 USD'; // Nombre de la loteria
+            const costoTicket = 3; // Reemplaza con el costo del ticket
             // Llama a la función comprarTickets en el backend
             try {
                 // Verifica que el usuario esté autenticado
@@ -163,6 +165,7 @@ const Tickets = (props) => {
                         id,
                         username,
                         drawType,
+                        sellerCode
                     });
 
                     if (response.data && response.data.message) {
@@ -339,7 +342,7 @@ const Tickets = (props) => {
     };
 
 
-  
+
     return (
         <div className={`${styles.container}`} >
             <div className={`${styles.wrapper}`} >
@@ -429,6 +432,15 @@ const Tickets = (props) => {
                                     })} USD
                                 </p>
                             </span>
+                            <div className={`${styles.rightDetails} flex justify-center items-center w-full my-4 px-4 outline-none `}>
+                                <input
+                                    type="text"
+                                    placeholder='Código de afiliado'
+                                    value={sellerCode}
+                                    onChange={(e) => setSellerCode(e.target.value)}
+                                    className='bg-blue-primary px-5 py-2 rounded-sm outline-none text-white-normal w-full'
+                                />
+                            </div>
                         </div>
 
                         {
