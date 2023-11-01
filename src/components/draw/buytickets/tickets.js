@@ -86,6 +86,7 @@ const Tickets = (props) => {
                                     disponible: true,
                                     fechaReserva: Date.now(),
                                     enProceso: true,
+                                    sellerCode: sellerCode,
                                 });
 
 
