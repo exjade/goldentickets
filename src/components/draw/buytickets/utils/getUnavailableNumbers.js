@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import UserContext from '../../../../context/user';
 import { firebase } from '../../../../lib/firebase';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
@@ -6,7 +6,7 @@ import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 const firestore = getFirestore(firebase);
 
 
-export default function useUnavailableTicketNumbers() {
+const useUnavailableTicketNumbers = () => {
     const [tickets, setTickets] = useState([]);
     const { user } = useContext(UserContext);
 
@@ -26,9 +26,11 @@ export default function useUnavailableTicketNumbers() {
         const unsub = onSnapshot(comprasRef, handleSnapshot);
 
         return () => unsub();
-    }, [user])
+    }, [user]);
 
+    const memoizedTickets = useMemo(() => tickets, [tickets]);
 
-    return { tickets };
-}
+    return { tickets: memoizedTickets };
+};
 
+export default useUnavailableTicketNumbers;
