@@ -88,6 +88,12 @@ exports.BuyTicketsV3 = functions.https.onCall(async (data, context) => {
   }
 });
 
+
+// ========================== ============================================= ========================= //
+// ========================== LOTERIA DE $300 PREMIO, COSTO DE $3 DOLARES ========================= //
+// ========================== ============================================= ========================= //
+
+
 exports.BuyTicketsBETAV14 = functions.https.onCall(async (data, context) => {
 
   const {
@@ -99,6 +105,7 @@ exports.BuyTicketsBETAV14 = functions.https.onCall(async (data, context) => {
     id,
     username,
     drawType,
+    sellerCode
   } = data;
 
   try {
@@ -154,6 +161,7 @@ exports.BuyTicketsBETAV14 = functions.https.onCall(async (data, context) => {
               id: id,
               username: username,
               drawType: drawType,
+              sellerCode: sellerCode?.trim(),
             };
 
             // Agrega la compra del ticket como un documento en la subcolección "compras"

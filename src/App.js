@@ -20,12 +20,14 @@ const ForgotPassword = lazy(() => import('./pages/auth/reset-password'));
 // - Members Routes
 const Dashboard = lazy(() => import('./pages/dashboard'))
 
-// Lotteries - PRIZE $100
+// Lotteries - Tickets pages
 const BuyTickets = lazy(() => import('./pages/draw/buy-tickets'))
-const Draw = lazy(() => import('./pages/draw/draw'))
-// Lotteries - PRIZE $1000
 const BuyTickets1000 = lazy(() => import('./pages/draw/weekly-prize/buy-tickets'))
+const BuyTicketsMelate = lazy(() => import('./pages/draw/melate/buy-tickets'))
+// Lotteries - Winner pages
+const Draw = lazy(() => import('./pages/draw/draw'))
 const Draw1000 = lazy(() => import('./pages/draw/weekly-prize/draw'))
+const DrawMelate = lazy(() => import('./pages/draw/melate/draw'))
 
 // - Error: Not Found
 const NotFound = lazy(() => import('./pages/not-found'))
@@ -56,10 +58,6 @@ function App() {
         <Suspense fallback={<FallBackLoader />} >
           <Switch>
 
-            {/* Not Logged In  */}
-            {/* <IsUserLoggedIn user={user} loggedInPath={ROUTES.LOGIN} path={ROUTES.LANDING} exact>
-              <Landing />
-            </IsUserLoggedIn> */}
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
               <Login />
             </IsUserLoggedIn>
@@ -77,16 +75,6 @@ function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
-            {/* <ProtectedRoute user={user} path={ROUTES.BUY_TICKETS} exact>
-              <BuyTickets />
-            </ProtectedRoute> */}
-            <ProtectedRoute user={user} path={ROUTES.DRAW} exact>
-              <Draw />
-            </ProtectedRoute>
-            <ProtectedRoute user={user} path={ROUTES.DRAW_1000} exact>
-              <Draw1000 />
-            </ProtectedRoute>
-
 
             {/* AFILIADOS */}
             <ProtectedRoute user={user} path={ROUTES.AFILIATE} exact>
@@ -103,11 +91,25 @@ function App() {
               <AdminDashboard />
             </ProtectedRoutes>
 
-            {/* ALL USERS */}
-            <Route path={ROUTES.LANDING} component={Landing} exact />
-
+            {/* LOTTERY  BUY TICKETS */}
             <Route path={ROUTES.BUY_TICKETS} component={BuyTickets} exact />
             <Route path={ROUTES.BUY_TICKETS_1000} component={BuyTickets1000} exact />
+            <Route path={ROUTES.BUY_TICKETS_MELATE} component={BuyTicketsMelate} exact />
+
+            {/* WINNER PAGE */}
+            <ProtectedRoute user={user} path={ROUTES.DRAW} exact>
+              <Draw />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.DRAW_1000} exact>
+              <Draw1000 />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.DRAW_MELATE} exact>
+              <DrawMelate />
+            </ProtectedRoute>
+
+            {/* LANDING PAGE */}
+            <Route path={ROUTES.LANDING} component={Landing} exact />
+            {/* LAW  */}
             <Route path={ROUTES.POLICY} component={Policy} exact />
             <Route path={ROUTES.TERMS} component={Terms} exact />
 
