@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../constants/routes'
@@ -10,6 +10,7 @@ import DrawCountDown from '../../../../countdown/game-modes/weekly-prize';
 import useWeeeklyBookingTickets from '../../../../../hooks/draw/weekly-prize/use-booking-tickets';
 import Lottie from 'lottie-react';
 import AnimationLoader from './lottie/animation_loader.json'
+import useUnavailableTicketNumbers from '../utils/getUnavailableNumbers.js'
 import { motion } from 'framer-motion'
 import { functions, firebase } from '../../../../../lib/firebase';
 import { getDoc, doc } from 'firebase/firestore';
@@ -20,6 +21,7 @@ const Tickets = (props) => {
 
     const { user } = useUser()
     const { bookingTickets } = useWeeeklyBookingTickets()
+    const { tickets } = useUnavailableTicketNumbers();
 
     const [sellerCode, setSellerCode] = useState('');
     const [selectedNumbers, setSelectedNumbers] = useState([]);
@@ -32,6 +34,17 @@ const Tickets = (props) => {
     const [processingPayment, setProcessingPayment] = useState(false);
     const [processingSuccesfull, setProcessingSuccesfull] = useState(false);
 
+    useEffect(() => {
+        const loadUnavailableNumbers = async () => {
+            try {
+                setUnavailableNumbers(tickets);
+            } catch (error) {
+                console.log(error)
+            }
+        };
+
+        loadUnavailableNumbers();
+    }, [tickets])
 
 
     const comprarTickets = async () => {
@@ -49,6 +62,7 @@ const Tickets = (props) => {
             // Recorrer cada número seleccionado y realizar la transacción
 
 
+            setProcessingPayment(true)
             if (isReservedByMe) {
                 if (user?.Balance > 0 && doesUserHaveSufficientBalance) {
                     // Llama a la función comprarTickets en el backend
@@ -65,7 +79,6 @@ const Tickets = (props) => {
                         sellerCode
                     });
 
-                    setProcessingPayment(true)
                     if (response.data && response.data.message) {
                         setTimeout(() => {
                             setSelectedNumbers([])
@@ -166,6 +179,7 @@ const Tickets = (props) => {
                                     disponible: true,
                                     fechaReserva: Date.now(),
                                     enProceso: true,
+                                    sellerCode: sellerCode,
                                 });
 
 
@@ -215,42 +229,7 @@ const Tickets = (props) => {
         }
     }
 
-    const checkTicket = async (number) => {
-        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
-        return findBookedTicket?.disponible
-    }
-    const checkReserva = async (number) => {
-        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
-        return findBookedTicket?.enProceso
-    }
 
-    const findTicket = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
-        return bookingTickets.some(ticket =>
-            selectedNumbers.includes(ticket.numeroTicket) &&
-            ticket.username === reservedBy &&
-            ticket.userId === uid
-        );
-    };
-
-    const isTicketReservedByUser = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
-        const doesTicketExistInDatabase = await findTicket(selectedNumbers, bookingTickets, reservedBy, uid);
-        return doesTicketExistInDatabase;
-    }
-
-
-
-    // Función para verificar si un número de ticket está comprado
-    const checkNumeroComprado = async (numero) => {
-        try {
-            const estadoLoteriaRef = db.collection('loteria').doc('weekly-prize');
-            const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
-            return !querySnapshot.empty;
-        } catch (error) {
-            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
-            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
-        }
-
-    };
 
     const handleNumberClick = async (number) => {
         try {
@@ -311,21 +290,57 @@ const Tickets = (props) => {
     const handleRemoveFee = () => {
         // Resta la comisión de servicio
         if (user?.rol === 'Member' || user?.rol === 'admin') {
-            setFee(selectedNumbers.length >= 2 ? fee - 0.8 : 0);
+            setFee(selectedNumbers.length >= 2 ? fee - 0 : 0);
         } else if (user?.rol === 'afiliado') {
-            setFee(selectedNumbers.length >= 2 ? fee - 1 : 0);
+            setFee(selectedNumbers.length >= 2 ? fee - 0 : 0);
         }
     };
 
     const handleAddFee = () => {
         // Suma la comisión de servicio
         if (user?.rol === 'Member' || user?.rol === 'admin') {
-            setFee(selectedNumbers.length >= 1 ? fee + 0.8 : 1);
+            setFee(selectedNumbers.length >= 1 ? fee + 0 : 0);
         } else if (user?.rol === 'afiliado') {
-            setFee(selectedNumbers.length >= 1 ? fee + 1 : 1);
+            setFee(selectedNumbers.length >= 1 ? fee + 0 : 0);
         }
     };
 
+    const checkTicket = async (number) => {
+        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
+        return findBookedTicket?.disponible
+    }
+    const checkReserva = async (number) => {
+        const findBookedTicket = bookingTickets?.find(ticket => ticket.numeroTicket === number)
+        return findBookedTicket?.enProceso
+    }
+
+    const findTicket = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
+        return bookingTickets.some(ticket =>
+            selectedNumbers.includes(ticket.numeroTicket) &&
+            ticket.username === reservedBy &&
+            ticket.userId === uid
+        );
+    };
+
+    const isTicketReservedByUser = async (selectedNumbers, bookingTickets, reservedBy, uid) => {
+        const doesTicketExistInDatabase = await findTicket(selectedNumbers, bookingTickets, reservedBy, uid);
+        return doesTicketExistInDatabase;
+    }
+
+
+
+    // Función para verificar si un número de ticket está comprado
+    const checkNumeroComprado = async (numero) => {
+        try {
+            const estadoLoteriaRef = db.collection('loteria').doc('weekly-prize');
+            const querySnapshot = await estadoLoteriaRef.collection('compras').where('numeroTicket', '==', numero).get();
+            return !querySnapshot.empty;
+        } catch (error) {
+            // Aquí puedes tomar acciones adicionales, como mostrar un mensaje de error al usuario
+            setMessageUnavailableNumbers('Error durante la transacción: ' + error.message);
+        }
+
+    };
 
 
     return (
@@ -402,11 +417,8 @@ const Tickets = (props) => {
                             </span>
                             <span className={`${styles.rightDetails}`}>
                                 <p>Comisión</p>
-                                <p>
-                                    {parseFloat(`${fee}`).toLocaleString('en-US', {
-                                        style: 'currency',
-                                        currency: 'USD'
-                                    })} USD
+                                <p className='text-green-primary'>
+                                    FREE
                                 </p>
                             </span>
                             <span className={`${styles.rightDetails}`}>
@@ -424,7 +436,7 @@ const Tickets = (props) => {
                                     placeholder='Ingresa tu código'
                                     value={sellerCode}
                                     onChange={(e) => setSellerCode(e.target.value)}
-                                    className='bg-blue-primary px-5 py-2 rounded-sm outline-none text-white-normal'
+                                    className='bg-blue-primary px-5 py-2 rounded-sm outline-none text-white-normal w-full'
                                 />
                             </div>
                         </div>
