@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import useWeeklyTickets from '../../hooks/draw/weekly-prize/use-weeklyTickets';
 import { formatRelative } from 'date-fns'
 import FallBackLoader from '../../components/FallBackLoader';
-import { CardSmall } from '../../components/Card';
+import { CardSmall, CardLarge } from '../../components/Card';
 
 const AffiliatesTimeline = () => {
 
@@ -82,7 +82,7 @@ const AffiliatesTimeline = () => {
                             title='Tickets'
                             img={'https://i.pinimg.com/originals/b6/6b/c2/b66bc2adbaa9662e647ac3f7dbff704b.png'}
                             alt={'ticket'}
-                            price={'128'}
+                            price={6}
                         />
                         <CardSmall
                             title='Comisión'
@@ -91,6 +91,10 @@ const AffiliatesTimeline = () => {
                             price={128}
                         />
                     </div>
+
+                    <CardLarge
+                        content={'contenido'}
+                    />
 
                     {/* TICKETS */}
                     <div className={`${styles.WrapperTickets}`} >
