@@ -6,7 +6,6 @@ const ButtonMid = (props) => {
     return (
         <button
             type='button'
-            onClick={() => props?.handleFunction()}
             className={`${styles.buttonMid}`}
         >
             {props?.text}
@@ -17,6 +16,5 @@ const ButtonMid = (props) => {
 export default ButtonMid
 
 ButtonMid.propTypes = {
-    handleFunction: PropTypes.func,
     text: PropTypes.string,
 }

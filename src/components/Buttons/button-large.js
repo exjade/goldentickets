@@ -16,6 +16,5 @@ const ButtonLarge = (props) => {
 export default ButtonLarge
 
 ButtonLarge.propTypes = {
-    handleFunction: PropTypes.func,
     text: PropTypes.string,
 }
