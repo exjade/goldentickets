@@ -3,6 +3,7 @@
     --color-price: #2D3B71;
     --color-name: #A5AABD;
     --card-width-large: 85%;
+    --card-width-full: 100%;
     --card-height-large: 40rem;
     --card-radius: 8px
 }
@@ -17,4 +18,18 @@
     -moz-border-radius: var(--card-radius);
     -ms-border-radius: var(--card-radius);
     -o-border-radius: var(--card-radius);
+}
+
+@media (max-width: 400px) {
+
+    .container {
+        background: var(--color-white);
+        height: var(--card-height-large);
+        width: var(--card-width-full);
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+}
 }
