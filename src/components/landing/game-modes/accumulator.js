@@ -84,7 +84,7 @@ const Accumulator = () => {
                                     <p className='bg-gray-primary border-md h-4 w-14 animate-pulse'></p>
                                 ) :
                                 (
-                                    <p>{tickets?.length}/100</p>
+                                    <p>{tickets?.length}/300</p>
                                 )
                         }
                     </span>
