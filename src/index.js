@@ -5,7 +5,7 @@ import FirebaseContext from './context/firebase'
 import { firebase, FieldValue } from './lib/firebase'
 import './styles/App.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals.ts';
+import reportWebVitals from './reportWebVitals';
 
 const root = document.getElementById('root');
 const rootElement = createRoot(root);
