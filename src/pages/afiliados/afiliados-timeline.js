@@ -11,11 +11,14 @@ import { CardSmall, CardLarge } from '../../components/Card';
 import { Table } from '../../components/Table';
 import { BreadcrumbUnderline } from '../../components/breadcrumbs';
 import { SearchBar } from '../../components/searchbar';
+import useBreadcrumbs from '../../hooks/afiliados/use-breadcrumbs';
 
 const AffiliatesTimeline = () => {
 
     const { user } = useUser()
     const { tickets: weeklyTickets } = useWeeklyTickets()
+    const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
+
     const [code, setCode] = useState('')
     const [loader, setLoader] = useState(false)
 
@@ -48,10 +51,15 @@ const AffiliatesTimeline = () => {
 
     const table = (
         <>
-            <SearchBar 
-            title={'Your Tickets'}
+            <SearchBar
+                title={'Your Tickets'}
             />
-            <BreadcrumbUnderline />
+            <BreadcrumbUnderline
+                crumText1={'Mis ventas'}
+                crumText2={'Pagos'}
+                state={breadcrumState}
+                setState={setBreadcrumState}
+            />
             <Table />
         </>
     )
