@@ -8,6 +8,9 @@ import useWeeklyTickets from '../../hooks/draw/weekly-prize/use-weeklyTickets';
 import { formatRelative } from 'date-fns'
 import FallBackLoader from '../../components/FallBackLoader';
 import { CardSmall, CardLarge } from '../../components/Card';
+import { Table } from '../../components/Table';
+import { BreadcrumbUnderline } from '../../components/breadcrumbs';
+import { SearchBar } from '../../components/searchbar';
 
 const AffiliatesTimeline = () => {
 
@@ -40,6 +43,17 @@ const AffiliatesTimeline = () => {
     }, [user])
 
     const filterTicketsWithSellerCode = weeklyTickets?.filter(ticket => ticket.sellerCode === code)
+
+
+
+    const table = (
+        <>
+            <SearchBar />
+            <BreadcrumbUnderline />
+            <Table />
+        </>
+    )
+
 
     if (loader) {
         return <FallBackLoader />
@@ -93,7 +107,7 @@ const AffiliatesTimeline = () => {
                     </div>
 
                     <CardLarge
-                        content={'contenido'}
+                        content={table}
                     />
 
                     {/* TICKETS */}
