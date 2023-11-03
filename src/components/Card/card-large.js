@@ -15,5 +15,5 @@ const CardLarge = ({
 export default CardLarge
 
 CardLarge.propTypes = {
-    content: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
 };
