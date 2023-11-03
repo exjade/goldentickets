@@ -1,0 +1,20 @@
+:root {
+    --color-white: #ffff;
+    --color-price: #2D3B71;
+    --color-name: #A5AABD;
+    --card-width-large: 85%;
+    --card-height-large: 40rem;
+    --card-radius: 8px
+}
+
+
+.container {
+    background: var(--color-white);
+    height: var(--card-height-large);
+    width: var(--card-width-large);
+    border-radius: var(--card-radius);
+    -webkit-border-radius: var(--card-radius);
+    -moz-border-radius: var(--card-radius);
+    -ms-border-radius: var(--card-radius);
+    -o-border-radius: var(--card-radius);
+}
