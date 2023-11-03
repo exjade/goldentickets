@@ -48,7 +48,9 @@ const AffiliatesTimeline = () => {
 
     const table = (
         <>
-            <SearchBar />
+            <SearchBar 
+            title={'Your Tickets'}
+            />
             <BreadcrumbUnderline />
             <Table />
         </>
