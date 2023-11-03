@@ -8,7 +8,7 @@
 
 .wrapper {
     width: 14rem;
-    height: 13rem;
+    height: 18rem;
     position: fixed;
     right: 44px;
     background: #171E29;
@@ -42,7 +42,7 @@
     color: white;
     background: #28374D;
     width: 100%;
-    height: 4rem;
+    height: 2.5rem;
     border-radius: 10px;
 }
 
