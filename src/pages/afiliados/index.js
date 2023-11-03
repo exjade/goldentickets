@@ -5,7 +5,7 @@ import Header from '../../components/Header/dashboard';
 import Timeline from '../../components/timeline';
 import useModal from '../../hooks/use-modal';
 import useDropDown from '../../hooks/use-dropdown';
-import MyReferrals from './myreferrals';
+import AffiliatesTimeline from './afiliados-timeline';
 
 const Afiliados = () => {
 
@@ -46,7 +46,7 @@ const Afiliados = () => {
                     </Error>
 
                     <Error>
-                        <MyReferrals />
+                        <AffiliatesTimeline />
                     </Error>
 
                 </motion.div>
