@@ -31,13 +31,15 @@ const Accumulator = () => {
   
         setDate({
           hours: hours,
-          minutes: `${minutes}0`,
+          minutes: `${minutes}`,
           period: periodo,
         })
       }
   
       getHours()
     }, [loterry])
+
+    console.log(date.minutes)
 
     return (
         <Link
