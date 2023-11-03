@@ -1,0 +1,39 @@
+:root {
+    --color-active-crumb: #FF6A66;
+    --color-secondary-crumb: #CED0DA;
+    --width-crumb: 120px;
+    --height-crumb: 40px;
+    --margin-y: 2rem;
+    --underline-x: 100px;
+}
+
+.breadcrum-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 2rem;
+    margin: 0 var(--margin-y ) 0 var(--margin-y ); 
+}
+
+.breadcrumb-underline {
+    width: var(--underline-x);
+    height: 8px;
+    background: var(--color-active-crumb);
+}
+
+.breadcrumb-item {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.breadcrumb-item>p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif;
+}
