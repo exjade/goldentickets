@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import styles from './css/dropdown.module.css';
 import FirebaseContext from '../../../context/firebase';
 import { motion } from 'framer-motion'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useUser from '../../../hooks/use-user';
+import * as ROUTES from '../../../constants/routes'
 
 const DropDownUserHeader = (props) => {
 
   const { firebase } = useContext(FirebaseContext);
   const { user } = useUser();
-
 
   return (
     <div className={`${styles.container}`} >
@@ -33,18 +34,69 @@ const DropDownUserHeader = (props) => {
           <p>{user?.username}</p>
         </div>
 
-        {/* Referral code*/}
-        <CopyToClipboard text={user?.referral?.referralCode}>
-          <motion.button
-            type='button'
-            className={`${styles.referralCode} lowercase font-semibold`}
-            whileTap={{ scale: 0.9 }}>
-            {user?.referral?.referralCode}
-          </motion.button>
-        </CopyToClipboard>
+        {
+          user?.rol === 'afiliado' ? (
+            <>
+              <div className={`${styles.divider}`}></div>
+
+              <Link to={ROUTES.AFILIATE} className='w-full'>
+                <div className='flex flex-row justify-center items-center gap-5 bg-gray-loader text w-full rounded-md h-8'>
+                  <span className="material-symbols-outlined text-white-normal w-4 h-4 text-md flex justify-center items-center">
+                    arrow_forward
+                  </span>
+                  <p className='text-white-normal uppercase '>
+                    Backoffice
+                  </p>
+                </div>
+              </Link>
+
+              {/* Referral code*/}
+              <CopyToClipboard text={user?.referral?.referralCode}>
+                <motion.button
+                  type='button'
+                  className={`${styles.referralCode} lowercase font-semibold text-sm flex justify-center items-center gap-4`}
+                  whileTap={{ scale: 0.9 }}>
+                  <span className="material-symbols-outlined text-sm">
+                    content_copy
+                  </span>
+                  {user?.referral?.referralCode}
+                </motion.button>
+              </CopyToClipboard>
+
+            </>
+          ) : user?.rol === 'admin' ? (
+            <>
+              <div className={`${styles.divider}`}></div>
+
+              <Link to={ROUTES.AFILIATE} className='w-full'>
+                <div className='flex flex-row justify-center items-center gap-5 bg-gray-loader text w-full rounded-md h-8'>
+                  <span className="material-symbols-outlined text-white-normal w-4 h-4 text-md flex justify-center items-center">
+                    arrow_forward
+                  </span>
+                  <p className='text-white-normal uppercase '>
+                    Backoffice
+                  </p>
+                </div>
+              </Link>
+
+              {/* Referral code*/}
+              <CopyToClipboard text={user?.referral?.referralCode}>
+                <motion.button
+                  type='button'
+                  className={`${styles.referralCode} lowercase font-semibold text-sm flex justify-center items-center gap-4`}
+                  whileTap={{ scale: 0.9 }}>
+                  <span className="material-symbols-outlined text-sm">
+                    content_copy
+                  </span>
+                  {user?.referral?.referralCode}
+                </motion.button>
+              </CopyToClipboard>
+
+            </>
+          ) : null
+        }
 
         <div className={`${styles.divider}`}></div>
-
 
         <button
           type="button"
