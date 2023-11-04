@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import styles from './css/afiliados.module.css'
 import useUser from '../../hooks/use-user'
 import { getDailySellerCode } from '../../services/firebase'
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { motion } from 'framer-motion'
 import FallBackLoader from '../../components/FallBackLoader';
-import { CardSmall, CardLarge } from '../../components/Card';
 import { Table } from '../../components/Table';
 import { BreadcrumbUnderline } from '../../components/breadcrumbs';
 import { SearchBar } from '../../components/searchbar';
 import useBreadcrumbs from '../../hooks/afiliados/use-breadcrumbs';
 import useGetTickets from '../../hooks/afiliados/use-getTickets';
 import { Pagination } from '../../components/pagination';
+import BackofficeAfiliado from './backoffice-afiliado';
+import BackofficeAdmin from './backoffice-admin';
+import useGetAllTickets from '../../hooks/afiliados/use-getAllTickets';
 
 const AffiliatesTimeline = () => {
 
     const { user } = useUser()
     const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
-    const { items: sellerTickets, comision: sellerComision } = useGetTickets()
-    
-    const [code, setCode] = useState('')
     const [loader, setLoader] = useState(false)
-
-
-
     const [search, setSearch] = useState('')
 
+    /* ========================= ========= ========================= */
+    /* ========================= AFILIADOS ========================= */
+    /* ========================= ========= ========================= */
+    const [code, setCode] = useState('')
+    const { items: sellerTickets, comision: sellerComision } = useGetTickets()
     const filterSearch = sellerTickets?.filter(item => {
         const normalizeField = (field) => (typeof field === 'number' ? String(field) : field);
 
@@ -68,7 +66,7 @@ const AffiliatesTimeline = () => {
                 setCode(result[0].dailyCode)
             }
         }).catch(error => {
-            console.error('Error:', error);
+            return null
         });
 
 
@@ -77,7 +75,9 @@ const AffiliatesTimeline = () => {
         }, [1000])
 
 
-        return () => result
+        if (user?.rol !== undefined && user?.rol === 'afiliado') {
+            return () => result
+        }
     }, [user])
 
 
@@ -90,7 +90,6 @@ const AffiliatesTimeline = () => {
         { key: 'costoTicket', label: 'Price', hidden: false },
         { key: 'comisionTicket', label: 'Earn', hidden: false },
     ];
-
 
     const table = (
         <>
@@ -114,66 +113,111 @@ const AffiliatesTimeline = () => {
         </>
     )
 
+    /* ========================= ============== ========================= */
+    /* ========================= ADMINISTADORES ========================= */
+    /* ========================= ============== ========================= */
+    const [searchAdmin, setSearchAdmin] = useState('')
+    const {
+        items: AllTickets,
+        afiliados: Afiliados,
+        comision: comisiones,
+        ingresoNeto: ingresoNeto,
+        ingresoBruto: ingresoBruto,
+    } = useGetAllTickets()
+
+    const filterAllSearch = AllTickets?.filter(item => {
+        const normalizeField = (field) => (typeof field === 'number' ? String(field) : field);
+
+        const idString = normalizeField(item.id);
+        const costoTicketString = normalizeField(item.costoTicket);
+        const userIdString = normalizeField(item.userId);
+        const sellerCodeString = normalizeField(item.sellerCode);
+        const numeroTicketString = normalizeField(item.numeroTicket);
+        const usernameString = normalizeField(item.username);
+
+        return (
+            idString?.toLowerCase().includes(searchAdmin.toLowerCase()) ||
+            costoTicketString?.toLowerCase().includes(searchAdmin.toLowerCase()) ||
+            userIdString?.toLowerCase().includes(searchAdmin.toLowerCase()) ||
+            sellerCodeString?.toLowerCase().includes(searchAdmin.toLowerCase()) ||
+            numeroTicketString?.toLowerCase().includes(searchAdmin.toLowerCase()) ||
+            usernameString?.toLowerCase().includes(searchAdmin.toLowerCase())
+        );
+    });
+
+    const [currentPage2, setCurrentPage2] = useState(1);
+    const itemsPerPage2 = 15;
+    // Calcular los índices de los elementos a mostrar en la página actual
+    const indexOfLastItem2 = currentPage2 * itemsPerPage2;
+    const indexOfFirstItem2 = indexOfLastItem2 - itemsPerPage2;
+    const currentItems2 = filterAllSearch.slice(indexOfFirstItem2, indexOfLastItem2);
+
+    // Función para cambiar la página actual
+    const paginate2 = (pageNumber) => setCurrentPage2(pageNumber);
+
+    const headersAdmin = [
+        { key: 'purchaseDate', label: 'Date', hidden: false },
+        { key: 'numeroTicket', label: '#', hidden: false },
+        { key: 'sellerCode', label: 'Code', hidden: true },
+        { key: 'username', label: 'User', hidden: false },
+        { key: 'id', label: 'ID', hidden: true },
+        { key: 'costoTicket', label: 'Price', hidden: false },
+        { key: 'comisionTicket', label: 'Earn', hidden: false },
+    ];
+
+
+    const tableAdministrator = (
+        <>
+            <SearchBar
+                title={'All Tickets'}
+                setSearch={setSearchAdmin}
+            />
+            <BreadcrumbUnderline
+                crumText1={'Tickets'}
+                crumText2={'Pagos'}
+                state={breadcrumState}
+                setState={setBreadcrumState}
+            />
+            <Table headers={headersAdmin} data={currentItems2} />
+
+            <Pagination
+                itemsPerPage={itemsPerPage2}
+                totalItems={filterAllSearch.length}
+                paginate={paginate2}
+            />
+        </>
+    )
 
     if (loader) {
         return <FallBackLoader />
     }
     else {
         return (
-            <div className={`${styles.container}`} >
-                <div className={`${styles.wrapper}`} >
-
-                    <div className={`${styles.welcomeMessage}`} >
-                        <p>Bienvenido, {user?.emailAddress}</p>
-                    </div>
-
-                    {/* SELLER CODE */}
-                    <div className={`${styles.sellerCode}`} >
-                        {
-                            code === undefined || code === '' ?
-                                (
-                                    <p>Código: loading... </p>
-                                ) :
-                                (
-                                    <>
-                                        <p>Tú código de venta:</p>
-                                        < CopyToClipboard text={code}>
-                                            <motion.button
-                                                type='button'
-                                                className={`${styles.referralCode} lowercase font-semibold`}
-                                                whileTap={{ scale: 0.9 }}>
-                                                {code}
-                                            </motion.button>
-                                        </CopyToClipboard>
-                                    </>
-                                )
-                        }
-                    </div>
-
-                    {/* CARDS */}
-                    <div className={styles['grid-container']}>
-                        <CardSmall
-                            title='Tickets'
-                            img={'https://i.pinimg.com/originals/b6/6b/c2/b66bc2adbaa9662e647ac3f7dbff704b.png'}
-                            alt={'ticket'}
-                            price={sellerTickets?.length}
+            <>
+                {
+                    user?.rol === 'afiliado' ? (
+                        <BackofficeAfiliado
+                            user={user}
+                            code={code}
+                            sellerTickets={sellerTickets}
+                            sellerComision={sellerComision}
+                            table={table}
                         />
-                        <CardSmall
-                            title='Comisión'
-                            img={'/assets/cart-icon-28356.png'}
-                            alt={'cart'}
-                            price={sellerComision}
+                    ) : user?.rol === 'admin' ? (
+                        <BackofficeAdmin
+                            user={user}
+                            code={code}
+                            AllTickets={AllTickets}
+                            Afiliados={Afiliados}
+                            sellerComision={comisiones}
+                            ingresoNeto={ingresoNeto}
+                            ingresoBruto={ingresoBruto}
+                            table={tableAdministrator}
                         />
-                    </div>
+                    ) : null
+                }
 
-                    <CardLarge
-                        content={table}
-                    />
-
-
-
-                </div>
-            </div >
+            </>
         )
     }
 }
