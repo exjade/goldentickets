@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './css/afiliados.module.css'
 import useUser from '../../hooks/use-user'
 import { getDailySellerCode } from '../../services/firebase'
@@ -18,7 +18,7 @@ const AffiliatesTimeline = () => {
     const { user } = useUser()
     const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
     const { items: sellerTickets, comision: sellerComision } = useGetTickets()
-
+    
     const [code, setCode] = useState('')
     const [loader, setLoader] = useState(false)
 
@@ -81,6 +81,17 @@ const AffiliatesTimeline = () => {
     }, [user])
 
 
+    const headers = [
+        { key: 'purchaseDate', label: 'Date', hidden: false },
+        { key: 'numeroTicket', label: '#', hidden: false },
+        { key: 'sellerCode', label: 'Code', hidden: true },
+        { key: 'username', label: 'User', hidden: false },
+        { key: 'id', label: 'ID', hidden: true },
+        { key: 'costoTicket', label: 'Price', hidden: false },
+        { key: 'comisionTicket', label: 'Earn', hidden: false },
+    ];
+
+
     const table = (
         <>
             <SearchBar
@@ -93,14 +104,8 @@ const AffiliatesTimeline = () => {
                 state={breadcrumState}
                 setState={setBreadcrumState}
             />
+            <Table headers={headers} data={currentItems} />
 
-            {
-                currentItems?.map((tickets, i) => (
-                    <Fragment key={i}>
-                        <Table item={tickets} />
-                    </Fragment>
-                ))
-            }
             <Pagination
                 itemsPerPage={itemsPerPage}
                 totalItems={filterSearch.length}
