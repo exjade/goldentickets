@@ -19,7 +19,7 @@ const CardSmall = ({
         <div className={styles.article}>
           <p className={styles['article-name']}>{title}</p>
           <p className={styles['article-price']}>
-            {price}
+            {parseFloat(price)?.toFixed(2)}
           </p>
         </div>
       </div>
