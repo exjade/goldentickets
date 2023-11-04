@@ -4,14 +4,14 @@
     --color-name: #A5AABD;
     --card-width-large: 85%;
     --card-width-full: 100%;
-    --card-height-large: 40rem;
+    --card-height-large: auto;
     --card-radius: 8px
 }
 
 
 .container {
     background: var(--color-white);
-    height: var(--card-height-large);
+    height: auto;
     width: var(--card-width-large);
     border-radius: var(--card-radius);
     -webkit-border-radius: var(--card-radius);
@@ -24,7 +24,7 @@
 
     .container {
         background: var(--color-white);
-        height: var(--card-height-large);
+        height: auto;
         width: var(--card-width-full);
         border-radius: 0px;
         -webkit-border-radius: 0px;
