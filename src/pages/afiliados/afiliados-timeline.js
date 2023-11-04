@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import styles from './css/afiliados.module.css'
 import useUser from '../../hooks/use-user'
 import { getDailySellerCode } from '../../services/firebase'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { motion } from 'framer-motion'
-import useWeeklyTickets from '../../hooks/draw/weekly-prize/use-weeklyTickets';
-import { formatRelative } from 'date-fns'
 import FallBackLoader from '../../components/FallBackLoader';
 import { CardSmall, CardLarge } from '../../components/Card';
 import { Table } from '../../components/Table';
@@ -13,12 +11,10 @@ import { BreadcrumbUnderline } from '../../components/breadcrumbs';
 import { SearchBar } from '../../components/searchbar';
 import useBreadcrumbs from '../../hooks/afiliados/use-breadcrumbs';
 import useGetTickets from '../../hooks/afiliados/use-getTickets';
-import { Fragment } from 'react';
 
 const AffiliatesTimeline = () => {
 
     const { user } = useUser()
-    const { tickets: weeklyTickets } = useWeeklyTickets()
     const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
     const { items: sellerTickets, comision: sellerComision } = useGetTickets()
 
@@ -69,7 +65,6 @@ const AffiliatesTimeline = () => {
         return () => result
     }, [user])
 
-    const filterTicketsWithSellerCode = weeklyTickets?.filter(ticket => ticket.sellerCode === code)
 
 
     const table = (
