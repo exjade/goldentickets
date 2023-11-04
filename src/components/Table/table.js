@@ -22,7 +22,6 @@ const Table = ({ headers, data }) => {
       <table className={`${styles.wrapper}`}>
         <thead className={`${styles['table-header']}`}>
           <tr className={`${styles['table-header-row']}`}>
-            <th></th>
             {headers.map((header) => (
               <th
                 key={header.key}
