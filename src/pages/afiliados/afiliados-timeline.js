@@ -12,16 +12,39 @@ import { Table } from '../../components/Table';
 import { BreadcrumbUnderline } from '../../components/breadcrumbs';
 import { SearchBar } from '../../components/searchbar';
 import useBreadcrumbs from '../../hooks/afiliados/use-breadcrumbs';
+import useGetTickets from '../../hooks/afiliados/use-getTickets';
+import { Fragment } from 'react';
 
 const AffiliatesTimeline = () => {
 
     const { user } = useUser()
     const { tickets: weeklyTickets } = useWeeklyTickets()
     const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
+    const { items: sellerTickets, comision: sellerComision } = useGetTickets()
 
     const [code, setCode] = useState('')
     const [loader, setLoader] = useState(false)
+    const [search, setSearch] = useState('')
 
+    const filterSearch = sellerTickets?.filter(item => {
+        const normalizeField = (field) => (typeof field === 'number' ? String(field) : field);
+
+        const idString = normalizeField(item.id);
+        const costoTicketString = normalizeField(item.costoTicket);
+        const userIdString = normalizeField(item.userId);
+        const sellerCodeString = normalizeField(item.sellerCode);
+        const numeroTicketString = normalizeField(item.numeroTicket);
+        const usernameString = normalizeField(item.username);
+
+        return (
+            idString?.toLowerCase().includes(search.toLowerCase()) ||
+            costoTicketString?.toLowerCase().includes(search.toLowerCase()) ||
+            userIdString?.toLowerCase().includes(search.toLowerCase()) ||
+            sellerCodeString?.toLowerCase().includes(search.toLowerCase()) ||
+            numeroTicketString?.toLowerCase().includes(search.toLowerCase()) ||
+            usernameString?.toLowerCase().includes(search.toLowerCase())
+        );
+    });
 
 
     useEffect(() => {
@@ -42,17 +65,18 @@ const AffiliatesTimeline = () => {
             setLoader(false)
         }, [1000])
 
+
         return () => result
     }, [user])
 
     const filterTicketsWithSellerCode = weeklyTickets?.filter(ticket => ticket.sellerCode === code)
 
 
-
     const table = (
         <>
             <SearchBar
                 title={'Your Tickets'}
+                setSearch={setSearch}
             />
             <BreadcrumbUnderline
                 crumText1={'Mis ventas'}
@@ -60,7 +84,14 @@ const AffiliatesTimeline = () => {
                 state={breadcrumState}
                 setState={setBreadcrumState}
             />
-            <Table />
+
+            {
+                filterSearch?.map((tickets, i) => (
+                    <Fragment key={i}>
+                        <Table item={tickets} />
+                    </Fragment>
+                ))
+            }
         </>
     )
 
@@ -106,44 +137,19 @@ const AffiliatesTimeline = () => {
                             title='Tickets'
                             img={'https://i.pinimg.com/originals/b6/6b/c2/b66bc2adbaa9662e647ac3f7dbff704b.png'}
                             alt={'ticket'}
-                            price={6}
+                            price={sellerTickets?.length}
                         />
                         <CardSmall
                             title='Comisión'
                             img={'/assets/cart-icon-28356.png'}
                             alt={'cart'}
-                            price={128}
+                            price={sellerComision}
                         />
                     </div>
 
                     <CardLarge
                         content={table}
                     />
-
-                    {/* TICKETS */}
-                    <div className={`${styles.WrapperTickets}`} >
-                        <div className={`${styles.ticket}`} >
-
-                            {
-                                filterTicketsWithSellerCode?.map((ticket, index) => (
-                                    <div
-                                        key={index}
-                                        className={`${styles.table}`}
-                                    >
-                                        <p>code: {ticket.sellerCode}</p>
-                                        <p>costo: {ticket.costoTicket} USD</p>
-                                        <p>numero: {ticket.numeroTicket}</p>
-                                        <p>Loteria: {ticket.drawType}</p>
-                                        <p>Fecha:  {formatRelative(ticket.purchaseDate, new Date(), { addSuffix: true })}</p>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-
-
-
-
 
                 </div>
             </div >
