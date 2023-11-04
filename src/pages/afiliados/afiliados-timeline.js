@@ -81,7 +81,6 @@ const AffiliatesTimeline = () => {
     }, [user])
 
 
-
     const table = (
         <>
             <SearchBar

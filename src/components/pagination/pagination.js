@@ -6,7 +6,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }) => {
 
     const pageNumbers = [];
     const [currentPage, setCurrentPage] = useState(1);
-
+    
     for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
         pageNumbers.push(i);
     }

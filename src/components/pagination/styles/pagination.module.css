@@ -5,11 +5,14 @@
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    width: 100%;
+    min-width: 100%;
     background: white;
     margin: 1rem 0 1rem 0;
+    overflow-x: auto;
+    flex-wrap: wrap;
 }
 
+  
 .pagination-active {
     background: black;
     padding: 2px 8px 2px 8px;
