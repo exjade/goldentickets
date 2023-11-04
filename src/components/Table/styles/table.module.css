@@ -1,0 +1,94 @@
+:root {
+    --color-white: #ffff;
+    --color-white-light: #EDF4FC;
+    --color-price: #2D3B71;
+    --color-name: #A5AABD;
+    --card-width-large: 85%;
+    --card-width-full: 100%;
+    --card-height-large: 40rem;
+    --card-radius: 8px
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: var(--card-width-full);
+    padding: 0rem 2rem 0rem 2rem;
+}
+
+.table-header {
+    width: var(--card-width-full);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.table-body {
+    width: var(--card-width-full);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.table-header-row {
+    width: var(--card-width-full);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    background: var(--color-white-light);
+}
+
+.table-body-row {
+    width: var(--card-width-full);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.table-header-row th {
+    width: var(--card-width-full);
+    text-align: center;
+}
+
+.table-body-row td {
+    width: var(--card-width-full);
+    text-align: center;
+}
+
+.hiddenMobie {
+    display: none
+}
+
+@media (max-width: 600px) {}
+
+@media (max-width: 480px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: var(--card-width-full);
+        padding: 0rem 2px 0rem 2px;
+    }
+}
