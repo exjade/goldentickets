@@ -11,6 +11,7 @@ import { BreadcrumbUnderline } from '../../components/breadcrumbs';
 import { SearchBar } from '../../components/searchbar';
 import useBreadcrumbs from '../../hooks/afiliados/use-breadcrumbs';
 import useGetTickets from '../../hooks/afiliados/use-getTickets';
+import { Pagination } from '../../components/pagination';
 
 const AffiliatesTimeline = () => {
 
@@ -20,6 +21,9 @@ const AffiliatesTimeline = () => {
 
     const [code, setCode] = useState('')
     const [loader, setLoader] = useState(false)
+
+
+
     const [search, setSearch] = useState('')
 
     const filterSearch = sellerTickets?.filter(item => {
@@ -41,6 +45,17 @@ const AffiliatesTimeline = () => {
             usernameString?.toLowerCase().includes(search.toLowerCase())
         );
     });
+
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 15;
+    // Calcular los índices de los elementos a mostrar en la página actual
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filterSearch.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Función para cambiar la página actual
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
     useEffect(() => {
@@ -81,12 +96,17 @@ const AffiliatesTimeline = () => {
             />
 
             {
-                filterSearch?.map((tickets, i) => (
+                currentItems?.map((tickets, i) => (
                     <Fragment key={i}>
                         <Table item={tickets} />
                     </Fragment>
                 ))
             }
+            <Pagination
+                itemsPerPage={itemsPerPage}
+                totalItems={filterSearch.length}
+                paginate={paginate}
+            />
         </>
     )
 
@@ -145,6 +165,8 @@ const AffiliatesTimeline = () => {
                     <CardLarge
                         content={table}
                     />
+
+
 
                 </div>
             </div >
