@@ -8,6 +8,7 @@ import DrawTimeline from '../../components/draw';
 import UserDrawTickets from '../../components/draw/draw-tickets';
 import useUserTickets from '../../hooks/draw/use-userTickets';
 import useAuthListener from '../../hooks/use-auth-listener';
+import useDropDown from '../../hooks/use-dropdown';
 
 const BuyTickets = () => {
 
@@ -18,6 +19,7 @@ const BuyTickets = () => {
   } = useModal()
   const { tickets } = useUserTickets()
   const { user } = useAuthListener()
+  const { setDropdown, dropdown, closeDropdown, openDropdown } = useDropDown()
 
 
   const filterTickets = tickets?.filter(ticket => ticket.userId === user?.uid)
@@ -41,6 +43,10 @@ const BuyTickets = () => {
                 <Error>
                   <Header
                     openModal={openModal}
+                    dropdown={dropdown}
+                    setDropdown={setDropdown}
+                    openDropdown={openDropdown}
+                    closeDropdown={closeDropdown}
                   />
                 </Error>
               )
@@ -53,6 +59,8 @@ const BuyTickets = () => {
               open={open}
               closeModal={closeModal}
               user={user}
+              dropdown={dropdown}
+              setDropdown={setDropdown}
             />
           </Error>
 
