@@ -4,6 +4,7 @@ import styles from './styles/searchbar.module.css'
 
 const Searchbar = ({
   title,
+  setSearch,
 }) => {
   return (
     <div className={`${styles.container}`} >
@@ -19,6 +20,7 @@ const Searchbar = ({
             id="searchbar"
             placeholder='Search' 
             className='w-full mx-4 py-1 text-center outline-none'
+            onChange={e => setSearch(e.target.value)}
             />
         </div>
 
@@ -31,4 +33,5 @@ export default Searchbar
 
 Searchbar.propTypes = {
   title: PropTypes.string,
+  setSearch: PropTypes.func,
 }
