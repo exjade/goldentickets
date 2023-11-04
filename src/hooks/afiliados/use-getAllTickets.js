@@ -2,13 +2,11 @@ import { useState, useEffect, useContext } from 'react';
 import UserContext from '../../context/user';
 import { firebase } from '../../lib/firebase';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
-import useUser from '../use-user';
 
 const firestore = getFirestore(firebase);
 
 export default function useGetAllTickets() {
 
-    const { user: activeUser } = useUser();
     const { user } = useContext(UserContext);
     const [tickets, setTickets] = useState([]);
     const [tickets2, setTickets2] = useState([]);
