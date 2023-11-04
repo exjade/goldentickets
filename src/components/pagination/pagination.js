@@ -21,7 +21,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }) => {
         <ul className={styles['pagination-container']}>
             {pageNumbers.map((number) => (
                 <li key={number} className={number === currentPage ? `${styles['pagination-active']}` : ''}>
-                    <a href="#!" onClick={() => handleClick(number)}>
+                    <a href={`#page=${number}`} onClick={() => handleClick(number)}>
                         {number}
                     </a>
                 </li>
