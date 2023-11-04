@@ -11,14 +11,24 @@ import { Pagination } from '../../components/pagination';
 import BackofficeAfiliado from './backoffice-afiliado';
 import BackofficeAdmin from './backoffice-admin';
 import useGetAllTickets from '../../hooks/afiliados/use-getAllTickets';
+import useUsers from '../../hooks/use-users';
+import { firebase } from '../../lib/firebase'
+import {
+    getFirestore,
+    doc,
+    updateDoc,
+    getDoc
+} from 'firebase/firestore'
+import AfiliadosModal from '../../components/modal/afiliados';
+const firestore = getFirestore(firebase)
 
 const AffiliatesTimeline = () => {
 
     const { user } = useUser()
+    const { users } = useUsers()
     const { state: breadcrumState, setState: setBreadcrumState } = useBreadcrumbs()
     const [loader, setLoader] = useState(false)
     const [search, setSearch] = useState('')
-
     /* ========================= ========= ========================= */
     /* ========================= AFILIADOS ========================= */
     /* ========================= ========= ========================= */
@@ -65,7 +75,7 @@ const AffiliatesTimeline = () => {
             } else {
                 setCode(result[0].dailyCode)
             }
-        }).catch(error => {
+        }).catch(() => {
             return null
         });
 
@@ -117,6 +127,10 @@ const AffiliatesTimeline = () => {
     /* ========================= ADMINISTADORES ========================= */
     /* ========================= ============== ========================= */
     const [searchAdmin, setSearchAdmin] = useState('')
+    const [arrAfiliados, setArrAfiliados] = useState([])
+    const [newBalance, setNewBalance] = useState(0);
+    const [afiliadoID, setAfiliadoID] = useState('');
+    const [openModal, setOpenModal] = useState(false);
     const {
         items: AllTickets,
         afiliados: Afiliados,
@@ -165,6 +179,47 @@ const AffiliatesTimeline = () => {
         { key: 'comisionTicket', label: 'Earn', hidden: false },
     ];
 
+    const headersAfiliados = [
+        { key: 'username', label: 'User', hidden: false },
+        { key: 'createdAt', label: 'Join', hidden: false },
+        { key: 'rol', label: 'rol', hidden: true },
+        { key: 'Balance', label: 'Balance', hidden: false },
+    ];
+
+    const customFields = [
+        { key: 'Acción', label: 'Acción' },
+    ];
+
+
+
+
+    useEffect(() => {
+        const filterAfiliados = users?.filter(u => u.rol === 'afiliado')
+        setArrAfiliados(filterAfiliados)
+    }, [breadcrumState])
+
+
+    const updateUserBalance = async (afiliadoID, newBalance) => {
+        try {
+            const afiliadoRef = doc(firestore, 'users', afiliadoID);
+            const docSnap = await getDoc(afiliadoRef);
+            if (docSnap.exists()) {
+                await updateDoc(afiliadoRef, {
+                    Balance: newBalance + docSnap?.data()?.Balance
+                });
+            }
+
+            setTimeout(() => {
+                setNewBalance(0)
+                setAfiliadoID('')
+                setOpenModal(false)
+                location.reload()
+            }, 500);
+
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
     const tableAdministrator = (
         <>
@@ -174,17 +229,34 @@ const AffiliatesTimeline = () => {
             />
             <BreadcrumbUnderline
                 crumText1={'Tickets'}
-                crumText2={'Pagos'}
+                crumText2={'Afiliados'}
                 state={breadcrumState}
                 setState={setBreadcrumState}
             />
-            <Table headers={headersAdmin} data={currentItems2} />
 
-            <Pagination
-                itemsPerPage={itemsPerPage2}
-                totalItems={filterAllSearch.length}
-                paginate={paginate2}
-            />
+            {
+                breadcrumState.breadcrumb1 ? (
+                    <>
+                        <Table headers={headersAdmin} data={currentItems2} />
+                        <Pagination
+                            itemsPerPage={itemsPerPage2}
+                            totalItems={filterAllSearch.length}
+                            paginate={paginate2}
+                        />
+                    </>
+                ) : breadcrumState.breadcrumb2 ? (
+                    <Table
+                        headers={headersAfiliados}
+                        data={arrAfiliados}
+                        customFields={customFields}
+                        afiliadoID={afiliadoID}
+                        setAfiliadoID={setAfiliadoID}
+                        setOpenModal={setOpenModal}
+                    />
+                ) : null
+            }
+
+
         </>
     )
 
@@ -215,6 +287,18 @@ const AffiliatesTimeline = () => {
                             table={tableAdministrator}
                         />
                     ) : null
+                }
+
+                {
+                    openModal && (
+                        <AfiliadosModal
+                            handleUpdateBalance={updateUserBalance}
+                            newBalance={newBalance}
+                            setNewBalance={setNewBalance}
+                            afiliadoID={afiliadoID}
+                            setOpenModal={setOpenModal}
+                        />
+                    )
                 }
 
             </>
