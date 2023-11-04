@@ -39,7 +39,6 @@ const Accumulator = () => {
       getHours()
     }, [loterry])
 
-    console.log(date.minutes)
 
     return (
         <Link
