@@ -1,72 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles/table.module.css';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
-const Table = ({
-  item,
-}) => {
-
-  const cadena = item.sellerCode;
-  const resultado = cadena.match(/-(.*)$/)[1];
+const Table = ({ headers, data }) => {
+  const getCellValue = (item, header) => {
+    switch (header.key) {
+      case 'purchaseDate':
+        return format(new Date(item[header.key]), 'dd/MM/yyyy');
+      case 'costoTicket':
+        return item[header.key].toFixed(2);
+      case 'comisionTicket':
+        return (parseFloat(item.costoTicket) * 0.2).toFixed(2);
+      default:
+        return item[header.key];
+    }
+  };
 
   return (
-    <div className={`${styles.container}`} >
-      <table className={`${styles.wrapper}`} >
-
+    <div className={`${styles.container}`}>
+      <table className={`${styles.wrapper}`}>
         <thead className={`${styles['table-header']}`}>
           <tr className={`${styles['table-header-row']}`}>
-            <th>Fecha</th>
-            <th className='hidden md:inline'>id</th>
-            <th className='hidden md:inline'>Usuario</th>
-            <th>#</th>
-            <th>Costo</th>
-            <th>Comisión</th>
+            <th></th>
+            {headers.map((header) => (
+              <th
+                key={header.key}
+                className={` ${header.hidden && 'hidden md:inline'}`}
+              >{header.label}</th>
+            ))}
           </tr>
         </thead>
 
         <tbody className={`${styles['table-body']}`}>
-          <tr className={`${styles['table-body-row']}`}>
-            <td>
-              {format(new Date(item.purchaseDate), 'dd/MM/yyyy')}
-            </td>
-            <td className='hidden md:inline'>
-              {item.id}
-            </td>
-            <td className='hidden md:inline'>
-              {item.username}
-            </td>
-            <td>
-              {item.numeroTicket}
-            </td>
-            <td>
-              {item.costoTicket}
-            </td>
-            <td>
-              {parseFloat(item.costoTicket * 0.2)?.toFixed(2)}
-            </td>
-          </tr>
+          {data.map((item, index) => (
+            <tr key={index} className={`${styles['table-body-row']}`}>
+              {headers.map((header) => (
+                <td
+                  key={header.key}
+                  className={` ${header.hidden && 'hidden md:inline'}`}
+                >
+                  {getCellValue(item, header)}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
-
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default Table
+export default Table;
 
 Table.propTypes = {
-  item: PropTypes.object,
-}
-
-
-/* 
-4. **Historial de ventas** 
-    1. Fecha
-    2. Numero de ticket
-    3. Código de vendedor
-    4. Nombre de usuario
-    5. Id de ticket
-    6. Costo de ticket
-    7. Comisión por ticket
-*/
+  headers: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
