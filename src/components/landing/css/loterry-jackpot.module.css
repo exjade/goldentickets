@@ -425,8 +425,7 @@ svg path, svg rect {
         background: #3996f6;
         width: 100%;
         height: 100%;
-        background-image:
-        url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
+        background-image: url(https://i.imgur.com/W9qsL3k.jpg);
         background-repeat: no-repeat;
         background-blend-mode: luminosity;
         object-fit: contain;
@@ -440,7 +439,7 @@ svg path, svg rect {
 }
 
     .lotteryJackpot {
-        background: #2691ff;
+        /* background: #2691ff; */
         width: 100%;
         height: 100%;
         border-radius: 0px;
