@@ -1171,6 +1171,9 @@ video {
 .max-w-7xl {
   max-width: 80rem;
 }
+.max-w-\[400px\] {
+  max-width: 400px;
+}
 .max-w-full {
   max-width: 100%;
 }
@@ -1197,9 +1200,6 @@ video {
 }
 .max-w-xl {
   max-width: 36rem;
-}
-.max-w-\[400px\] {
-  max-width: 400px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1566,6 +1566,11 @@ video {
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1575,11 +1580,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
@@ -1903,11 +1903,11 @@ video {
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
-.bg-opacity-75 {
-  --tw-bg-opacity: 0.75;
-}
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
+}
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
 }
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
