@@ -28,27 +28,31 @@ const {
 } = require('./utils/scheduled-functions/update/track-referrals');
 
 const {
-    generateDailyCodeV5
+    generateDailyCodeV5,
+    generateIndidualSellerCodeV1,
 } = require('./utils/scheduled-functions/create/generate-daily-code');
 
 
 const db = admin.firestore();
 
-
+// Buy tickets
 exports.BuyTicketsV3 = BuyTicketsV3;
 exports.BuyTicketsBETAV14 = BuyTicketsBETAV14;
+//Sorteos
 exports.sorteoAutomaticoDolarHoraV3 = sorteoAutomaticoDolarHoraV3;
 exports.sorteoAutomaticoDolarHoraV6 = sorteoAutomaticoDolarHoraV6;
+// Delete booked tickets
 exports.DeleteReservedTickets = DeleteReservedTickets;
-// Weekly lotto
-exports.WeeklyBuyTicketsBETAV3 = WeeklyBuyTicketsBETAV3;
 exports.WeeklyDeleteReservedTickets = WeeklyDeleteReservedTickets;
+// Cron job: Weekly lotto
+exports.WeeklyBuyTicketsBETAV3 = WeeklyBuyTicketsBETAV3;
 exports.WeeklySorteoAutomaticoDolarHoraV3 = WeeklySorteoAutomaticoDolarHoraV3;
 // Track referral users
 exports.trackReferrals = trackReferrals;
 exports.trackReferralsV7 = trackReferralsV7;
 // Generate seller code
 exports.generateDailyCodeV5 = generateDailyCodeV5;
+exports.generateIndidualSellerCodeV1 = generateIndidualSellerCodeV1;
 
 
 
