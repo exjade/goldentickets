@@ -14,6 +14,8 @@ const BackofficeAdmin = ({
     ingresoNeto,
     ingresoBruto,
     table,
+    generateSellerCode,
+    messageSuccessful,
 }) => {
     return (
         <div className={`${styles.container}`} >
@@ -28,7 +30,20 @@ const BackofficeAdmin = ({
                     {
                         code === undefined || code === '' ?
                             (
-                                <p>Código: loading... </p>
+                                <>
+                                    {
+                                        messageSuccessful && (
+                                            <p className='text-green-secondary text-center'>{messageSuccessful}</p>
+                                        )
+                                    }
+                                    <button
+                                        type='button'
+                                        onClick={generateSellerCode}
+                                        className='bg-blue-createAccount px-10 text-center py-4 rounded-md text-white-normal'
+                                    >
+                                        Generar Código
+                                    </button>
+                                </>
                             ) :
                             (
                                 <>
@@ -100,4 +115,6 @@ BackofficeAdmin.propTypes = {
     ingresoNeto: PropTypes.number,
     ingresoBruto: PropTypes.number,
     table: PropTypes.object,
+    generateSellerCode: PropTypes.func,
+    messageSuccessful: PropTypes.string,
 }
