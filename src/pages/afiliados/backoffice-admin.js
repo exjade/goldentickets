@@ -14,7 +14,7 @@ const BackofficeAdmin = ({
     ingresoNeto,
     ingresoBruto,
     table,
-    generateSellerCode,
+    // generateSellerCode,
     messageSuccessful,
 }) => {
     return (
@@ -36,12 +36,13 @@ const BackofficeAdmin = ({
                                             <p className='text-green-secondary text-center'>{messageSuccessful}</p>
                                         )
                                     }
+                                    <p className='text-pink-primary text-sm text-center'>Por el momento sólo funciona en cuentas de afiliados :(</p>
                                     <button
                                         type='button'
-                                        onClick={generateSellerCode}
-                                        className='bg-blue-createAccount px-10 text-center py-4 rounded-md text-white-normal'
+                                        disabled
+                                        className='bg-pink-primary px-10 text-center py-4 rounded-md text-white-normal'
                                     >
-                                        Generar Código
+                                        Deshabilitado
                                     </button>
                                 </>
                             ) :

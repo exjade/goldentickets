@@ -270,6 +270,8 @@ const AffiliatesTimeline = () => {
     const generateSellerCode = async () => {
         try {
             const sellerId = user?.userId;
+
+            //eslint-disable-next-line
             const result = await GenerateIndividualSellerCode(sellerId);
             setMessageSuccessful('Código generado con exito');
 
@@ -277,7 +279,6 @@ const AffiliatesTimeline = () => {
                 setMessageSuccessful('')
                 window.location.reload()
             }, 1000);
-            return result
         } catch (error) {
             alert(error.message);
         }
