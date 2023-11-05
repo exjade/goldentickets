@@ -12,6 +12,8 @@ import BackofficeAfiliado from './backoffice-afiliado';
 import BackofficeAdmin from './backoffice-admin';
 import useGetAllTickets from '../../hooks/afiliados/use-getAllTickets';
 import useUsers from '../../hooks/use-users';
+import AfiliadosModal from '../../components/modal/afiliados';
+import { GenerateIndividualSellerCode } from './utils';
 import { firebase } from '../../lib/firebase'
 import {
     getFirestore,
@@ -19,7 +21,6 @@ import {
     updateDoc,
     getDoc
 } from 'firebase/firestore'
-import AfiliadosModal from '../../components/modal/afiliados';
 const firestore = getFirestore(firebase)
 
 const AffiliatesTimeline = () => {
@@ -260,6 +261,30 @@ const AffiliatesTimeline = () => {
         </>
     )
 
+
+    /* ======================================= ============== ======================================= */
+    /* ======================================= GENERAR CÓDIGO ======================================= */
+    /* ======================================= ============== ======================================= */
+    const [messageSuccessful, setMessageSuccessful] = useState('')
+
+    const generateSellerCode = async () => {
+        try {
+            const sellerId = user?.userId;
+
+            const result = await GenerateIndividualSellerCode(sellerId);
+            setMessageSuccessful('Código generado con exito');
+
+            setTimeout(() => {
+                setMessageSuccessful('')
+                window.location.reload()
+            }, 1000);
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
+
+
     if (loader) {
         return <FallBackLoader />
     }
@@ -274,6 +299,8 @@ const AffiliatesTimeline = () => {
                             sellerTickets={sellerTickets}
                             sellerComision={sellerComision}
                             table={table}
+                            generateSellerCode={generateSellerCode}
+                            messageSuccessful={messageSuccessful}
                         />
                     ) : user?.rol === 'admin' ? (
                         <BackofficeAdmin
@@ -285,6 +312,8 @@ const AffiliatesTimeline = () => {
                             ingresoNeto={ingresoNeto}
                             ingresoBruto={ingresoBruto}
                             table={tableAdministrator}
+                            generateSellerCode={generateSellerCode}
+                            messageSuccessful={messageSuccessful}
                         />
                     ) : null
                 }
