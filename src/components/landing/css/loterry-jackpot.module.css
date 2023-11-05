@@ -22,7 +22,7 @@
     background: #3996f6;
     width: 100%;
     height: 20rem;
-    background-image: url('https://png.pngtree.com/template/20221031/ourmid/pngtree-realistic-lotto-balls-horizontal-background-composition-with-text-and-shining-particles-image_1848416.jpg');
+    background-image: url('https://i.imgur.com/LgEM5YZ.jpg');
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
     object-fit: contain;
@@ -32,7 +32,7 @@
 }
 
 .lotteryJackpot {
-    background: #2691ff;
+    background: #2692ff28;
     width: 100%;
     height: 20rem;
     border-radius: 15px;
@@ -188,17 +188,18 @@
     filter: brightness(1.75);
 }
 
-.lotteryJackpotMiddleCard>button {
+.lotteryJackpotMiddleCard>a {
     font-size: 1rem;
     font-weight: 900;
     word-break: break-word;
     color: #ffffff;
     font-family: 'Nunito Sans', sans-serif;
     filter: brightness(1.75);
-    background: #407493;
+    background: #8C362C;
     border-radius: 10px;
     padding: 1rem;
     width: 10rem;
+    text-align: center;
 }
 
 .lotteryJackpotMiddleCard>p {

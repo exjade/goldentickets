@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './css/loterry-jackpot.module.css';
+import * as ROUTES from '../../constants/routes'
 
 const LotteryJackpot = () => {
   return (
@@ -15,7 +16,7 @@ const LotteryJackpot = () => {
                 {/*  title, subtitle,  */}
                 <span className={`${styles.lotteryJackpotLeftTitle}`}>
                   <h2 className=''>lottery jackpot</h2>
-                  <p>play for just $1.00</p>
+                  <p>play for just $3.00 USD</p>
                 </span>
 
                 {/*  prize  */}
@@ -34,11 +35,11 @@ const LotteryJackpot = () => {
 
                 <div className={`${styles.lotteryJackpotMiddleCard}`}>
                   <h3>Next Drawn In</h3>
-                  <h2>22h:34m:56s</h2>
-                  <button>
+                  <h2>Tutan Festival</h2>
+                  <a href={ROUTES.BUY_TICKETS}>
                     Buy a Ticket
-                  </button>
-                  <p>1 ticket for $1.00</p>
+                  </a>
+                  <p>1 ticket for $3.00 USD</p>
                 </div>
 
               </div>
@@ -49,10 +50,10 @@ const LotteryJackpot = () => {
             <div className={`${styles.lotteryJackpotRight}`} >
               <div className={`${styles.lotteryJackpotRightWrapper}`} >
 
-              <iframe 
+                {/* <iframe 
               src="https://lottie.host/?file=564ebfd7-d72e-4eba-b9dc-7b24c2859fa7/4poemJrepc.json"
               style={{ width: '100%', height: '100%' }}
-              ></iframe>
+              ></iframe> */}
 
               </div>
             </div>
