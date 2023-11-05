@@ -11,6 +11,8 @@ const BackofficeAfiliado = ({
     sellerTickets,
     sellerComision,
     table,
+    generateSellerCode,
+    messageSuccessful,
 }) => {
     return (
         <div className={`${styles.container}`} >
@@ -25,7 +27,20 @@ const BackofficeAfiliado = ({
                     {
                         code === undefined || code === '' ?
                             (
-                                <p>Código: loading... </p>
+                                <>
+                                    {
+                                        messageSuccessful && (
+                                            <p className='text-green-secondary text-center'>{messageSuccessful}</p>
+                                        )
+                                    }
+                                    <button
+                                        type='button'
+                                        onClick={generateSellerCode}
+                                        className='bg-blue-createAccount px-10 text-center py-4 rounded-md text-white-normal'
+                                    >
+                                        Generar Código
+                                    </button>
+                                </>
                             ) :
                             (
                                 <>
@@ -76,4 +91,6 @@ BackofficeAfiliado.propTypes = {
     sellerTickets: PropTypes.array,
     sellerComision: PropTypes.number,
     table: PropTypes.object,
+    generateSellerCode: PropTypes.func,
+    messageSuccessful: PropTypes.string,
 }
