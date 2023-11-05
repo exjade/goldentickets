@@ -1861,6 +1861,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(10 88 185 / var(--tw-bg-opacity));
 }
+.bg-blue-createAccount {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 139 252 / var(--tw-bg-opacity));
+}
 .bg-blue-numbers {
   --tw-bg-opacity: 1;
   background-color: rgb(41 119 236 / var(--tw-bg-opacity));
